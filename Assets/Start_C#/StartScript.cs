@@ -35,6 +35,7 @@ public class StartScript : MonoBehaviour {
         PlayForward("Start_Title");
         PlayForward("Start_Login");
         PlayForward("Start_NoLogin");
+        PlayForward("Start_Out");
     }
     //在开始界面内，点击按钮后，开始界面的按钮和标题就必须回到显示方框之外
     private void BackStartButton()
@@ -45,6 +46,8 @@ public class StartScript : MonoBehaviour {
         PlayReverse("Start_Title");
         PlayReverse("Start_Login");
         PlayReverse("Start_NoLogin");
+        PlayReverse("Start_Out");
+
     }
 
     //登录界面按钮动画播放
@@ -53,7 +56,9 @@ public class StartScript : MonoBehaviour {
         PlayForward("Login_Title");
         PlayForward("Login_Login");
         PlayForward("Login_UserID");
-        PlayForward("Login_UserPsw");
+        PlayForward("Login_UserPSW");
+        PlayForward("Login_Forget");
+        PlayForward("Login_Register");
     }
     //登录回放
     private void BackLoginButton()
@@ -61,7 +66,9 @@ public class StartScript : MonoBehaviour {
         PlayReverse("Login_Title");
         PlayReverse("Login_Login");
         PlayReverse("Login_UserID");
-        PlayReverse("Login_UserPsw");
+        PlayReverse("Login_UserPSW");
+        PlayReverse("Login_Forget");
+        PlayReverse("Login_Register");
     }
 
     //private void PreRegisterButton()
