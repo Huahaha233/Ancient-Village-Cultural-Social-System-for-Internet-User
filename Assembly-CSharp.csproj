@@ -201,8 +201,9 @@
     <Compile Include="Assets\NGUI\Scripts\UI\UITexture.cs" />
     <Compile Include="Assets\NGUI\Scripts\UI\UITooltip.cs" />
     <Compile Include="Assets\NGUI\Scripts\UI\UIViewport.cs" />
+    <Compile Include="Assets\Start_C#\GetUIButton.cs" />
     <Compile Include="Assets\Start_C#\NGUIMove.cs" />
-    <Compile Include="Assets\Start_C#\StartScript.cs" />
+    <Compile Include="Assets\Start_C#\UIMove.cs" />
     <None Include="Assets\NGUI\Examples\Shaders\Unlit - Depth Cutout.shader" />
     <None Include="Assets\NGUI\ReadMe - 3.11.4.txt" />
     <None Include="Assets\NGUI\Resources\Shaders\Unlit - Transparent Masked 1.shader" />

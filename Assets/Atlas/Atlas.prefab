@@ -53,9 +53,35 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   material: {fileID: 2100000, guid: 8582d80af484cd849a062b94a424e8f8, type: 2}
   mSprites:
-  - name: "\u80CC\u666F"
+  - name: "\u4E0B\u62C9\u6846"
     x: 0
-    y: 172
+    y: 112
+    width: 164
+    height: 79
+    borderLeft: 20
+    borderRight: 60
+    borderTop: 0
+    borderBottom: 0
+    paddingLeft: 20
+    paddingRight: 16
+    paddingTop: 58
+    paddingBottom: 63
+  - name: "\u4E0B\u62C9\u6846\u80CC\u666F"
+    x: 0
+    y: 192
+    width: 1875
+    height: 1856
+    borderLeft: 0
+    borderRight: 0
+    borderTop: 0
+    borderBottom: 0
+    paddingLeft: 0
+    paddingRight: 0
+    paddingTop: 0
+    paddingBottom: 0
+  - name: "\u80CC\u666F"
+    x: 1876
+    y: 1708
     width: 550
     height: 340
     borderLeft: 0
@@ -68,7 +94,7 @@ MonoBehaviour:
     paddingBottom: 0
   - name: "\u8F93\u5165\u6846"
     x: 0
-    y: 148
+    y: 88
     width: 163
     height: 23
     borderLeft: 0
