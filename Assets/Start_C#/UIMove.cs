@@ -10,8 +10,8 @@ public class UIMove : MonoBehaviour
 
     //下方为将需要移动的UI的名称存入数组，方便取用
     string[] Str_Start = new string[] { "Start_Title", "Start_Login", "Start_NoLogin", "Start_Out" };
-    string[] Str_Login = new string[] { "Login_Title", "Login_Login","Login_Back", "Login_UserID", "Login_UserPSW", "Login_Forget", "Login_Register" };
-    string[] Str_Register = new string[] { "Register_Title", "Register_Register", "Register_Back", "Register_UserID", "Register_UserPSW", "Register_ReUserPSW", "Register_Sex", "Register_Adress", "Register_Question", "Register_Answer", "Register_Phone","Register_Code" };
+    string[] Str_Login = new string[] { "Login_Title", "Login_Login","Login_Back", "Login_UserID", "Login_UserPSW", "Login_Forget", "Login_Register" ,"Login_Code","Login_Tips"};
+    string[] Str_Register = new string[] { "Register_Title", "Register_Register", "Register_Back", "Register_UserID", "Register_UserPSW", "Register_ReUserPSW", "Register_Sex", "Register_Adress", "Register_Question", "Register_Answer", "Register_Phone","Register_Code" ,"Register_Tips"};
     string[] Str_Forget = new string[] { };
     string[] Str_Reset = new string[] { };
 
