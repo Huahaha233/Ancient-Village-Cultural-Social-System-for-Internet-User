@@ -61,6 +61,13 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Assets\core\net\Connection.cs" />
+    <Compile Include="Assets\core\net\MsgDistribution.cs" />
+    <Compile Include="Assets\core\net\NetMgr.cs" />
+    <Compile Include="Assets\core\net\ProtocolBase.cs" />
+    <Compile Include="Assets\core\net\ProtocolBytes.cs" />
+    <Compile Include="Assets\core\net\ProtocolStr.cs" />
+    <Compile Include="Assets\core\Root.cs" />
     <Compile Include="Assets\NGUI\Examples\Scripts\InventorySystem\Game\EquipItems.cs" />
     <Compile Include="Assets\NGUI\Examples\Scripts\InventorySystem\Game\EquipRandomItem.cs" />
     <Compile Include="Assets\NGUI\Examples\Scripts\InventorySystem\Game\UICursor.cs" />
@@ -202,6 +209,7 @@
     <Compile Include="Assets\NGUI\Scripts\UI\UITooltip.cs" />
     <Compile Include="Assets\NGUI\Scripts\UI\UIViewport.cs" />
     <Compile Include="Assets\Start_C#\GetUIButton.cs" />
+    <Compile Include="Assets\Start_C#\LinkServe.cs" />
     <Compile Include="Assets\Start_C#\NGUIMove.cs" />
     <Compile Include="Assets\Start_C#\UIMove.cs" />
     <None Include="Assets\NGUI\Examples\Shaders\Unlit - Depth Cutout.shader" />

@@ -35,7 +35,7 @@ public class UIMove : MonoBehaviour
     //用户在开始界面选择退出按钮
     public void Start_Out()
     {
-
+        Application.Quit();
     }
 
     //用户在登录界面选择登录按钮

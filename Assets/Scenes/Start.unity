@@ -8168,6 +8168,7 @@ GameObject:
   - component: {fileID: 1316670025}
   - component: {fileID: 1316670024}
   - component: {fileID: 1316670028}
+  - component: {fileID: 1316670029}
   m_Layer: 8
   m_Name: UI Root
   m_TagString: Untagged
@@ -8326,6 +8327,40 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2ebaaf80618e3a648890e55cb011082b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &1316670029
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1316670023}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1eea648d2e95e7140ac19bcc7388b835, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Login_UserID: {fileID: 1700401980}
+  Login_UserPSW: {fileID: 860154843}
+  Login_Code: {fileID: 316119015}
+  Login_Tips: {fileID: 1138054737}
+  Register_UserID: {fileID: 1967540309}
+  Register_UserPSW: {fileID: 538544554}
+  Register_ReUserPSW: {fileID: 1018201739}
+  Register_Sex: {fileID: 295673085}
+  Register_Adress: {fileID: 2135543744}
+  Register_Question: {fileID: 1596730808}
+  Register_Answer: {fileID: 675038026}
+  Register_Phone: {fileID: 1343760971}
+  Register_Code: {fileID: 1622483147}
+  Register_Tips: {fileID: 735803050}
+  Forget_UserID: {fileID: 159477756}
+  Forget_Question: {fileID: 1392542795}
+  Forget_Answer: {fileID: 631842627}
+  Forget_Code: {fileID: 1401298850}
+  Forget_Tips: {fileID: 182331685}
+  Reset_UserPSW: {fileID: 186843720}
+  Reset_ReUserPSW: {fileID: 1156415576}
+  Reset_Tips: {fileID: 28526488}
+  Reset_Code: {fileID: 425718564}
 --- !u!1 &1325382313
 GameObject:
   m_ObjectHideFlags: 0
