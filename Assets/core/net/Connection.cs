@@ -34,8 +34,7 @@ public class Connection
         Connected,
     };
     public Status status = Status.None;
-
-
+    
     //连接服务端
     public bool Connect(string host, int port)
     {
@@ -123,8 +122,7 @@ public class Connection
             ProcessData();
         }
     }
-
-
+    
     public bool Send(ProtocolBase protocol)
     {
         if (status != Status.Connected)
@@ -155,9 +153,7 @@ public class Connection
         string cbName = protocol.GetName();
         return Send(protocol, cbName, cb);
     }
-
-
-
+    
     public void Update()
     {
         //消息
