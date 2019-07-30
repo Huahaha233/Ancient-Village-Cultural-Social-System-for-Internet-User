@@ -22,6 +22,7 @@ public class GetUIButton : MonoBehaviour {
     public GameObject Register_Phone;
     public GameObject Register_Code;
     public GameObject SendForget_UserID;
+    public GameObject SendForget_Code;
     public GameObject Forget_UserID;
     public GameObject Forget_Question;
     public GameObject Forget_Answer;
@@ -56,13 +57,18 @@ public class GetUIButton : MonoBehaviour {
     public void OnLoginClick()
     {
         //用户名密码为空
-        if (Login_UserID.transform.GetChild(0).GetComponent<Text>().text == "" || Login_UserPSW.transform.GetChild(0).GetComponent<Text>().text == "")
+        if (Login_UserID.transform.GetChild(0).GetComponent<UIInput>().value == "" || Login_UserPSW.transform.GetChild(0).GetComponent<UIInput>().value == "")
         {
-            Tips.GetComponent<Text>().text = "用户名密码不能为空!";
+            Tips.GetComponent<UILabel>().text = "用户名密码不能为空!";
             Debug.Log("用户名密码不能为空!");
             return;
         }
-
+        //判断验证码输入是否正确
+        if (Code_Str != Login_Code.transform.GetChild(0).GetComponent<UIInput>().value)
+        {
+            Tips.GetComponent<UILabel>().text = "验证码错误!";
+            SetCode();
+        }
         if (NetMgr.srvConn.status != Connection.Status.Connected)
         {
             string host = "127.0.0.1";
@@ -73,8 +79,8 @@ public class GetUIButton : MonoBehaviour {
         //发送
         ProtocolBytes protocol = new ProtocolBytes();
         protocol.AddString("Login");
-        protocol.AddString(Login_UserID.transform.GetChild(0).GetComponent<Text>().text);
-        protocol.AddString(Login_UserPSW.transform.GetChild(0).GetComponent<Text>().text);
+        protocol.AddString(Login_UserID.transform.GetChild(0).GetComponent<UIInput>().value);
+        protocol.AddString(Login_UserPSW.transform.GetChild(0).GetComponent<UIInput>().value);
         Debug.Log("发送 " + protocol.GetDesc());
         NetMgr.srvConn.Send(protocol, OnLoginBack);
     }
@@ -87,14 +93,14 @@ public class GetUIButton : MonoBehaviour {
         int ret = proto.GetInt(start, ref start);
         if (ret == 0)
         {
-            Tips.GetComponent<Text>().text = "登录成功!";
+            Tips.GetComponent<UILabel>().text = "登录成功!";
             Debug.Log("登录成功!");
             Login_Login();
             SceneManager.LoadScene("");
         }
         else
         {
-            Tips.GetComponent<Text>().text = "登录失败!";
+            Tips.GetComponent<UILabel>().text = "登录失败!";
             Debug.Log("登录失败!");
         }
     }
@@ -105,16 +111,28 @@ public class GetUIButton : MonoBehaviour {
     public void OnRegClick()
     {
         //用户名密码为空
-        if (Register_UserID.transform.GetChild(0).GetComponent<Text>().text == "" || Register_UserPSW.transform.GetChild(0).GetComponent<Text>().text == ""
-            || Register_ReUserPSW.transform.GetChild(0).GetComponent<Text>().text == "" || Register_Sex.transform.GetChild(0).GetComponent<Text>().text == ""
-            || Register_Adress.transform.GetChild(0).GetComponent<Text>().text == "" || Register_Question.transform.GetChild(0).GetComponent<Text>().text == ""
-            || Register_Answer.transform.GetChild(0).GetComponent<Text>().text == "" || Register_Phone.transform.GetChild(0).GetComponent<Text>().text == "")
+        if (Register_UserID.transform.GetChild(0).GetComponent<UIInput>().value == "" || Register_UserPSW.transform.GetChild(0).GetComponent<UIInput>().value == ""
+            || Register_ReUserPSW.transform.GetChild(0).GetComponent<UIInput>().value == "" || Register_Adress.transform.GetChild(0).GetComponent<UILabel>().text == ""
+            || Register_Question.transform.GetChild(0).GetComponent<UILabel>().text == ""|| Register_Answer.transform.GetChild(0).GetComponent<UIInput>().value == "" 
+            || Register_Phone.transform.GetChild(0).GetComponent<UIInput>().value == "")
         {
-            Tips.GetComponent<Text>().text = "注册信息未填完！";
+            Tips.GetComponent<UILabel>().text = "注册信息未填完！";
             Debug.Log("用户名密码不能为空!");
             return;
         }
-
+        //两次输入的密码不一致
+        if (Register_UserPSW.transform.GetChild(0).GetComponent<UIInput>().value != Register_ReUserPSW.transform.GetChild(0).GetComponent<UIInput>().value)
+        {
+            Tips.GetComponent<UILabel>().text = "密码不一致！";
+            Debug.Log("密码不一致!");
+            return;
+        }
+        //判断验证码输入是否正确
+        if (Code_Str != Register_Code.transform.GetChild(0).GetComponent<UIInput>().value)
+        {
+            Tips.GetComponent<UILabel>().text = "验证码错误!";
+            SetCode();
+        }
         if (NetMgr.srvConn.status != Connection.Status.Connected)
         {
             string host = "127.0.0.1";
@@ -122,17 +140,20 @@ public class GetUIButton : MonoBehaviour {
             NetMgr.srvConn.proto = new ProtocolBytes();
             NetMgr.srvConn.Connect(host, port);
         }
-
         //发送
         ProtocolBytes protocol = new ProtocolBytes();
         protocol.AddString("Register");
-        protocol.AddString(Register_UserID.transform.GetChild(0).GetComponent<Text>().text);
-        protocol.AddString(Register_UserPSW.transform.GetChild(0).GetComponent<Text>().text);
-        protocol.AddString(Register_Sex.transform.GetChild(0).GetComponent<Text>().text);
-        protocol.AddString(Register_Adress.transform.GetChild(0).GetComponent<Text>().text);
-        protocol.AddString(Register_Question.transform.GetChild(0).GetComponent<Text>().text);
-        protocol.AddString(Register_Answer.transform.GetChild(0).GetComponent<Text>().text);
-        protocol.AddString(Register_Phone.transform.GetChild(0).GetComponent<Text>().text);
+        protocol.AddString(Register_UserID.transform.GetChild(0).GetComponent<UIInput>().value);
+        protocol.AddString(Register_UserPSW.transform.GetChild(0).GetComponent<UIInput>().value);
+        if (Register_Sex.transform.GetChild(0).GetComponent<UIToggle>().value)
+        {
+            protocol.AddString("男");
+        }else protocol.AddString("女");
+        protocol.AddString(Register_Adress.transform.GetChild(0).GetComponent<UILabel>().text);
+        protocol.AddString(Register_Question.transform.GetChild(0).GetComponent<UILabel>().text);
+        protocol.AddString(Register_Answer.transform.GetChild(0).GetComponent<UIInput>().value);
+        protocol.AddString(Register_Phone.transform.GetChild(0).GetComponent<UIInput>().value);
+
         Debug.Log("发送 " + protocol.GetDesc());
         NetMgr.srvConn.Send(protocol, OnRegBack);
     }
@@ -146,14 +167,14 @@ public class GetUIButton : MonoBehaviour {
         int ret = proto.GetInt(start, ref start);
         if (ret == 0)
         {
-            Tips.GetComponent<Text>().text = "注册成功！";
+            Tips.GetComponent<UILabel>().text = "注册成功！";
             Debug.Log("注册成功!");
             //注册成功后回到登录界面
             Register_Register();
         }
         else
         {
-            Tips.GetComponent<Text>().text = "注册失败！";
+            Tips.GetComponent<UILabel>().text = "注册失败！";
             Debug.Log("注册失败!");
         }
     }
@@ -164,11 +185,17 @@ public class GetUIButton : MonoBehaviour {
     public void OnSendForgetClick()
     {
         //用户名密码为空
-        if (SendForget_UserID.transform.GetChild(0).GetComponent<Text>().text == "")
+        if (SendForget_UserID.transform.GetChild(0).GetComponent<UIInput>().value == "")
         {
-            Tips.GetComponent<Text>().text = "用户名不能为空!";
+            Tips.GetComponent<UILabel>().text = "用户名不能为空!";
             Debug.Log("用户名不能为空!");
             return;
+        }
+        //判断验证码输入是否正确
+        if (Code_Str != SendForget_Code.transform.GetChild(0).GetComponent<UIInput>().value)
+        {
+            Tips.GetComponent<UILabel>().text = "验证码错误!";
+            SetCode();
         }
 
         if (NetMgr.srvConn.status != Connection.Status.Connected)
@@ -181,7 +208,7 @@ public class GetUIButton : MonoBehaviour {
         //发送
         ProtocolBytes protocol = new ProtocolBytes();
         protocol.AddString("SendForget");
-        protocol.AddString(SendForget_UserID.transform.GetChild(0).GetComponent<Text>().text);
+        protocol.AddString(SendForget_UserID.transform.GetChild(0).GetComponent<UILabel>().text);
         Debug.Log("发送 " + protocol.GetDesc());
         NetMgr.srvConn.Send(protocol, OnSendForgetBack);
     }
@@ -193,68 +220,21 @@ public class GetUIButton : MonoBehaviour {
         string protoName = proto.GetString(start, ref start);
         string back = proto.GetString(start, ref start);
         string[] str = back.Split(';');//前半部分为问题，后半部分为答案1
-        if (back == "false")
+        if (back != "false")
         {
-            Forget_Question.transform.GetChild(0).GetComponent<Text>().text=str[0];//在UI上显示密保问题
-            Tips.GetComponent<Text>().text = "获取成功!";
+            Forget_Question.transform.GetChild(0).GetComponent<UILabel>().text = str[0];//在UI上显示密保问题
+            Tips.GetComponent<UILabel>().text = "获取成功!";
             Debug.Log("成功!");
             SendForget_Next();
             Answer = str[1];
         }
         else
         {
-            Tips.GetComponent<Text>().text = "获取失败!";
+            Tips.GetComponent<UILabel>().text = "获取失败!";
             Debug.Log("失败!");
         }
     }
 
-    #endregion
-
-    #region 忘记密码
-    ////登录按钮
-    //public void OnForgetClick()
-    //{
-    //    //用户名密码为空
-    //    if (Forget_Answer.GetComponent<Text>().text == "")
-    //    {
-    //        Tips.GetComponent<Text>().text = "信息不能为空!";
-    //        Debug.Log("信息不能为空!");
-    //        return;
-    //    }
-
-    //    if (NetMgr.srvConn.status != Connection.Status.Connected)
-    //    {
-    //        string host = "127.0.0.1";
-    //        int port = 1234;
-    //        NetMgr.srvConn.proto = new ProtocolBytes();
-    //        NetMgr.srvConn.Connect(host, port);
-    //    }
-    //    //发送
-    //    ProtocolBytes protocol = new ProtocolBytes();
-    //    protocol.AddString("Login");
-    //    protocol.AddString(Forget_UserID.GetComponent<Text>().text);
-    //    Debug.Log("发送 " + protocol.GetDesc());
-    //    NetMgr.srvConn.Send(protocol, OnForgetBack);
-    //}
-    ////处理发送登录信息后服务器返回的信息
-    //public void OnForgetBack(ProtocolBase protocol)
-    //{
-    //    ProtocolBytes proto = (ProtocolBytes)protocol;
-    //    int start = 0;
-    //    string protoName = proto.GetString(start, ref start);
-    //    int ret = proto.GetInt(start, ref start);
-    //    if (ret == 0)
-    //    {
-    //        Tips.GetComponent<Text>().text = "登录成功!";
-    //        Debug.Log("登录成功!");
-    //        //开始游戏
-    //    }
-    //    else
-    //    {
-    //        Tips.GetComponent<Text>().text = "登录失败!";
-    //        Debug.Log("登录失败!");
-    //    }
-    //}
     #endregion
 
     #region 重置密码
@@ -262,13 +242,25 @@ public class GetUIButton : MonoBehaviour {
     public void OnResetClick()
     {
         //用户名密码为空
-        if (Reset_UserPSW.transform.GetChild(0).GetComponent<Text>().text == "" || Reset_ReUserPSW.transform.GetChild(0).GetComponent<Text>().text == "")
+        if (Reset_UserPSW.transform.GetChild(0).GetComponent<UIInput>().value == "" || Reset_ReUserPSW.transform.GetChild(0).GetComponent<UIInput>().value == "")
         {
-            Tips.GetComponent<Text>().text = "密码不能为空!";
+            Tips.GetComponent <UILabel>().text = "密码不能为空!";
             Debug.Log("密码不能为空!");
             return;
         }
-
+        //两次输入的密码不一致
+        if (Reset_UserPSW.transform.GetChild(0).GetComponent<UIInput>().value != Reset_ReUserPSW.transform.GetChild(0).GetComponent<UIInput>().value)
+        {
+            Tips.GetComponent<UILabel>().text = "密码不一致!";
+            Debug.Log("密码不一致!");
+            return;
+        }
+        //判断验证码输入是否正确
+        if (Code_Str != Reset_Code.transform.GetChild(0).GetComponent<UIInput>().value)
+        {
+            Tips.GetComponent<UILabel>().text = "验证码错误!";
+            SetCode();
+        }
         if (NetMgr.srvConn.status != Connection.Status.Connected)
         {
             string host = "127.0.0.1";
@@ -279,8 +271,7 @@ public class GetUIButton : MonoBehaviour {
         //发送
         ProtocolBytes protocol = new ProtocolBytes();
         protocol.AddString("Reset");
-        protocol.AddString(Reset_UserPSW.transform.GetChild(0).GetComponent<Text>().text);
-        protocol.AddString(Reset_ReUserPSW.transform.GetChild(0).GetComponent<Text>().text);
+        protocol.AddString(Reset_UserPSW.transform.GetChild(0).GetComponent<UIInput>().value);
         Debug.Log("发送 " + protocol.GetDesc());
         NetMgr.srvConn.Send(protocol, OnResetBack);
     }
@@ -293,14 +284,14 @@ public class GetUIButton : MonoBehaviour {
         int ret = proto.GetInt(start, ref start);
         if (ret == 0)
         {
-            Tips.GetComponent<Text>().text = "密码重置成功!";
+            Tips.GetComponent<UILabel>().text = "密码重置成功!";
             Debug.Log("密码重置成功!");
             //重置成功后回到登录界面
             Reset_OK();
         }
         else
         {
-            Tips.GetComponent<Text>().text = "密码重置失败!";
+            Tips.GetComponent<UILabel>().text = "密码重置失败!";
             Debug.Log("密码重置失败!");
         }
     }
@@ -331,6 +322,7 @@ public class GetUIButton : MonoBehaviour {
     private void Login_Login()
     {
         PlayContent("Login", 1);
+        Tips.GetComponent<UILabel>().text = "";
     }
 
     //用户在登录界面选择返回按钮
@@ -359,6 +351,8 @@ public class GetUIButton : MonoBehaviour {
     {
         PlayContent("Register", 1);
         PlayContent("Start",0);
+        Tips.GetComponent<UILabel>().text = "";
+        SetCode();
     }
 
     //用户在注册界面选择返回按钮
@@ -372,7 +366,9 @@ public class GetUIButton : MonoBehaviour {
     private void SendForget_Next()
     {
         PlayContent("SendForget", 1);
-        PlayContent("Reset", 0);
+        PlayContent("Forget", 0);
+        Tips.GetComponent<UILabel>().text = "";
+        SetCode();
     }
 
     //用户在忘记密码输入ID界面选择返回按钮
@@ -385,13 +381,13 @@ public class GetUIButton : MonoBehaviour {
     //用户在忘记密码界面选择下一步按钮
     public void Forget_Next()
     {
-        if(Answer== Forget_Answer.transform.GetChild(0).GetComponent<Text>().text)
+        if(Answer== Forget_Answer.transform.GetChild(0).GetComponent<UILabel>().text)
         {
-            Tips.GetComponent<Text>().text = "答案正确!";
+            Tips.GetComponent<UILabel>().text = "答案正确!";
             PlayContent("Forget", 1);
             PlayContent("Reset", 0);
         }
-        else Tips.GetComponent<Text>().text = "答案错误!";
+        else Tips.GetComponent<UILabel>().text = "答案错误!";
     }
 
     //用户在忘记密码界面选择返回按钮
@@ -405,7 +401,9 @@ public class GetUIButton : MonoBehaviour {
     private void Reset_OK()
     {
         PlayContent("Reset", 1);
-        PlayContent("Start", 0);
+        PlayContent("Login", 0);
+        Tips.GetComponent<UILabel>().text = "";
+        SetCode();
     }
 
     //用户在重置密码界面选择返回按钮

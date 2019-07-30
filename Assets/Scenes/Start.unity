@@ -637,7 +637,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 2135543745}
-  m_RootOrder: 0
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &90876026
 MonoBehaviour:
@@ -1571,7 +1571,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1596730809}
-  m_RootOrder: 0
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &291819340
 MonoBehaviour:
@@ -1722,10 +1722,10 @@ Transform:
   m_LocalPosition: {x: -1900, y: -70, z: 0}
   m_LocalScale: {x: 0.999, y: 0.999, z: 0.999}
   m_Children:
-  - {fileID: 938430067}
-  - {fileID: 765891334}
   - {fileID: 1920940411}
   - {fileID: 1933024616}
+  - {fileID: 938430067}
+  - {fileID: 765891334}
   m_Father: {fileID: 1316670027}
   m_RootOrder: 21
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -4979,7 +4979,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 295673086}
-  m_RootOrder: 1
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &765891335
 MonoBehaviour:
@@ -5203,7 +5203,7 @@ MonoBehaviour:
   selectionColor: {r: 1, g: 0.8745098, b: 0.5529412, a: 0.5}
   onSubmit: []
   onChange: []
-  mValue: "\u8BF7\u8F93\u5165\u8D26\u53F7..."
+  mValue: "\u8BF7\u8F93\u5165\u9A8C\u8BC1\u7801..."
 --- !u!65 &807938780
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -5248,7 +5248,7 @@ MonoBehaviour:
   mPivot: 3
   mWidth: 600
   mHeight: 80
-  mDepth: 3
+  mDepth: 17
   mMat: {fileID: 0}
   autoResizeBoxCollider: 0
   hideIfOffScreen: 0
@@ -5269,8 +5269,8 @@ MonoBehaviour:
   mEffectDistance: {x: 1, y: 1}
   mOverflow: 0
   mApplyGradient: 1
-  mGradientTop: {r: 0.028301895, g: 0.028301895, b: 0.028301895, a: 1}
-  mGradientBottom: {r: 0, g: 0, b: 0, a: 1}
+  mGradientTop: {r: 1, g: 1, b: 1, a: 1}
+  mGradientBottom: {r: 1, g: 1, b: 1, a: 1}
   mSpacingX: 0
   mSpacingY: 0
   mUseFloatSpacing: 0
@@ -5311,7 +5311,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1596730809}
-  m_RootOrder: 1
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &846845135
 MonoBehaviour:
@@ -5761,7 +5761,6 @@ GameObject:
   - component: {fileID: 922035361}
   - component: {fileID: 922035364}
   - component: {fileID: 922035363}
-  - component: {fileID: 922035362}
   m_Layer: 8
   m_Name: Text
   m_TagString: Untagged
@@ -5782,33 +5781,6 @@ Transform:
   m_Father: {fileID: 1392542796}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &922035362
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 922035360}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ac5060295fbd39b4a88d20d0c83d925e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  label: {fileID: 922035364}
-  inputType: 0
-  onReturnKey: 0
-  keyboardType: 0
-  hideInput: 0
-  submitOnUnselect: 0
-  validation: 0
-  characterLimit: 0
-  savedAs: 
-  selectOnTab: {fileID: 0}
-  activeTextColor: {r: 1, g: 1, b: 1, a: 1}
-  caretColor: {r: 1, g: 1, b: 1, a: 0.8}
-  selectionColor: {r: 1, g: 0.8745098, b: 0.5529412, a: 0.5}
-  onSubmit: []
-  onChange: []
-  mValue: "\u8BF7\u8F93\u5165\u5BC6\u4FDD\u7B54\u6848..."
 --- !u!65 &922035363
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -5916,7 +5888,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 295673086}
-  m_RootOrder: 0
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &938430068
 MonoBehaviour:
@@ -6324,8 +6296,8 @@ GameObject:
   m_Component:
   - component: {fileID: 1035871279}
   - component: {fileID: 1035871280}
-  - component: {fileID: 1035871281}
   - component: {fileID: 1035871282}
+  - component: {fileID: 1035871281}
   m_Layer: 8
   m_Name: Label
   m_TagString: Untagged
@@ -6378,7 +6350,7 @@ MonoBehaviour:
   mPivot: 3
   mWidth: 600
   mHeight: 80
-  mDepth: 3
+  mDepth: 15
   mMat: {fileID: 0}
   autoResizeBoxCollider: 0
   hideIfOffScreen: 0
@@ -6399,8 +6371,8 @@ MonoBehaviour:
   mEffectDistance: {x: 1, y: 1}
   mOverflow: 0
   mApplyGradient: 1
-  mGradientTop: {r: 0.028301895, g: 0.028301895, b: 0.028301895, a: 1}
-  mGradientBottom: {r: 0, g: 0, b: 0, a: 1}
+  mGradientTop: {r: 1, g: 1, b: 1, a: 1}
+  mGradientBottom: {r: 1, g: 1, b: 1, a: 1}
   mSpacingX: 0
   mSpacingY: 0
   mUseFloatSpacing: 0
@@ -6956,7 +6928,7 @@ MonoBehaviour:
   selectionColor: {r: 1, g: 0.8745098, b: 0.5529412, a: 0.5}
   onSubmit: []
   onChange: []
-  mValue: "\u8BF7\u8F93\u5165\u8D26\u53F7..."
+  mValue: "\u8BF7\u8F93\u5165\u5BC6\u7801..."
 --- !u!65 &1110707567
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -7001,7 +6973,7 @@ MonoBehaviour:
   mPivot: 3
   mWidth: 600
   mHeight: 80
-  mDepth: 3
+  mDepth: 16
   mMat: {fileID: 0}
   autoResizeBoxCollider: 0
   hideIfOffScreen: 0
@@ -7022,8 +6994,8 @@ MonoBehaviour:
   mEffectDistance: {x: 1, y: 1}
   mOverflow: 0
   mApplyGradient: 1
-  mGradientTop: {r: 0.028301895, g: 0.028301895, b: 0.028301895, a: 1}
-  mGradientBottom: {r: 0, g: 0, b: 0, a: 1}
+  mGradientTop: {r: 1, g: 1, b: 1, a: 1}
+  mGradientBottom: {r: 1, g: 1, b: 1, a: 1}
   mSpacingX: 0
   mSpacingY: 0
   mUseFloatSpacing: 0
@@ -7184,7 +7156,6 @@ GameObject:
   m_Component:
   - component: {fileID: 1138054738}
   - component: {fileID: 1138054739}
-  - component: {fileID: 1138054740}
   m_Layer: 8
   m_Name: Tips
   m_TagString: Untagged
@@ -7273,55 +7244,6 @@ MonoBehaviour:
   mMaxLineHeight: 0
   mLineWidth: 0
   mMultiline: 1
---- !u!114 &1138054740
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1138054737}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3d166255cacf07b4292b8402b3ddefc5, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  method: 0
-  style: 0
-  animationCurve:
-    serializedVersion: 2
-    m_Curve:
-    - serializedVersion: 3
-      time: 0
-      value: 0
-      inSlope: 0
-      outSlope: 1
-      tangentMode: 0
-      weightedMode: 0
-      inWeight: 0
-      outWeight: 0
-    - serializedVersion: 3
-      time: 1
-      value: 1
-      inSlope: 1
-      outSlope: 0
-      tangentMode: 0
-      weightedMode: 0
-      inWeight: 0
-      outWeight: 0
-    m_PreInfinity: 2
-    m_PostInfinity: 2
-    m_RotationOrder: 4
-  ignoreTimeScale: 1
-  delay: 0
-  duration: 3
-  steeperCurves: 0
-  tweenGroup: 0
-  useFixedUpdate: 0
-  onFinished: []
-  eventReceiver: {fileID: 0}
-  callWhenFinished: 
-  from: {x: 0, y: -200, z: 0}
-  to: {x: 0, y: -200, z: 0}
-  worldSpace: 0
 --- !u!1 &1156415576
 GameObject:
   m_ObjectHideFlags: 0
@@ -7840,7 +7762,7 @@ MonoBehaviour:
   mPivot: 4
   mWidth: 404
   mHeight: 104
-  mDepth: 15
+  mDepth: 14
   mMat: {fileID: 0}
   autoResizeBoxCollider: 1
   hideIfOffScreen: 0
@@ -8213,8 +8135,8 @@ GameObject:
   - component: {fileID: 1316670026}
   - component: {fileID: 1316670025}
   - component: {fileID: 1316670024}
-  - component: {fileID: 1316670028}
   - component: {fileID: 1316670029}
+  - component: {fileID: 1316670030}
   m_Layer: 8
   m_Name: UI Root
   m_TagString: Untagged
@@ -8362,17 +8284,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1316670028
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1316670023}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 2ebaaf80618e3a648890e55cb011082b, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!114 &1316670029
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -8398,6 +8309,7 @@ MonoBehaviour:
   Register_Phone: {fileID: 1343760971}
   Register_Code: {fileID: 1622483147}
   SendForget_UserID: {fileID: 159477756}
+  SendForget_Code: {fileID: 1401298850}
   Forget_UserID: {fileID: 159477756}
   Forget_Question: {fileID: 1392542795}
   Forget_Answer: {fileID: 631842627}
@@ -8405,6 +8317,17 @@ MonoBehaviour:
   Reset_UserPSW: {fileID: 186843720}
   Reset_ReUserPSW: {fileID: 1156415576}
   Reset_Code: {fileID: 425718564}
+--- !u!114 &1316670030
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1316670023}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 63f57d52eafb5634ab83c5d81049c9b0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1325382313
 GameObject:
   m_ObjectHideFlags: 0
@@ -10424,8 +10347,8 @@ Transform:
   m_LocalPosition: {x: 1200, y: 280, z: 0}
   m_LocalScale: {x: 0.999, y: 0.999, z: 0.999}
   m_Children:
-  - {fileID: 291819339}
   - {fileID: 846845134}
+  - {fileID: 291819339}
   m_Father: {fileID: 1316670027}
   m_RootOrder: 23
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -10800,7 +10723,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 2135543745}
-  m_RootOrder: 1
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &1646763323
 MonoBehaviour:
@@ -12140,7 +12063,7 @@ Transform:
   m_Children:
   - {fileID: 1069805872}
   m_Father: {fileID: 295673086}
-  m_RootOrder: 2
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &1920940412
 MonoBehaviour:
@@ -12264,7 +12187,7 @@ Transform:
   m_Children:
   - {fileID: 361345421}
   m_Father: {fileID: 295673086}
-  m_RootOrder: 3
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &1933024617
 MonoBehaviour:
@@ -13055,8 +12978,8 @@ Transform:
   m_LocalPosition: {x: -1900, y: -200, z: 0}
   m_LocalScale: {x: 0.999, y: 0.999, z: 0.999}
   m_Children:
-  - {fileID: 90876025}
   - {fileID: 1646763322}
+  - {fileID: 90876025}
   m_Father: {fileID: 1316670027}
   m_RootOrder: 22
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}

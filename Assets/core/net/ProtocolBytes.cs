@@ -47,9 +47,10 @@ public class ProtocolBytes : ProtocolBase
 	//添加字符串
 	public void AddString(string str)
 	{
-		Int32 len = str.Length;
-		byte[] lenBytes = BitConverter.GetBytes (len);
+        
 		byte[] strBytes = System.Text.Encoding.UTF8.GetBytes (str);
+        Int32 len = strBytes.Length;
+        byte[] lenBytes = BitConverter.GetBytes (len);
 		if(bytes == null)
 			bytes = lenBytes.Concat(strBytes).ToArray();
 		else
@@ -68,7 +69,7 @@ public class ProtocolBytes : ProtocolBase
 			return "";
 		string str = System.Text.Encoding.UTF8.GetString(bytes,start + sizeof(Int32),strLen);
 		end = start + sizeof(Int32) + strLen;
-		return str;
+		    return str;
 	}
 	
 	public string GetString(int start)
