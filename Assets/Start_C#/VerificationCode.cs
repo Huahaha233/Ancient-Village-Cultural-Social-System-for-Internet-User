@@ -15,11 +15,6 @@ public class VerificationCode : MonoBehaviour {
     private static byte[] randb = new byte[4];
     private static RNGCryptoServiceProvider rand = new RNGCryptoServiceProvider();
 
-     void Start()
-     {
-        Click();
-     }
-
     /// <summary>
     /// 字体样式 信息
     /// </summary>
@@ -210,23 +205,19 @@ public class VerificationCode : MonoBehaviour {
     /// <param name="imgHeight">图片高度， 60</param>
     /// <param name="length">字符长度，一般为4</param>
     /// <returns>验证码字符串</returns>
-    private static string ShowVerificationCode(UnityEngine.UI.Image img, int imgWidth, int imgHeight, int length)
-    {
-        VerificationCode vCode = new VerificationCode(imgWidth, imgHeight, length);
-        Texture2D texture = VerificationCode.Image2Texture(vCode.Image);
-        img.sprite = Sprite.Create(texture, new Rect(0, 0, imgWidth, imgHeight), new Vector2(0.5f, 0.5f), 125);
-        return vCode.Text;
-    }
+    //private static string ShowVerificationCode(UnityEngine.UI.Image img, int imgWidth, int imgHeight, int length)
+    //{
+    //    VerificationCode vCode = new VerificationCode(imgWidth, imgHeight, length);
+    //    Texture2D texture = VerificationCode.Image2Texture(vCode.Image);
+    //    img.sprite = Sprite.Create(texture, new Rect(0, 0, imgWidth, imgHeight), new Vector2(0.5f, 0.5f), 125);
+    //    return vCode.Text;
+    //}
 
-    public static void Click()
-    {
-        GameObject Code_img = GameObject.Find("Canvas/Code_Image");
-        string code=ShowVerificationCode(Code_img.GetComponent<UnityEngine.UI.Image>(),300,100,4);
-        //Mysqlconn.Code = code;
-    }
-    public void OnClick()//点击此程序
-    {
-        GameObject Code_img = GameObject.Find("Canvas/Code_Image");
-        string code = ShowVerificationCode(Code_img.GetComponent<UnityEngine.UI.Image>(), 300, 100, 4);
-    }
+    //public static void Click()
+    //{
+    //    GameObject Code_img = GameObject.Find("Canvas/Code_Image");
+    //    string code=ShowVerificationCode(Code_img.GetComponent<UnityEngine.UI.Image>(),300,100,4);
+    //    //Mysqlconn.Code = code;
+    //}
+    
 }

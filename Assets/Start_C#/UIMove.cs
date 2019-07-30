@@ -6,14 +6,6 @@ using NGUI;
 public class UIMove : MonoBehaviour
 {
     //在开始界面，当用户点击“登录”“游客登录”按钮时，控制NGUI按钮组件移动，并激活登录UI
-
-    ////下方为将需要移动的UI的名称存入数组，方便取用
-    //string[] Str_Start = new string[] { "Start_Title", "Start_Login", "Start_NoLogin", "Start_Out" };
-    //string[] Str_Login = new string[] { "Login_Title", "Login_Login","Login_Back", "Login_UserID", "Login_UserPSW", "Login_Forget", "Login_Register" ,"Login_Code","Login_Tips"};
-    //string[] Str_Register = new string[] { "Register_Title", "Register_Register", "Register_Back", "Register_UserID", "Register_UserPSW", "Register_ReUserPSW", "Register_Sex", "Register_Adress", "Register_Question", "Register_Answer", "Register_Phone","Register_Code" ,"Register_Tips"};
-    //string[] Str_Forget = new string[] { };
-    //string[] Str_Reset = new string[] { };
-
     private void Start()
     {
         PlayContent("Start", 0);//开始界面时的NGUI的移动
@@ -62,7 +54,7 @@ public class UIMove : MonoBehaviour
     public void Login_Forget()
     {
         PlayContent("Login", 1);
-        PlayContent("Forget", 0);
+        PlayContent("SendForget", 0);
     }
 
     //用户在注册界面选择注册按钮
@@ -78,6 +70,20 @@ public class UIMove : MonoBehaviour
         PlayContent("Login", 0);
     }
 
+    //用户在忘记密码输入ID界面输入ID后选择下一步按钮
+    public void SendForget_Next()
+    {
+        PlayContent("SendForget", 1);
+        PlayContent("Forget", 0);
+    }
+
+    //用户在忘记密码输入ID界面选择返回按钮
+    public void SendForget_Back()
+    {
+        PlayContent("SendForget", 1);
+        PlayContent("Login", 0);
+    }
+
     //用户在忘记密码界面选择下一步按钮
     public void Forget_Next()
     {
@@ -89,7 +95,7 @@ public class UIMove : MonoBehaviour
     public void Forget_Back()
     {
         PlayContent("Forget", 1);
-        PlayContent("Login", 0);
+        PlayContent("SendForget", 0);
     }
 
     //用户在重置密码界面选择完成按钮

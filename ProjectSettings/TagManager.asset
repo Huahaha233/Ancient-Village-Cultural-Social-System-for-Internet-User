@@ -9,6 +9,8 @@ TagManager:
   - Register
   - Forget
   - Reset
+  - SendForget
+  - Code
   layers:
   - Default
   - TransparentFX
