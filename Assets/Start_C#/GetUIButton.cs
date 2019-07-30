@@ -68,6 +68,7 @@ public class GetUIButton : MonoBehaviour {
         {
             Tips.GetComponent<UILabel>().text = "验证码错误!";
             SetCode();
+            return;
         }
         if (NetMgr.srvConn.status != Connection.Status.Connected)
         {
@@ -102,6 +103,7 @@ public class GetUIButton : MonoBehaviour {
         {
             Tips.GetComponent<UILabel>().text = "登录失败!";
             Debug.Log("登录失败!");
+            SetCode();
         }
     }
     #endregion
@@ -176,6 +178,7 @@ public class GetUIButton : MonoBehaviour {
         {
             Tips.GetComponent<UILabel>().text = "注册失败！";
             Debug.Log("注册失败!");
+            SetCode();
         }
     }
     #endregion
@@ -196,6 +199,7 @@ public class GetUIButton : MonoBehaviour {
         {
             Tips.GetComponent<UILabel>().text = "验证码错误!";
             SetCode();
+            return;
         }
 
         if (NetMgr.srvConn.status != Connection.Status.Connected)
@@ -232,6 +236,7 @@ public class GetUIButton : MonoBehaviour {
         {
             Tips.GetComponent<UILabel>().text = "获取失败!";
             Debug.Log("失败!");
+            SetCode();
         }
     }
 
@@ -260,6 +265,7 @@ public class GetUIButton : MonoBehaviour {
         {
             Tips.GetComponent<UILabel>().text = "验证码错误!";
             SetCode();
+            return;
         }
         if (NetMgr.srvConn.status != Connection.Status.Connected)
         {
@@ -293,6 +299,7 @@ public class GetUIButton : MonoBehaviour {
         {
             Tips.GetComponent<UILabel>().text = "密码重置失败!";
             Debug.Log("密码重置失败!");
+            SetCode();
         }
     }
     #endregion
@@ -330,6 +337,7 @@ public class GetUIButton : MonoBehaviour {
     {
         PlayContent("Login", 1);
         PlayContent("Start", 0);
+        SetCode();
     }
 
     //用户在登录界面选择注册按钮
@@ -337,6 +345,7 @@ public class GetUIButton : MonoBehaviour {
     {
         PlayContent("Login", 1);
         PlayContent("Register", 0);
+        SetCode();
     }
 
     //用户在登录界面选择忘记密码按钮
@@ -344,6 +353,7 @@ public class GetUIButton : MonoBehaviour {
     {
         PlayContent("Login", 1);
         PlayContent("SendForget", 0);
+        SetCode();
     }
 
     //用户在注册界面选择注册按钮
@@ -360,6 +370,7 @@ public class GetUIButton : MonoBehaviour {
     {
         PlayContent("Register", 1);
         PlayContent("Login", 0);
+        SetCode();
     }
 
     //用户在忘记密码输入ID界面输入ID后选择下一步按钮
@@ -376,6 +387,7 @@ public class GetUIButton : MonoBehaviour {
     {
         PlayContent("SendForget", 1);
         PlayContent("Login", 0);
+        SetCode();
     }
 
     //用户在忘记密码界面选择下一步按钮
@@ -411,6 +423,7 @@ public class GetUIButton : MonoBehaviour {
     {
         PlayContent("Reset", 1);
         PlayContent("Forget", 0);
+        SetCode();
     }
     #endregion
     //调用接口
