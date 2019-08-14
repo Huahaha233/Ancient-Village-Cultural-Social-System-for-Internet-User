@@ -61,6 +61,8 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Assets\Battle.cs" />
+    <Compile Include="Assets\BattleTank.cs" />
     <Compile Include="Assets\core\net\Connection.cs" />
     <Compile Include="Assets\core\net\MsgDistribution.cs" />
     <Compile Include="Assets\core\net\NetMgr.cs" />
@@ -68,6 +70,8 @@
     <Compile Include="Assets\core\net\ProtocolBytes.cs" />
     <Compile Include="Assets\core\net\ProtocolStr.cs" />
     <Compile Include="Assets\core\Root.cs" />
+    <Compile Include="Assets\GameMgr.cs" />
+    <Compile Include="Assets\MultiBattle.cs" />
     <Compile Include="Assets\NGUI\Examples\Scripts\InventorySystem\Game\EquipItems.cs" />
     <Compile Include="Assets\NGUI\Examples\Scripts\InventorySystem\Game\EquipRandomItem.cs" />
     <Compile Include="Assets\NGUI\Examples\Scripts\InventorySystem\Game\UICursor.cs" />
@@ -208,10 +212,13 @@
     <Compile Include="Assets\NGUI\Scripts\UI\UITexture.cs" />
     <Compile Include="Assets\NGUI\Scripts\UI\UITooltip.cs" />
     <Compile Include="Assets\NGUI\Scripts\UI\UIViewport.cs" />
+    <Compile Include="Assets\Path.cs" />
+    <Compile Include="Assets\Room_C#\RoomListPanel.cs" />
     <Compile Include="Assets\Start_C#\GetUIButton.cs" />
     <Compile Include="Assets\Start_C#\NGUIMove.cs" />
     <Compile Include="Assets\Start_C#\UIMove.cs" />
     <Compile Include="Assets\Start_C#\VerificationCode.cs" />
+    <Compile Include="Assets\Tank.cs" />
     <None Include="Assets\NGUI\Examples\Shaders\Unlit - Depth Cutout.shader" />
     <None Include="Assets\NGUI\ReadMe - 3.11.4.txt" />
     <None Include="Assets\NGUI\Resources\Shaders\Unlit - Transparent Masked 1.shader" />
