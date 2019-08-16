@@ -3,26 +3,26 @@
 --- !u!1 &100000
 GameObject:
   m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
+  m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  serializedVersion: 3
+  serializedVersion: 6
   m_Component:
-  - 4: {fileID: 400000}
-  - 114: {fileID: 11400000}
+  - component: {fileID: 400000}
+  - component: {fileID: 11400000}
   m_Layer: 8
   m_Name: Fantasy Atlas
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!1002 &100001
 EditorExtensionImpl:
   serializedVersion: 6
 --- !u!4 &400000
 Transform:
   m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
+  m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 100000}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
@@ -30,24 +30,27 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1002 &400001
 EditorExtensionImpl:
   serializedVersion: 6
 --- !u!114 &11400000
 MonoBehaviour:
   m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
+  m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 100000}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4d0c51bb0b6e93049af5e88f93826e3b, type: 1}
+  m_Script: {fileID: 11500000, guid: 4d0c51bb0b6e93049af5e88f93826e3b, type: 3}
   m_Name: 
+  m_EditorClassIdentifier: 
   material: {fileID: 2100000, guid: e7ef61ebb5c25394c8706a7ea658349f, type: 2}
   mSprites:
   - name: Beveled Outline
-    x: 215
-    y: 323
+    x: 36
+    y: 24
     width: 17
     height: 17
     borderLeft: 5
@@ -59,8 +62,8 @@ MonoBehaviour:
     paddingTop: 0
     paddingBottom: 0
   - name: Bright
-    x: 198
-    y: 323
+    x: 18
+    y: 6
     width: 17
     height: 17
     borderLeft: 5
@@ -72,8 +75,8 @@ MonoBehaviour:
     paddingTop: 0
     paddingBottom: 0
   - name: Dark
-    x: 234
-    y: 323
+    x: 0
+    y: 24
     width: 17
     height: 17
     borderLeft: 5
@@ -86,7 +89,7 @@ MonoBehaviour:
     paddingBottom: 0
   - name: Fantasy Font
     x: 0
-    y: 0
+    y: 42
     width: 256
     height: 212
     borderLeft: 0
@@ -98,8 +101,8 @@ MonoBehaviour:
     paddingTop: 0
     paddingBottom: 44
   - name: Flat Outline
-    x: 181
-    y: 323
+    x: 18
+    y: 24
     width: 17
     height: 17
     borderLeft: 5
@@ -111,8 +114,8 @@ MonoBehaviour:
     paddingTop: 0
     paddingBottom: 0
   - name: Glow
-    x: 217
-    y: 189
+    x: 36
+    y: 8
     width: 17
     height: 15
     borderLeft: 4
@@ -124,8 +127,8 @@ MonoBehaviour:
     paddingTop: 0
     paddingBottom: 0
   - name: NGUI
-    x: 256
-    y: 178
+    x: 257
+    y: 8
     width: 255
     height: 76
     borderLeft: 0
@@ -137,8 +140,8 @@ MonoBehaviour:
     paddingTop: 0
     paddingBottom: 0
   - name: Orc Armor - Boots
-    x: 256
-    y: 0
+    x: 512
+    y: 141
     width: 96
     height: 128
     borderLeft: 0
@@ -150,8 +153,8 @@ MonoBehaviour:
     paddingTop: 0
     paddingBottom: 0
   - name: Orc Armor - Bracers
-    x: 130
-    y: 208
+    x: 452
+    y: 270
     width: 123
     height: 113
     borderLeft: 0
@@ -163,8 +166,8 @@ MonoBehaviour:
     paddingTop: 7
     paddingBottom: 8
   - name: Orc Armor - Shoulders
-    x: 0
-    y: 212
+    x: 452
+    y: 384
     width: 128
     height: 128
     borderLeft: 0
@@ -176,7 +179,7 @@ MonoBehaviour:
     paddingTop: 0
     paddingBottom: 0
   - name: Paper Background
-    x: 255
+    x: 0
     y: 255
     width: 257
     height: 257
@@ -189,8 +192,8 @@ MonoBehaviour:
     paddingTop: 0
     paddingBottom: 0
   - name: Smooth
-    x: 236
-    y: 189
+    x: 0
+    y: 6
     width: 17
     height: 17
     borderLeft: 4
@@ -202,8 +205,8 @@ MonoBehaviour:
     paddingTop: 0
     paddingBottom: 0
   - name: Window
-    x: 0
-    y: 342
+    x: 257
+    y: 85
     width: 254
     height: 169
     borderLeft: 8
@@ -214,6 +217,19 @@ MonoBehaviour:
     paddingRight: 0
     paddingTop: 0
     paddingBottom: 0
+  - name: "\u8FDB\u5165"
+    x: 258
+    y: 328
+    width: 193
+    height: 184
+    borderLeft: 0
+    borderRight: 0
+    borderTop: 0
+    borderBottom: 0
+    paddingLeft: 3
+    paddingRight: 4
+    paddingTop: 7
+    paddingBottom: 9
   mPixelSize: 1
   mReplacement: {fileID: 0}
   mCoordinates: 0
@@ -229,10 +245,9 @@ Prefab:
     m_TransformParent: {fileID: 0}
     m_Modifications: []
     m_RemovedComponents: []
-  m_ParentPrefab: {fileID: 0}
+  m_SourcePrefab: {fileID: 0}
   m_RootGameObject: {fileID: 100000}
-  m_IsPrefabParent: 1
-  m_IsExploded: 1
+  m_IsPrefabAsset: 1
 --- !u!1002 &100100001
 EditorExtensionImpl:
   serializedVersion: 6

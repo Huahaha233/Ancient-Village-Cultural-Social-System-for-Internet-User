@@ -213,6 +213,7 @@
     <Compile Include="Assets\NGUI\Scripts\UI\UITooltip.cs" />
     <Compile Include="Assets\NGUI\Scripts\UI\UIViewport.cs" />
     <Compile Include="Assets\Path.cs" />
+    <Compile Include="Assets\Room_C#\RoomList.cs" />
     <Compile Include="Assets\Room_C#\RoomListPanel.cs" />
     <Compile Include="Assets\Start_C#\GetUIButton.cs" />
     <Compile Include="Assets\Start_C#\NGUIMove.cs" />

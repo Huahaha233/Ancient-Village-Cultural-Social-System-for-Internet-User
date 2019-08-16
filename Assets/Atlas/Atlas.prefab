@@ -54,8 +54,8 @@ MonoBehaviour:
   material: {fileID: 2100000, guid: 8582d80af484cd849a062b94a424e8f8, type: 2}
   mSprites:
   - name: "\u4E0B\u62C9\u6846"
-    x: 152
-    y: 112
+    x: 3881
+    y: 1969
     width: 164
     height: 79
     borderLeft: 20
@@ -80,7 +80,7 @@ MonoBehaviour:
     paddingTop: 0
     paddingBottom: 0
   - name: "\u80CC\u666F"
-    x: 1876
+    x: 3178
     y: 1708
     width: 550
     height: 340
@@ -92,9 +92,48 @@ MonoBehaviour:
     paddingRight: 0
     paddingTop: 0
     paddingBottom: 0
+  - name: "\u80CC\u666F1"
+    x: 1876
+    y: 1588
+    width: 650
+    height: 460
+    borderLeft: 0
+    borderRight: 0
+    borderTop: 0
+    borderBottom: 0
+    paddingLeft: 0
+    paddingRight: 0
+    paddingTop: 0
+    paddingBottom: 0
+  - name: "\u80CC\u666F2"
+    x: 2527
+    y: 1658
+    width: 650
+    height: 390
+    borderLeft: 0
+    borderRight: 0
+    borderTop: 0
+    borderBottom: 0
+    paddingLeft: 0
+    paddingRight: 0
+    paddingTop: 0
+    paddingBottom: 0
+  - name: "\u80CC\u666F3"
+    x: 3178
+    y: 1407
+    width: 533
+    height: 300
+    borderLeft: 0
+    borderRight: 0
+    borderTop: 0
+    borderBottom: 0
+    paddingLeft: 0
+    paddingRight: 0
+    paddingTop: 0
+    paddingBottom: 0
   - name: "\u8F93\u5165\u6846"
-    x: 0
-    y: 41
+    x: 3881
+    y: 1945
     width: 163
     height: 23
     borderLeft: 0
@@ -106,8 +145,8 @@ MonoBehaviour:
     paddingTop: 0
     paddingBottom: 0
   - name: "\u8FD4\u56DE"
-    x: 0
-    y: 65
+    x: 3729
+    y: 1922
     width: 151
     height: 126
     borderLeft: 0
@@ -118,6 +157,19 @@ MonoBehaviour:
     paddingRight: 25
     paddingTop: 37
     paddingBottom: 37
+  - name: "\u8FDB\u5165"
+    x: 3712
+    y: 1523
+    width: 193
+    height: 184
+    borderLeft: 0
+    borderRight: 0
+    borderTop: 0
+    borderBottom: 0
+    paddingLeft: 3
+    paddingRight: 4
+    paddingTop: 7
+    paddingBottom: 9
   mPixelSize: 1
   mReplacement: {fileID: 0}
   mCoordinates: 0
