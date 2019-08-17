@@ -61,8 +61,6 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Assets\Battle.cs" />
-    <Compile Include="Assets\BattleTank.cs" />
     <Compile Include="Assets\core\net\Connection.cs" />
     <Compile Include="Assets\core\net\MsgDistribution.cs" />
     <Compile Include="Assets\core\net\NetMgr.cs" />
@@ -212,8 +210,6 @@
     <Compile Include="Assets\NGUI\Scripts\UI\UITexture.cs" />
     <Compile Include="Assets\NGUI\Scripts\UI\UITooltip.cs" />
     <Compile Include="Assets\NGUI\Scripts\UI\UIViewport.cs" />
-    <Compile Include="Assets\Path.cs" />
-    <Compile Include="Assets\Room_C#\RoomList.cs" />
     <Compile Include="Assets\Room_C#\RoomListPanel.cs" />
     <Compile Include="Assets\Start_C#\GetUIButton.cs" />
     <Compile Include="Assets\Start_C#\NGUIMove.cs" />

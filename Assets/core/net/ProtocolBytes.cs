@@ -78,9 +78,40 @@ public class ProtocolBytes : ProtocolBase
 		return GetString (start, ref end);
 	}
 
+    //添加字符串
+    public void AddByte(byte[] Bt)
+    {
+        Int32 len = Bt.Length;
+        byte[] lenBytes = BitConverter.GetBytes(len);
+        if (bytes == null)
+            bytes = lenBytes.Concat(Bt).ToArray();
+        else
+            bytes = bytes.Concat(lenBytes).Concat(Bt).ToArray();
+    }
 
+    //从字节数组的start处开始读取字符串
+    public byte[] GetByte(int start, ref int end)
+    {
+        if (bytes == null)
+            return null;
+        if (bytes.Length < start + sizeof(Int32))
+            return null;
+        Int32 strLen = BitConverter.ToInt32(bytes, start);
+        if (bytes.Length < start + sizeof(Int32) + strLen)
+            return null;
+        byte[] Bt = null;
+        Buffer.BlockCopy(bytes, start + sizeof(Int32), Bt, 0, strLen);//复制
+        end = start + sizeof(Int32) + strLen;
+        return Bt;
+    }
 
-	public void AddInt(int num)
+    public byte[] GetByte(int start)
+    {
+        int end = 0;
+        return GetByte(start, ref end);
+    }
+
+    public void AddInt(int num)
 	{
 		byte[] numBytes = BitConverter.GetBytes (num);
 		if (bytes == null)

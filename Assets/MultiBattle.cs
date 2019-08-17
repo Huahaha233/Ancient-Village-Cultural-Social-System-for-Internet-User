@@ -6,47 +6,38 @@ public class MultiBattle : MonoBehaviour
 {
     //单例
     public static MultiBattle instance;
-    //坦克预设
-    public GameObject[] tankPrefabs;
-    //战场中的所有坦克
-    public Dictionary<string, BattleTank> list = new Dictionary<string, BattleTank>();
+    //浏览者预设
+    public GameObject Prefabs;
+    //战场中的所有用户
+    public Dictionary<string, Visiter> list = new Dictionary<string, Visiter>();
 
     // Use this for initialization
     void Start()
     {
         //单例模式
         instance = this;
-    }
-
-    //获取阵营 0表示错误
-    public int GetCamp(GameObject tankObj)
-    {
-        foreach (BattleTank mt in list.Values)
-        {
-            if (mt.tank.gameObject == tankObj)
-                return mt.camp;
-        }
-        return 0;
-    }
-
-    //是否同一阵营
-    public bool IsSameCamp(GameObject tank1, GameObject tank2)
-    {
-        return GetCamp(tank1) == GetCamp(tank2);
+        GetVisiterPos();
     }
 
     //清理场景
     public void ClearBattle()
     {
         list.Clear();
-        GameObject[] tanks = GameObject.FindGameObjectsWithTag("Tank");
+        GameObject[] tanks = GameObject.FindGameObjectsWithTag("People");
         for (int i = 0; i < tanks.Length; i++)
             Destroy(tanks[i]);
     }
-
-    //开始战斗
-    public void StartBattle(ProtocolBytes proto)
+    //在开始时向服务器发送请求获取房间内其他用户的位置信息
+    public void GetVisiterPos()
     {
+        ProtocolBytes protocol = new ProtocolBytes();
+        protocol.AddString("GetVisiterPos");
+        NetMgr.srvConn.Send(protocol, StartVisit);
+    }
+    //开始浏览
+    public void StartVisit(ProtocolBase protocol)
+    {
+        ProtocolBytes proto = (ProtocolBytes)protocol;
         //解析协议
         int start = 0;
         string protoName = proto.GetString(start, ref start);
@@ -60,70 +51,47 @@ public class MultiBattle : MonoBehaviour
         for (int i = 0; i < count; i++)
         {
             string id = proto.GetString(start, ref start);
-            int team = proto.GetInt(start, ref start);
-            int swopID = proto.GetInt(start, ref start);
-            GenerateTank(id, team, swopID);
+            float posx = proto.GetFloat(start, ref start);
+            float posy = proto.GetFloat(start, ref start);
+            float posz = proto.GetFloat(start, ref start);
+            float rotx = proto.GetFloat(start, ref start);
+            float roty = proto.GetFloat(start, ref start);
+            float rotz = proto.GetFloat(start, ref start);
+            GenerateTank(id,new Vector3(posx,posy,posz),new Vector3(rotx,roty,rotz));
         }
         NetMgr.srvConn.msgDist.AddListener ("UpdateUnitInfo", RecvUpdateUnitInfo);
-        //NetMgr.srvConn.msgDist.AddListener ("Shooting", RecvShooting);
-        //NetMgr.srvConn.msgDist.AddListener ("Hit", RecvHit);
         //NetMgr.srvConn.msgDist.AddListener ("Result", RecvResult);
     }
 
 
-    //产生坦克
-    public void GenerateTank(string id, int team, int swopID)
+    //产生浏览者
+    public void GenerateTank(string id,Vector3 pos,Vector3 rot)
     {
-        //获取出生点
-        Transform sp = GameObject.Find("SwopPoints").transform;
-        Transform swopTrans;
-        if (team == 1)
-        {
-            Transform teamSwop = sp.GetChild(0);
-            swopTrans = teamSwop.GetChild(swopID - 1);
-        }
-        else
-        {
-            Transform teamSwop = sp.GetChild(1);
-            swopTrans = teamSwop.GetChild(swopID - 1);
-        }
-        if (swopTrans == null)
-        {
-            Debug.LogError("GenerateTank出生点错误！");
-            return;
-        }
-        //预设
-        if (tankPrefabs.Length < 2)
-        {
-            Debug.LogError("坦克预设数量不够");
-            return;
-        }
-        //产生坦克
-        GameObject tankObj = (GameObject)Instantiate(tankPrefabs[team - 1]);
-        tankObj.name = id;
-        tankObj.transform.position = swopTrans.position;
-        tankObj.transform.rotation = swopTrans.rotation;
+        //产生浏览者
+        GameObject visitObj = (GameObject)Instantiate(Prefabs);
+        visitObj.name = id;
+        visitObj.transform.position = pos;
+        visitObj.transform.rotation = Quaternion.Euler(rot);
         //列表处理
-        BattleTank bt = new BattleTank();
-        bt.tank = tankObj.GetComponent<Tank>();
-        bt.camp = team;
-        list.Add(id, bt);
+        Visiter visiter = new Visiter();
+        visiter = visitObj.GetComponent<Visiter>();
+        list.Add(id, visiter);
         //玩家处理
         if (id == GameMgr.instance.id)
         {
-            bt.tank.ctrlType = Tank.CtrlType.player;
+            visiter.ctrlType = Visiter.CtrlType.player;
             //CameraFollow cf = Camera.main.gameObject.GetComponent<CameraFollow>();
             //GameObject target = bt.tank.gameObject;
             //cf.SetTarget(target);
         }
         else
         {
-            bt.tank.ctrlType = Tank.CtrlType.net;
-            bt.tank.InitNetCtrl ();  //初始化网络同步
+            visiter.ctrlType = Visiter.CtrlType.net;
+            visiter.InitNetCtrl ();  //初始化网络同步
         }
     }
 
-
+    //更新其他网络用户的位置
     public void RecvUpdateUnitInfo(ProtocolBase protocol)
     {
         //解析协议
@@ -139,8 +107,8 @@ public class MultiBattle : MonoBehaviour
         nRot.x = proto.GetFloat(start, ref start);
         nRot.y = proto.GetFloat(start, ref start);
         nRot.z = proto.GetFloat(start, ref start);
-        float turretY = proto.GetFloat(start, ref start);
-        float gunX = proto.GetFloat(start, ref start);
+        //float turretY = proto.GetFloat(start, ref start);
+        //float gunX = proto.GetFloat(start, ref start);
         //处理
         Debug.Log("RecvUpdateUnitInfo " + id);
         if (!list.ContainsKey(id))
@@ -148,12 +116,12 @@ public class MultiBattle : MonoBehaviour
             Debug.Log("RecvUpdateUnitInfo bt == null ");
             return;
         }
-        BattleTank bt = list[id];
+        Visiter visiter = list[id];
         if (id == GameMgr.instance.id)
             return;
 
-        bt.tank.NetForecastInfo(nPos, nRot);
-        bt.tank.NetTurretTarget(turretY, gunX); //稍后实现
+        visiter.NetForecastInfo(nPos, nRot);
+        //bt.NetTurretTarget(turretY, gunX); //稍后实现
     }
 }
 

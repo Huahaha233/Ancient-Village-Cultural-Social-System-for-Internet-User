@@ -77,6 +77,7 @@ public class GetUIButton : MonoBehaviour {
             NetMgr.srvConn.proto = new ProtocolBytes();
             NetMgr.srvConn.Connect(host, port);
         }
+        GameMgr.instance.id = Login_UserID.transform.GetChild(0).GetComponent<UIInput>().value;//将用户ID保存至GameMgr
         //发送
         ProtocolBytes protocol = new ProtocolBytes();
         protocol.AddString("Login");
@@ -97,7 +98,7 @@ public class GetUIButton : MonoBehaviour {
             Tips.GetComponent<UILabel>().text = "登录成功!";
             Debug.Log("登录成功!");
             Login_Login();
-            SceneManager.LoadScene("");
+            SceneManager.LoadScene("Play");
         }
         else
         {
