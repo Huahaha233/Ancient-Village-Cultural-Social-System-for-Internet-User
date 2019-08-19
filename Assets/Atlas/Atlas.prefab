@@ -54,8 +54,8 @@ MonoBehaviour:
   material: {fileID: 2100000, guid: 8582d80af484cd849a062b94a424e8f8, type: 2}
   mSprites:
   - name: "\u4E0B\u62C9\u6846"
-    x: 3881
-    y: 1969
+    x: 0
+    y: 112
     width: 164
     height: 79
     borderLeft: 20
@@ -79,9 +79,22 @@ MonoBehaviour:
     paddingRight: 0
     paddingTop: 0
     paddingBottom: 0
+  - name: "\u63D0\u793A"
+    x: 1876
+    y: 1280
+    width: 1024
+    height: 768
+    borderLeft: 0
+    borderRight: 0
+    borderTop: 0
+    borderBottom: 0
+    paddingLeft: 0
+    paddingRight: 0
+    paddingTop: 0
+    paddingBottom: 0
   - name: "\u80CC\u666F"
-    x: 3178
-    y: 1708
+    x: 1876
+    y: 939
     width: 550
     height: 340
     borderLeft: 0
@@ -93,7 +106,7 @@ MonoBehaviour:
     paddingTop: 0
     paddingBottom: 0
   - name: "\u80CC\u666F1"
-    x: 1876
+    x: 2901
     y: 1588
     width: 650
     height: 460
@@ -106,8 +119,8 @@ MonoBehaviour:
     paddingTop: 0
     paddingBottom: 0
   - name: "\u80CC\u666F2"
-    x: 2527
-    y: 1658
+    x: 2901
+    y: 1197
     width: 650
     height: 390
     borderLeft: 0
@@ -119,8 +132,8 @@ MonoBehaviour:
     paddingTop: 0
     paddingBottom: 0
   - name: "\u80CC\u666F3"
-    x: 3178
-    y: 1407
+    x: 3552
+    y: 1748
     width: 533
     height: 300
     borderLeft: 0
@@ -132,8 +145,8 @@ MonoBehaviour:
     paddingTop: 0
     paddingBottom: 0
   - name: "\u8F93\u5165\u6846"
-    x: 3881
-    y: 1945
+    x: 0
+    y: 88
     width: 163
     height: 23
     borderLeft: 0
@@ -145,8 +158,8 @@ MonoBehaviour:
     paddingTop: 0
     paddingBottom: 0
   - name: "\u8FD4\u56DE"
-    x: 3729
-    y: 1922
+    x: 2621
+    y: 1153
     width: 151
     height: 126
     borderLeft: 0
@@ -158,8 +171,8 @@ MonoBehaviour:
     paddingTop: 37
     paddingBottom: 37
   - name: "\u8FDB\u5165"
-    x: 3712
-    y: 1523
+    x: 2427
+    y: 1095
     width: 193
     height: 184
     borderLeft: 0

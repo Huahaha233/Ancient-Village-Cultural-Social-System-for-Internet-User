@@ -69,9 +69,8 @@ public class RoomListPanel:MonoBehaviour
         {
             string name = proto.GetString(start, ref start);
             int num = proto.GetInt(start, ref start);//房间中的人数
-            string ins = proto.GetString(start, ref start);
             string author = proto.GetString(start, ref start);
-            GenerateRoomUnit(i,name, num,ins,author);
+            GenerateRoomUnit(i,name, num,author);
         }
     }
 
@@ -90,7 +89,7 @@ public class RoomListPanel:MonoBehaviour
     //参数 i，房间序号（从0开始）
     //参数num，房间里的玩家数
     //参数status，房间状态，1-准备中 2-战斗中
-    public void GenerateRoomUnit(int i,string name,int num,string ins,string author)
+    public void GenerateRoomUnit(int i,string name,int num,string author)
     {
         //添加房间单元
         GameObject instance = NGUITools.AddChild(content, roomPrefab);
@@ -99,7 +98,6 @@ public class RoomListPanel:MonoBehaviour
         trans.GetComponent<UILabel>().text=(i + 1).ToString();//房间ID
         trans.GetChild(0).GetComponent<UILabel>().text=name;//房间名称
         trans.GetChild(1).GetComponent<UILabel>().text=num.ToString()+"/10";//房间人数
-        trans.GetChild(2).GetComponent<UILabel>().text=ins;//房间简介
         trans.GetChild(3).GetComponent<UILabel>().text=author;//房间作者
     }
 
