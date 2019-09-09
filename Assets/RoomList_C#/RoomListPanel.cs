@@ -106,6 +106,8 @@ public class RoomListPanel : MonoBehaviour
         trans.GetChild(0).GetComponent<UILabel>().text = name;//房间名称
         trans.GetChild(1).GetComponent<UILabel>().text = num.ToString() + "/10";//房间人数
         trans.GetChild(2).GetComponent<UILabel>().text = author;//房间作者
+        //在房间列表单元中添加脚本
+        trans.GetChild(2).GetComponent<UIButton>().onClick.Add(new EventDelegate(OnGetRoomInfoClick));
     }
     #endregion
 
@@ -165,7 +167,7 @@ public class RoomListPanel : MonoBehaviour
         //处理
         if (ret == 0)
         {
-            SceneManager.LoadScene("");//进入到展厅
+            SceneManager.LoadScene("Exhibition");//进入到展厅
         }
         else
         {
@@ -189,6 +191,8 @@ public class RoomListPanel : MonoBehaviour
         {
             ProtocolBytes protocol = new ProtocolBytes();
             protocol.AddString("CreateRoom");
+            protocol.AddString(WriteInsPlane.transform.GetChild(1).transform.GetChild(1).GetComponent<UILabel>().text);
+            protocol.AddString(WriteInsPlane.transform.GetChild(2).transform.GetChild(1).GetComponent<UILabel>().text);
             NetMgr.srvConn.Send(protocol, OnNewBack);
         }
         else WriteInsPlane.transform.GetChild(4).GetComponent<UILabel>().text = "填写信息不能为空！！！";
@@ -225,7 +229,6 @@ public class RoomListPanel : MonoBehaviour
     {
         ProtocolBytes protocol = new ProtocolBytes();
         protocol.AddString("HaveRoom");
-        protocol.AddString(GameMgr.instance.id);//传入用户ID
         NetMgr.srvConn.Send(protocol, OnHaveRoomBack);
     }
 
@@ -266,6 +269,5 @@ public class RoomListPanel : MonoBehaviour
         SceneManager.LoadScene("Login");//返回到登录界面
     }
     #endregion
-
     
 }
