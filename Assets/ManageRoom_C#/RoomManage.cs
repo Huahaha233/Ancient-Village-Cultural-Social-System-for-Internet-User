@@ -151,12 +151,12 @@ public class RoomManage : MonoBehaviour {
 
     #region 上传资源
     public void OnAddResoure()
-    {
+    { // 类型有：图片、视频、3D模型
 
     }
     public void OnAddResoureBack()
     {
-
+       
     }
     #endregion
 
