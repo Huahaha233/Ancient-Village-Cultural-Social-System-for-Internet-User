@@ -20,7 +20,7 @@ public class RoomManage : MonoBehaviour {
     }
 
     //房间列表信息返回
-    private void OnResoureListBack(ProtocolBase protocol)
+    public void OnResoureListBack(ProtocolBase protocol)
     {
         GameMgr.instance.resourelist.Clear();//清空字典
         //解析参数
@@ -99,7 +99,7 @@ public class RoomManage : MonoBehaviour {
     }
 
     //删除房间返回
-    private void OnDeleteRoomBack(ProtocolBase protocol)
+    public void OnDeleteRoomBack(ProtocolBase protocol)
     {
         //解析参数
         ProtocolBytes proto = (ProtocolBytes)protocol;
@@ -120,7 +120,7 @@ public class RoomManage : MonoBehaviour {
     #region 删除房间资源
     public void OnDeleteResoureClick()
     {
-        GameObject buttonself = UnityEngine.EventSystems.EventSystem.current.currentSelectedGameObject;//当前点击的按钮的属性
+        GameObject buttonself = UICamera.currentTouch.current;//当前点击的按钮的属性
         ProtocolBytes protocol = new ProtocolBytes();
         protocol.AddString("DeleteResoure");
         //传入房间名、资源、类型的名称
@@ -131,7 +131,7 @@ public class RoomManage : MonoBehaviour {
     }
 
     //删除房间资源返回
-    private void OnDeleteResoureBack(ProtocolBase protocol)
+    public void OnDeleteResoureBack(ProtocolBase protocol)
     {
         //解析参数
         ProtocolBytes proto = (ProtocolBytes)protocol;

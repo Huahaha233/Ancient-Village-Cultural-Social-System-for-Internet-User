@@ -12050,6 +12050,7 @@ GameObject:
   - component: {fileID: 539691757}
   - component: {fileID: 539691759}
   - component: {fileID: 539691758}
+  - component: {fileID: 539691760}
   m_Layer: 0
   m_Name: Obj3d66-650397-2-120
   m_TagString: Untagged
@@ -12114,6 +12115,20 @@ MeshFilter:
     type: 3}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 539691756}
+  m_Mesh: {fileID: 4300002, guid: 8a08bc26a17df9f48b0710c4a5c32dca, type: 3}
+--- !u!64 &539691760
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 539691756}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Convex: 0
+  m_CookingOptions: 14
+  m_SkinWidth: 0.01
   m_Mesh: {fileID: 4300002, guid: 8a08bc26a17df9f48b0710c4a5c32dca, type: 3}
 --- !u!1 &542335671
 GameObject:
@@ -20712,6 +20727,7 @@ GameObject:
   - component: {fileID: 910720388}
   - component: {fileID: 910720390}
   - component: {fileID: 910720389}
+  - component: {fileID: 910720391}
   m_Layer: 0
   m_Name: Obj3d66-650397-1-653
   m_TagString: Untagged
@@ -20776,6 +20792,20 @@ MeshFilter:
     type: 3}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 910720387}
+  m_Mesh: {fileID: 4300000, guid: 8a08bc26a17df9f48b0710c4a5c32dca, type: 3}
+--- !u!64 &910720391
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 910720387}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Convex: 0
+  m_CookingOptions: 14
+  m_SkinWidth: 0.01
   m_Mesh: {fileID: 4300000, guid: 8a08bc26a17df9f48b0710c4a5c32dca, type: 3}
 --- !u!1 &911060089
 GameObject:
@@ -45267,6 +45297,23 @@ MeshFilter:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 2026278424}
   m_Mesh: {fileID: 4300338, guid: 8a08bc26a17df9f48b0710c4a5c32dca, type: 3}
+--- !u!1 &2036891425 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 100000, guid: 5e9e851c0e142814dac026a256ba2ac0,
+    type: 2}
+  m_PrefabInternal: {fileID: 1940284226}
+--- !u!114 &2036891426
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 2036891425}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3e16d11ea03030f42a0bfc2cfbad203b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  People: {fileID: 2086540039}
 --- !u!1 &2038656038
 GameObject:
   m_ObjectHideFlags: 0

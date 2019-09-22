@@ -746,6 +746,8 @@ GameObject:
   m_Component:
   - component: {fileID: 304875855}
   - component: {fileID: 304875856}
+  - component: {fileID: 304875858}
+  - component: {fileID: 304875857}
   m_Layer: 8
   m_Name: Out
   m_TagString: Untagged
@@ -800,7 +802,7 @@ MonoBehaviour:
   mHeight: 200
   mDepth: 1
   mMat: {fileID: 0}
-  autoResizeBoxCollider: 0
+  autoResizeBoxCollider: 1
   hideIfOffScreen: 0
   keepAspectRatio: 0
   aspectRatio: 1
@@ -820,6 +822,47 @@ MonoBehaviour:
   mAtlas: {fileID: 114964704097594188, guid: f3480ac8b06f9c94c98640a1a16f9da8, type: 2}
   mSpriteName: "\u8FD4\u56DE"
   mFillCenter: 1
+--- !u!114 &304875857
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 304875854}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1fdca5042b1d12a4890ec1bd4f04290d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  tweenTarget: {fileID: 304875854}
+  hover: {r: 0.88235295, g: 0.78431374, b: 0.5882353, a: 1}
+  pressed: {r: 0.7176471, g: 0.6392157, b: 0.48235294, a: 1}
+  disabledColor: {r: 0.5, g: 0.5, b: 0.5, a: 1}
+  duration: 0.2
+  dragHighlight: 0
+  hoverSprite: 
+  pressedSprite: 
+  disabledSprite: 
+  hoverSprite2D: {fileID: 0}
+  pressedSprite2D: {fileID: 0}
+  disabledSprite2D: {fileID: 0}
+  pixelSnap: 0
+  onClick:
+  - mTarget: {fileID: 973578436}
+    mMethodName: Back
+    mParameters: []
+    oneShot: 0
+--- !u!65 &304875858
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 304875854}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 200, y: 200, z: 0}
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &333288773
 GameObject:
   m_ObjectHideFlags: 0
@@ -1611,6 +1654,7 @@ GameObject:
   - component: {fileID: 973578433}
   - component: {fileID: 973578432}
   - component: {fileID: 973578436}
+  - component: {fileID: 973578437}
   m_Layer: 8
   m_Name: UI Root
   m_TagString: Untagged
@@ -1744,6 +1788,17 @@ MonoBehaviour:
   RosourePrefab: {fileID: 1704613180845196, guid: a0d4004d7c63888499bc029e4a5d74ab,
     type: 2}
   RoomName: {fileID: 793610159}
+--- !u!114 &973578437
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 973578431}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 63f57d52eafb5634ab83c5d81049c9b0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &993676898
 GameObject:
   m_ObjectHideFlags: 0

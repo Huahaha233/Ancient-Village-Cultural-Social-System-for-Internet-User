@@ -16,34 +16,20 @@ public class RoomListPanel : MonoBehaviour
     private int Roomindex;//点击选择的房间序号
     void Start()
     {
-        OnShowing();
+        GetAchieve();
+        GetRoomList();
     }
-    #region 开启与关闭监听
-    private void OnShowing()
-    {
-        //监听
-        NetMgr.srvConn.msgDist.AddListener("GetAchieve", RecvGetAchieve);
-        NetMgr.srvConn.msgDist.AddListener("GetRoomList", RecvGetRoomList);
-        //发送查询
-        ProtocolBytes protocol = new ProtocolBytes();
-        protocol.AddString("GetRoomList");
-        NetMgr.srvConn.Send(protocol);
-
-        protocol = new ProtocolBytes();
-        protocol.AddString("GetAchieve");
-        NetMgr.srvConn.Send(protocol);
-    }
-
-    private void OnClosing()
-    {
-        NetMgr.srvConn.msgDist.DelListener("GetAchieve", RecvGetAchieve);
-        NetMgr.srvConn.msgDist.DelListener("GetRoomList", RecvGetRoomList);
-    }
-    #endregion
     
     #region 收到用户的个人信息
+    //发送GetAchieve协议
+    public void GetAchieve()
+    {
+        ProtocolBytes protocol = new ProtocolBytes();
+        protocol.AddString("GetAchieve");
+        NetMgr.srvConn.Send(protocol, GetAchieveBack);
+    }
     //收到GetAchieve协议
-    private void RecvGetAchieve(ProtocolBase protocol)
+    public void GetAchieveBack(ProtocolBase protocol)
     {
         //解析协议
         ProtocolBytes proto = (ProtocolBytes)protocol;
@@ -61,9 +47,16 @@ public class RoomListPanel : MonoBehaviour
     #endregion
 
     #region 接收房间列表与生成房间列表
+    //发送GetRoomList协议
+    public void GetRoomList()
+    {
+        ProtocolBytes protocol = new ProtocolBytes();
+        protocol.AddString("GetRoomList");
+        NetMgr.srvConn.Send(protocol, GetRoomListBack);
+    }
     //房间列表及信息
     //收到GetRoomList协议
-    private void RecvGetRoomList(ProtocolBase protocol)
+    public void GetRoomListBack(ProtocolBase protocol)
     {
         //清理
         ClearRoomUnit();
@@ -107,21 +100,21 @@ public class RoomListPanel : MonoBehaviour
         trans.GetChild(1).GetComponent<UILabel>().text = num.ToString() + "/10";//房间人数
         trans.GetChild(2).GetComponent<UILabel>().text = author;//房间作者
         //在房间列表单元中添加脚本
-        trans.GetChild(2).GetComponent<UIButton>().onClick.Add(new EventDelegate(OnGetRoomInfoClick));
+        trans.GetChild(3).GetComponent<UIButton>().onClick.Add(new EventDelegate(OnGetRoomInfoClick));
     }
     #endregion
 
     #region 点击获取当前选择的房间信息
     public void OnGetRoomInfoClick()
     {
-        GameObject buttonself = UnityEngine.EventSystems.EventSystem.current.currentSelectedGameObject;//当前点击的按钮的属性
+        GameObject buttonself = UICamera.currentTouch.current;//当前点击的按钮的属性//当前点击的按钮的属性
         Roomindex = int.Parse(buttonself.transform.parent.GetComponent<UILabel>().text);
         ProtocolBytes protocol = new ProtocolBytes();
         protocol.AddString("GetRoomInfo");
         protocol.AddInt(Roomindex);//当前房间的序号
         NetMgr.srvConn.Send(protocol, OnGetRoomInfoBack);
     }
-    private void OnGetRoomInfoBack(ProtocolBase protocol)
+    public void OnGetRoomInfoBack(ProtocolBase protocol)
     {
         ProtocolBytes proto = (ProtocolBytes)protocol;
         int start = 0;
@@ -143,7 +136,7 @@ public class RoomListPanel : MonoBehaviour
     {
         ProtocolBytes protocol = new ProtocolBytes();
         protocol.AddString("GetRoomList");
-        NetMgr.srvConn.Send(protocol);
+        NetMgr.srvConn.Send(protocol,GetRoomListBack);
     }
 
     #region 加入按钮
@@ -157,7 +150,7 @@ public class RoomListPanel : MonoBehaviour
     }
 
     //加入按钮返回
-    private void OnJoinBtnBack(ProtocolBase protocol)
+    public void OnJoinBtnBack(ProtocolBase protocol)
     {
         //解析参数
         ProtocolBytes proto = (ProtocolBytes)protocol;
@@ -199,7 +192,7 @@ public class RoomListPanel : MonoBehaviour
     }
 
     //新建按钮返回
-    private void OnNewBack(ProtocolBase protocol)
+    public void OnNewBack(ProtocolBase protocol)
     {
         //解析参数
         ProtocolBytes proto = (ProtocolBytes)protocol;
@@ -210,6 +203,7 @@ public class RoomListPanel : MonoBehaviour
         if (ret == 0)
         {
             //创建成功,进入上传资源界面
+            WriteInsPlane.transform.GetComponent<TweenPosition>().PlayReverse();
             SceneManager.LoadScene("ManageRoom");
         }
         else
@@ -233,7 +227,7 @@ public class RoomListPanel : MonoBehaviour
     }
 
     //判断当前用户是否拥有房间按钮返回
-    private void OnHaveRoomBack(ProtocolBase protocol)
+    public void OnHaveRoomBack(ProtocolBase protocol)
     {
         //解析参数
         ProtocolBytes proto = (ProtocolBytes)protocol;
@@ -262,12 +256,11 @@ public class RoomListPanel : MonoBehaviour
     }
     //在房间列表界面点击返回到登录界面
     //登出返回
-    private void OnCloseBack(ProtocolBase protocol)
+    public void OnCloseBack(ProtocolBase protocol)
     {
-        OnClosing();//关闭监听
+        //OnClosing();//关闭监听
         NetMgr.srvConn.Close();//断开连接
         SceneManager.LoadScene("Login");//返回到登录界面
     }
     #endregion
-    
 }

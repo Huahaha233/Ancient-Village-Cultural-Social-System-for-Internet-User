@@ -17,17 +17,38 @@ public class ControlVisiter : MonoBehaviour {
     //获取按键
     private void GetInput()
     {
-        if (Input.GetKeyDown(KeyCode.W) || Input.GetKeyDown(KeyCode.A) || Input.GetKeyDown(KeyCode.S) || Input.GetKeyDown(KeyCode.D))
+        if (Input.GetKey(KeyCode.W) || Input.GetKey(KeyCode.A) || Input.GetKey(KeyCode.S) || Input.GetKey(KeyCode.D))
         {
             //走
-            People.transform.GetComponent<Animator>().SetBool("walk",true);
-            if (Input.GetKeyDown(KeyCode.LeftShift))
+            SetBool("walk");
+            if (Input.GetKey(KeyCode.LeftShift))
             {
                 //跑
-                People.transform.GetComponent<Animator>().SetBool("run", true);
+                SetBool("run");
             }
-            else People.transform.GetComponent<Animator>().SetBool("run", false);
         }
-        else People.transform.GetComponent<Animator>().SetBool("idle", true);
+        else SetBool("idle");
+    }
+    private void SetBool(string str)
+    {
+        bool idlebool,walkbool ,runbool;
+        idlebool = false;
+        walkbool = false;
+        runbool = false;
+        switch (str)
+        {
+            case "idle":
+                idlebool = true;
+                break;
+            case "walk":
+                walkbool = true;
+                break;
+            case "run":
+                runbool = true;
+                break;
+        }
+        People.transform.GetComponent<Animator>().SetBool("idle", idlebool);
+        People.transform.GetComponent<Animator>().SetBool("walk", walkbool);
+        People.transform.GetComponent<Animator>().SetBool("run", runbool);
     }
 }

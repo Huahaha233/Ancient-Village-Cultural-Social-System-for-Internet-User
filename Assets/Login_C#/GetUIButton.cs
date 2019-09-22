@@ -31,6 +31,7 @@ public class GetUIButton : MonoBehaviour {
     public GameObject Reset_ReUserPSW;
     public GameObject Reset_Code;
     #endregion
+    GameMgr GameMgr = new GameMgr();
     private string Code_Str;//验证码字符串
     private string Answer = null;//密保问题的答案
     private void Start()
@@ -77,7 +78,7 @@ public class GetUIButton : MonoBehaviour {
             NetMgr.srvConn.proto = new ProtocolBytes();
             NetMgr.srvConn.Connect(host, port);
         }
-        GameMgr.instance.id = Login_UserID.transform.GetChild(0).GetComponent<UIInput>().value;//将用户ID保存至GameMgr
+        
         //发送
         ProtocolBytes protocol = new ProtocolBytes();
         protocol.AddString("Login");
@@ -97,8 +98,9 @@ public class GetUIButton : MonoBehaviour {
         {
             Tips.GetComponent<UILabel>().text = "登录成功!";
             Debug.Log("登录成功!");
+            GameMgr.instance.id = Login_UserID.transform.GetChild(0).GetComponent<UIInput>().value;//将用户ID保存至GameMgr
             Login_Login();
-            SceneManager.LoadScene("Play");
+            SceneManager.LoadScene("RoomList");
         }
         else
         {
@@ -361,7 +363,7 @@ public class GetUIButton : MonoBehaviour {
     private void Register_Register()
     {
         PlayContent("Register", 1);
-        PlayContent("Start",0);
+        PlayContent("Login",0);
         Tips.GetComponent<UILabel>().text = "";
         SetCode();
     }

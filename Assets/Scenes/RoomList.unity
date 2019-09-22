@@ -1512,6 +1512,7 @@ GameObject:
   - component: {fileID: 634328615}
   - component: {fileID: 634328614}
   - component: {fileID: 634328618}
+  - component: {fileID: 634328619}
   m_Layer: 8
   m_Name: UI Root
   m_TagString: Untagged
@@ -1644,6 +1645,17 @@ MonoBehaviour:
   roomPrefab: {fileID: 1914887145245412, guid: e8142b6fe73bc2c41b39acdcaba5e793, type: 2}
   Ins: {fileID: 864171553}
   WriteInsPlane: {fileID: 2122277954}
+--- !u!114 &634328619
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 634328613}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 63f57d52eafb5634ab83c5d81049c9b0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &663160510
 GameObject:
   m_ObjectHideFlags: 0
