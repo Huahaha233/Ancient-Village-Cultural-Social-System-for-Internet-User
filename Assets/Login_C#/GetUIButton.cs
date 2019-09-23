@@ -31,10 +31,10 @@ public class GetUIButton : MonoBehaviour {
     public GameObject Reset_ReUserPSW;
     public GameObject Reset_Code;
     #endregion
-    GameMgr GameMgr = new GameMgr();
     private string Code_Str;//验证码字符串
     private string Answer = null;//密保问题的答案
-    private void Start()
+    VerificationCode verificationCode = new VerificationCode();
+    void Start()
     {
         //在开始界面，当用户点击“登录”“游客登录”按钮时，控制NGUI按钮组件移动，并激活登录UI
         PlayContent("Start", 0);//开始界面时的NGUI的移动
@@ -43,16 +43,20 @@ public class GetUIButton : MonoBehaviour {
     #region 验证码
     public void SetCode()
     {
-        VerificationCode vCode = new VerificationCode(300, 100, 4);
-        Texture2D text2D = VerificationCode.Image2Texture(vCode.Image);
-        GameObject[] texts=GameObject.FindGameObjectsWithTag("Code");
-        foreach(GameObject texture in texts)
+        //VerificationCode vCode = new VerificationCode(300, 100, 4);
+        VerificationCode.instance.V(300, 100, 4);
+        Tips.GetComponent<UILabel>().text = VerificationCode.instance.text;
+        Texture text = VerificationCode.Image2Texture(VerificationCode.instance.image);
+        GameObject[] texts = GameObject.FindGameObjectsWithTag("Code");
+        foreach (GameObject texture in texts)
         {
-            texture.GetComponent<UITexture>().mainTexture=text2D;
+            texture.GetComponent<UITexture>().mainTexture = text;
         }
-        Code_Str = vCode.Text;
+        Code_Str = VerificationCode.instance.text;
     }
+   
     #endregion
+
     #region 登录
     //登录按钮
     public void OnLoginClick()

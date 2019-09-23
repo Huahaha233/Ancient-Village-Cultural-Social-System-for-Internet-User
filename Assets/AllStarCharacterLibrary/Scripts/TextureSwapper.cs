@@ -1,6 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 using System.IO;
+using UnityEditor;
 
 public class TextureSwapper : MonoBehaviour 
 {	public string dirPath = "/AllStarCharacterLibrary/Resources/ASCL_AtlasData/Female/Materials/Eyes/";
@@ -40,8 +41,8 @@ public class TextureSwapper : MonoBehaviour
 			}
 			else
 			{
-				UpdateTexture();
-			}
+                UpdateTexture();
+            }
 			//r.renderer.material.color = new Color(1f,.3f,0.3f,1f);
 		}
 	}
@@ -50,9 +51,9 @@ public class TextureSwapper : MonoBehaviour
 	void UpdateTexture () 
 	{
 
-		currentTexture = (Texture2D) UnityEditor.AssetDatabase.LoadAssetAtPath(("Assets"+ dirPath + names[currentIndex]),typeof(Texture2D));
+        //currentTexture = (Texture2D)AssetDatabase.LoadAssetAtPath(("Assets" + dirPath + names[currentIndex]), typeof(Texture2D));
 
-		mat.SetTexture("_MainTex",currentTexture);
+        mat.SetTexture("_MainTex",currentTexture);
 		oldIndex=currentIndex;
 	}
 }

@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.44657898, g: 0.4964133, b: 0.5748178, a: 1}
+  m_IndirectSpecularColor: {r: 0.37311953, g: 0.38074014, b: 0.3587274, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -489,7 +489,7 @@ MonoBehaviour:
   mPivot: 4
   mWidth: 800
   mHeight: 80
-  mDepth: 4
+  mDepth: 20
   mMat: {fileID: 0}
   autoResizeBoxCollider: 0
   hideIfOffScreen: 0
@@ -2098,7 +2098,7 @@ MonoBehaviour:
   mPivot: 4
   mWidth: 200
   mHeight: 80
-  mDepth: 3
+  mDepth: 19
   mMat: {fileID: 0}
   autoResizeBoxCollider: 0
   hideIfOffScreen: 0
@@ -3131,7 +3131,7 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 526484454}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -6, y: -800, z: 0}
+  m_LocalPosition: {x: 0, y: -800, z: 0}
   m_LocalScale: {x: 0.999, y: 0.999, z: 0.999}
   m_Children: []
   m_Father: {fileID: 1316670027}
@@ -4201,7 +4201,7 @@ MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 662443268}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 3d166255cacf07b4292b8402b3ddefc5, type: 3}
   m_Name: 
@@ -5248,7 +5248,7 @@ MonoBehaviour:
   mPivot: 3
   mWidth: 600
   mHeight: 80
-  mDepth: 16
+  mDepth: 21
   mMat: {fileID: 0}
   autoResizeBoxCollider: 0
   hideIfOffScreen: 0
@@ -6801,7 +6801,7 @@ MonoBehaviour:
   mPivot: 4
   mWidth: 400
   mHeight: 100
-  mDepth: 20
+  mDepth: 18
   mMat: {fileID: 0}
   autoResizeBoxCollider: 0
   hideIfOffScreen: 0
@@ -7456,7 +7456,7 @@ MonoBehaviour:
   mPivot: 4
   mWidth: 400
   mHeight: 100
-  mDepth: 19
+  mDepth: 17
   mMat: {fileID: 0}
   autoResizeBoxCollider: 0
   hideIfOffScreen: 0
@@ -7762,7 +7762,7 @@ MonoBehaviour:
   mPivot: 4
   mWidth: 404
   mHeight: 104
-  mDepth: 18
+  mDepth: 22
   mMat: {fileID: 0}
   autoResizeBoxCollider: 1
   hideIfOffScreen: 0
@@ -8134,9 +8134,9 @@ GameObject:
   - component: {fileID: 1316670027}
   - component: {fileID: 1316670026}
   - component: {fileID: 1316670025}
-  - component: {fileID: 1316670024}
   - component: {fileID: 1316670029}
   - component: {fileID: 1316670030}
+  - component: {fileID: 1316670024}
   m_Layer: 8
   m_Name: UI Root
   m_TagString: Untagged
@@ -8282,7 +8282,7 @@ Transform:
   - {fileID: 425718565}
   - {fileID: 1467574022}
   m_Father: {fileID: 0}
-  m_RootOrder: 2
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &1316670029
 MonoBehaviour:
@@ -8404,11 +8404,7 @@ MonoBehaviour:
   steeperCurves: 0
   tweenGroup: 0
   useFixedUpdate: 0
-  onFinished:
-  - mTarget: {fileID: 1316670029}
-    mMethodName: Start_Out
-    mParameters: []
-    oneShot: 0
+  onFinished: []
   eventReceiver: {fileID: 0}
   callWhenFinished: 
   from: {x: 0, y: -640, z: 0}
@@ -8438,7 +8434,11 @@ MonoBehaviour:
   pressedSprite2D: {fileID: 0}
   disabledSprite2D: {fileID: 0}
   pixelSnap: 0
-  onClick: []
+  onClick:
+  - mTarget: {fileID: 1316670029}
+    mMethodName: Start_Out
+    mParameters: []
+    oneShot: 0
 --- !u!65 &1325382317
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -9239,7 +9239,7 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1416056778}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -1258, y: -100, z: 0}
+  m_LocalPosition: {x: -1285, y: -100, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 1422148378}
@@ -9306,7 +9306,7 @@ MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1416056778}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 3d166255cacf07b4292b8402b3ddefc5, type: 3}
   m_Name: 
@@ -9346,7 +9346,7 @@ MonoBehaviour:
   onFinished: []
   eventReceiver: {fileID: 0}
   callWhenFinished: 
-  from: {x: -1285, y: -40, z: 0}
+  from: {x: -1285, y: -100, z: 0}
   to: {x: -300, y: -100, z: 0}
   worldSpace: 0
 --- !u!65 &1416056782
@@ -10793,72 +10793,6 @@ MonoBehaviour:
   mMaxLineHeight: 0
   mLineWidth: 0
   mMultiline: 1
---- !u!1 &1662775329
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 1662775331}
-  - component: {fileID: 1662775330}
-  m_Layer: 0
-  m_Name: Directional Light
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!108 &1662775330
-Light:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1662775329}
-  m_Enabled: 1
-  serializedVersion: 8
-  m_Type: 1
-  m_Color: {r: 1, g: 0.95686275, b: 0.8392157, a: 1}
-  m_Intensity: 1
-  m_Range: 10
-  m_SpotAngle: 30
-  m_CookieSize: 10
-  m_Shadows:
-    m_Type: 2
-    m_Resolution: -1
-    m_CustomResolution: -1
-    m_Strength: 1
-    m_Bias: 0.05
-    m_NormalBias: 0.4
-    m_NearPlane: 0.2
-  m_Cookie: {fileID: 0}
-  m_DrawHalo: 0
-  m_Flare: {fileID: 0}
-  m_RenderMode: 0
-  m_CullingMask:
-    serializedVersion: 2
-    m_Bits: 4294967295
-  m_Lightmapping: 4
-  m_LightShadowCasterMode: 0
-  m_AreaSize: {x: 1, y: 1}
-  m_BounceIntensity: 1
-  m_ColorTemperature: 6570
-  m_UseColorTemperature: 0
-  m_ShadowRadius: 0
-  m_ShadowAngle: 0
---- !u!4 &1662775331
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1662775329}
-  m_LocalRotation: {x: 0.40821788, y: -0.23456968, z: 0.10938163, w: 0.8754261}
-  m_LocalPosition: {x: 0, y: 3, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
-  m_Father: {fileID: 0}
-  m_RootOrder: 1
-  m_LocalEulerAnglesHint: {x: 50, y: -30, z: 0}
 --- !u!1 &1672818741
 GameObject:
   m_ObjectHideFlags: 0
@@ -11386,7 +11320,7 @@ MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1789138430}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 3d166255cacf07b4292b8402b3ddefc5, type: 3}
   m_Name: 
@@ -11426,7 +11360,7 @@ MonoBehaviour:
   onFinished: []
   eventReceiver: {fileID: 0}
   callWhenFinished: 
-  from: {x: 1285, y: -40, z: 0}
+  from: {x: 1285, y: -100, z: 0}
   to: {x: 300, y: -100, z: 0}
   worldSpace: 0
 --- !u!65 &1789138434
@@ -12590,7 +12524,7 @@ MonoBehaviour:
   mPivot: 4
   mWidth: 400
   mHeight: 100
-  mDepth: 17
+  mDepth: 16
   mMat: {fileID: 0}
   autoResizeBoxCollider: 0
   hideIfOffScreen: 0

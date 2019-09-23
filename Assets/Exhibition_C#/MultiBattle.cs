@@ -16,38 +16,26 @@ public class MultiBattle : MonoBehaviour
     {
         //单例模式
         instance = this;
-        GetVisiterPos();
+        StartVisit();
     }
 
-    //清理场景
-    public void ClearBattle()
-    {
-        list.Clear();
-        GameObject[] tanks = GameObject.FindGameObjectsWithTag("People");
-        for (int i = 0; i < tanks.Length; i++)
-            Destroy(tanks[i]);
-    }
     //在开始时向服务器发送请求获取房间内其他用户的位置信息
-    public void GetVisiterPos()
+    public void StartVisit()
     {
         ProtocolBytes protocol = new ProtocolBytes();
-        protocol.AddString("GetVisiterPos");
-        NetMgr.srvConn.Send(protocol, StartVisit);
+        protocol.AddString("StartVisit");
+        NetMgr.srvConn.Send(protocol, StartVisitBack);
     }
     //开始浏览
-    public void StartVisit(ProtocolBase protocol)
+    public void StartVisitBack(ProtocolBase protocol)
     {
         ProtocolBytes proto = (ProtocolBytes)protocol;
         //解析协议
         int start = 0;
         string protoName = proto.GetString(start, ref start);
-        if (protoName != "Fight")
-            return;
         //拜访者总数
         int count = proto.GetInt(start, ref start);
-        //清理场景
-        ClearBattle();
-        //每一辆坦克
+        //每一位拜访者
         for (int i = 0; i < count; i++)
         {
             string id = proto.GetString(start, ref start);
@@ -60,7 +48,6 @@ public class MultiBattle : MonoBehaviour
             GenerateTank(id,new Vector3(posx,posy,posz),new Vector3(rotx,roty,rotz));
         }
         NetMgr.srvConn.msgDist.AddListener ("UpdateUnitInfo", RecvUpdateUnitInfo);
-        //NetMgr.srvConn.msgDist.AddListener ("Result", RecvResult);
     }
 
 
