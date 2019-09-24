@@ -24,7 +24,7 @@ public class Connection
     public ProtocolBase proto;
     //心跳时间
     public float lastTickTime = 0;//上一次心跳的时间
-    public float heartBeatTime = 30;//时间间隔
+    public float heartBeatTime = 5;//时间间隔
     //消息分发
     public MsgDistribution msgDist = new MsgDistribution();
     //连接状态，有None、Connected两种

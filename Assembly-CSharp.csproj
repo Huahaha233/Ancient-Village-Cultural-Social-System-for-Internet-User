@@ -82,6 +82,7 @@
     <Compile Include="Assets\core\net\ProtocolBytes.cs" />
     <Compile Include="Assets\core\net\ProtocolStr.cs" />
     <Compile Include="Assets\core\Root.cs" />
+    <Compile Include="Assets\Exhibition_C#\ControlOther.cs" />
     <Compile Include="Assets\Exhibition_C#\ControlVisiter.cs" />
     <Compile Include="Assets\Exhibition_C#\GameMgr.cs" />
     <Compile Include="Assets\Exhibition_C#\MultiBattle.cs" />

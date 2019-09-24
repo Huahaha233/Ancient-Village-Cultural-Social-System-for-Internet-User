@@ -6,17 +6,15 @@ using System.Collections.Generic;
 public class NetMgr
 {
     public static Connection srvConn = new Connection();
-    //public static Connection platformConn = new Connection();
     public static void Update()
     {
         srvConn.Update();
-        //platformConn.Update();
     }
 
     //心跳
     public static ProtocolBase GetHeatBeatProtocol()
     {
-        //具体的发送内容根据服务端设定改动
+        //具体的发送内容根据服务端设定改动,主要处理非正常退出行为
         ProtocolBytes protocol = new ProtocolBytes();
         protocol.AddString("HeatBeat");
         return protocol;

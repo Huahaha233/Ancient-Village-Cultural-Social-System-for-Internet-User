@@ -127,10 +127,7 @@ public class MultiBattle : MonoBehaviour
             return;
         }
         Visiter visiter = list[id];
-        if (id == GameMgr.instance.id)
-            return;
-
-        visiter.NetForecastInfo(nPos, nRot);
+        if (id != GameMgr.instance.id) visiter.NetForecastInfo(nPos, nRot);
     }
 }
 

@@ -8,7 +8,7 @@ public class Visiter : MonoBehaviour
     //public AudioSource footAudioSource;
     //脚步音效
     //public AudioClip footClip;
-    
+
     //网络同步
     private float lastSendInfoTime = float.MinValue;
 
@@ -20,7 +20,14 @@ public class Visiter : MonoBehaviour
         net,
     }
     public CtrlType ctrlType = CtrlType.player;
-    
+    //运动状态
+    public enum Sports
+    {
+        idle,
+        walk,
+        run,
+    }
+    public static Sports sports = Sports.idle;
     //生命指示条素材
     //public Texture2D hpBarBg;
     //public Texture2D hpBar;
@@ -77,8 +84,10 @@ public class Visiter : MonoBehaviour
             transform.position = Vector3.Lerp(pos, fPos, delta);
             transform.rotation = Quaternion.Lerp(Quaternion.Euler(rot),
                                               Quaternion.Euler(fRot), delta);
+            
         }
-       
+        //人物动作
+        PeopleMove();
         //脚步音效
         //NetWheelsRotation();
     }
@@ -92,7 +101,7 @@ public class Visiter : MonoBehaviour
     //        footAudioSource.Pause();
     //        return;
     //    }
-       
+
     //    //声音
     //    if (!footAudioSource.isPlaying)
     //    {
@@ -101,7 +110,24 @@ public class Visiter : MonoBehaviour
     //        footAudioSource.Play();
     //    }
     //}
-
+    public void PeopleMove()
+    {
+        float x = transform.InverseTransformPoint(fPos).x;
+        float z = transform.InverseTransformPoint(fPos).z;
+        //判断浏览者是否在移动
+        if (Mathf.Abs(x) < 0.01f && Mathf.Abs(z) < 0.01f || delta <= 0.05f)
+        {
+            //未移动
+            sports = Sports.idle;
+            return;
+        }
+        if (Mathf.Abs(x) > 0.8f || Mathf.Abs(z) > 0.8f)
+        {
+            sports = Sports.run;
+            return;
+        } 
+        sports = Sports.walk;
+    }
     //玩家控制
     public void PlayerCtrl()
     {

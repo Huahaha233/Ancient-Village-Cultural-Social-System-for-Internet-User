@@ -258,9 +258,15 @@ public class RoomListPanel : MonoBehaviour
     //登出返回
     public void OnCloseBack(ProtocolBase protocol)
     {
-        //OnClosing();//关闭监听
-        NetMgr.srvConn.Close();//断开连接
-        SceneManager.LoadScene("Login");//返回到登录界面
+        ProtocolBytes proto = (ProtocolBytes)protocol;
+        int start = 0;
+        string protoName = proto.GetString(start,ref start);
+        int ret = proto.GetInt(start,ref start);
+        if (ret == 0)
+        {
+            NetMgr.srvConn.Close();//断开连接
+            SceneManager.LoadScene("Login");//返回到登录界面
+        }
     }
     #endregion
 }

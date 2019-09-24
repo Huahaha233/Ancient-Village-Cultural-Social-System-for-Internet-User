@@ -738,8 +738,8 @@ GameObject:
   - component: {fileID: 114451718079941220}
   - component: {fileID: 54905492875317936}
   - component: {fileID: 82125970777828680}
-  - component: {fileID: 114625180906306758}
   - component: {fileID: 114520871829579598}
+  - component: {fileID: 114167302102190062}
   m_Layer: 0
   m_Name: FPSController
   m_TagString: Untagged
@@ -2454,13 +2454,25 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
---- !u!114 &114451718079941220
+--- !u!114 &114167302102190062
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1490714092570554}
   m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 186bb28802f852049a8b8adf7d0e9cfc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  People: {fileID: 1508539556744302}
+--- !u!114 &114451718079941220
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1490714092570554}
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 05ec5cf00ca181d45a42ba1870e148c3, type: 3}
   m_Name: 
@@ -2589,18 +2601,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   ctrlType: 1
---- !u!114 &114625180906306758
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1490714092570554}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3e16d11ea03030f42a0bfc2cfbad203b, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  People: {fileID: 1508539556744302}
 --- !u!124 &124884023087683434
 Behaviour:
   m_ObjectHideFlags: 1
