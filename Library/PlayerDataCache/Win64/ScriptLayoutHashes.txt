@@ -113,6 +113,7 @@ e90403eeda069970e0b9de1533de13a6 UnityEngine.UI.dll:UnityEngine.UI.ToggleGroup
 486cd95c82d8305219c352c06b776e1f Assembly-CSharp.dll:.Root
 efd4904cf7e42d8733b18c39e528d5c2 Assembly-CSharp.dll:.UIButtonColor
 486cd95c82d8305219c352c06b776e1f Assembly-CSharp-firstpass.dll:UnityStandardAssets.Vehicles.Ball.BallUserControl
+2a45a8f291c93287e99e7c5ea8c01c54 Assembly-CSharp.dll:.GameMgr
 486cd95c82d8305219c352c06b776e1f Assembly-CSharp.dll:.UICenterOnClick
 1322c39e3d7818fa761c1f8194fff050 Assembly-CSharp.dll:.EnvelopContent
 486cd95c82d8305219c352c06b776e1f Assembly-CSharp.dll:.SetColorPickerColor

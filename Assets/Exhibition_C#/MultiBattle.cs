@@ -17,6 +17,9 @@ public class MultiBattle : MonoBehaviour
         //单例模式
         instance = this;
         StartVisit();
+        //开启监听
+        NetMgr.srvConn.msgDist.AddListener("AddPlayer", RecvAddPlayer);//场景增加人员
+        NetMgr.srvConn.msgDist.AddListener("DelPlayer", RecvDelPlayer);//场景删除人员
     }
 
     //在开始时向服务器发送请求获取房间内其他用户的位置信息
@@ -45,14 +48,39 @@ public class MultiBattle : MonoBehaviour
             float rotx = proto.GetFloat(start, ref start);
             float roty = proto.GetFloat(start, ref start);
             float rotz = proto.GetFloat(start, ref start);
-            GenerateTank(id,new Vector3(posx,posy,posz),new Vector3(rotx,roty,rotz));
-        }
+            if(id!=GameMgr.instance.id) GenerateVisit(id,new Vector3(posx,posy,posz),new Vector3(rotx,roty,rotz));
+            }
         NetMgr.srvConn.msgDist.AddListener ("UpdateUnitInfo", RecvUpdateUnitInfo);
     }
 
+    public void RecvAddPlayer(ProtocolBase protocol)
+    {
+        ProtocolBytes proto = (ProtocolBytes)protocol;
+        int start = 0;
+        string protoName = proto.GetString(start,ref start);
+        string id = proto.GetString(start, ref start);
+        float posx = proto.GetFloat(start,ref start);
+        float posy = proto.GetFloat(start,ref start);
+        float posz = proto.GetFloat(start,ref start);
+        float rotx = proto.GetFloat(start,ref start);
+        float roty = proto.GetFloat(start,ref start);
+        float rotz = proto.GetFloat(start,ref start);
+        if (id != GameMgr.instance.id) GenerateVisit(id, new Vector3(posx, posy, posz), new Vector3(rotx, roty, rotz));
+    }
+
+    public void RecvDelPlayer(ProtocolBase protocol)
+    {
+        ProtocolBytes proto = (ProtocolBytes)protocol;
+        int start = 0;
+        string protoName = proto.GetString(start, ref start);
+        string id = proto.GetString(start,ref start);
+        //删除场景中的人物预制体
+        GameObject gameObject = GameObject.Find(id);
+        Destroy(gameObject);
+    }
 
     //产生浏览者
-    public void GenerateTank(string id,Vector3 pos,Vector3 rot)
+    public void GenerateVisit(string id,Vector3 pos,Vector3 rot)
     {
         //产生浏览者
         GameObject visitObj = (GameObject)Instantiate(Prefabs);
@@ -67,9 +95,6 @@ public class MultiBattle : MonoBehaviour
         if (id == GameMgr.instance.id)
         {
             visiter.ctrlType = Visiter.CtrlType.player;
-            //CameraFollow cf = Camera.main.gameObject.GetComponent<CameraFollow>();
-            //GameObject target = bt.tank.gameObject;
-            //cf.SetTarget(target);
         }
         else
         {
@@ -94,8 +119,6 @@ public class MultiBattle : MonoBehaviour
         nRot.x = proto.GetFloat(start, ref start);
         nRot.y = proto.GetFloat(start, ref start);
         nRot.z = proto.GetFloat(start, ref start);
-        //float turretY = proto.GetFloat(start, ref start);
-        //float gunX = proto.GetFloat(start, ref start);
         //处理
         Debug.Log("RecvUpdateUnitInfo " + id);
         if (!list.ContainsKey(id))
@@ -108,7 +131,6 @@ public class MultiBattle : MonoBehaviour
             return;
 
         visiter.NetForecastInfo(nPos, nRot);
-        //bt.NetTurretTarget(turretY, gunX); //稍后实现
     }
 }
 

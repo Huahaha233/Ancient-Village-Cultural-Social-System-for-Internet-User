@@ -7,7 +7,6 @@ public class Root : MonoBehaviour {
 	void Start () 
     {
         Application.runInBackground = true;
-        GameMgr GameMgr = new GameMgr();
         //PanelMgr.instance.OpenPanel<LoginPanel>("");
     }
 

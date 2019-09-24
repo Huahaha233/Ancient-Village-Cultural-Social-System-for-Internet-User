@@ -33,6 +33,7 @@ public class GetUIButton : MonoBehaviour {
     #endregion
     private string Code_Str;//验证码字符串
     private string Answer = null;//密保问题的答案
+    GameMgr mgr = new GameMgr();//初始化
     VerificationCode verificationCode = new VerificationCode();
     void Start()
     {
@@ -43,9 +44,7 @@ public class GetUIButton : MonoBehaviour {
     #region 验证码
     public void SetCode()
     {
-        //VerificationCode vCode = new VerificationCode(300, 100, 4);
-        VerificationCode.instance.V(300, 100, 4);
-        Tips.GetComponent<UILabel>().text = VerificationCode.instance.text;
+        VerificationCode.instance.Creat(300, 100, 4);
         Texture text = VerificationCode.Image2Texture(VerificationCode.instance.image);
         GameObject[] texts = GameObject.FindGameObjectsWithTag("Code");
         foreach (GameObject texture in texts)
@@ -102,7 +101,7 @@ public class GetUIButton : MonoBehaviour {
         {
             Tips.GetComponent<UILabel>().text = "登录成功!";
             Debug.Log("登录成功!");
-            GameMgr.instance.id = Login_UserID.transform.GetChild(0).GetComponent<UIInput>().value;//将用户ID保存至GameMgr
+            GameMgr.instance.id = Login_UserID.transform.GetChild(0).GetComponent<UILabel>().text;//将用户ID保存至GameMgr!!!
             Login_Login();
             SceneManager.LoadScene("RoomList");
         }

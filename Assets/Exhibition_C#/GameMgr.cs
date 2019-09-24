@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Collections;
 
-public class GameMgr
+public class GameMgr:MonoBehaviour
 {
     //存储浏览过程中玩家的信息
     public static GameMgr instance;

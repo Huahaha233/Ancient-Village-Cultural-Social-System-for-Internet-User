@@ -27,7 +27,7 @@ public class VerificationCode{
         instance = this;
     }
 
-    public void V(int imgWidth, int imgHeight, int length)
+    public void Creat(int imgWidth, int imgHeight, int length)
     {
         Number(length);
         CreateImage(imgWidth, imgHeight);
