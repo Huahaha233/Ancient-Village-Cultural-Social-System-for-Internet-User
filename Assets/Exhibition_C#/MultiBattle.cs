@@ -8,6 +8,8 @@ public class MultiBattle : MonoBehaviour
     public static MultiBattle instance;
     //浏览者预设
     public GameObject Prefabs;
+    //姓名条预设体
+    public GameObject NamePrefab;
     //战场中的所有用户
     public Dictionary<string, Visiter> list = new Dictionary<string, Visiter>();
 
@@ -52,7 +54,7 @@ public class MultiBattle : MonoBehaviour
             }
         NetMgr.srvConn.msgDist.AddListener ("UpdateUnitInfo", RecvUpdateUnitInfo);
     }
-
+    //接受到新加入房价的人的协议
     public void RecvAddPlayer(ProtocolBase protocol)
     {
         ProtocolBytes proto = (ProtocolBytes)protocol;
@@ -87,6 +89,7 @@ public class MultiBattle : MonoBehaviour
         visitObj.name = id;
         visitObj.transform.position = pos;
         visitObj.transform.rotation = Quaternion.Euler(rot);
+        CreatName(visitObj);
         //列表处理
         Visiter visiter = new Visiter();
         visiter = visitObj.GetComponent<Visiter>();
@@ -102,7 +105,16 @@ public class MultiBattle : MonoBehaviour
             visiter.InitNetCtrl ();  //初始化网络同步
         }
     }
-
+    //生成角色头顶的姓名条
+    private void CreatName(GameObject VisitObj)
+    {
+        GameObject nameobj = (GameObject)Instantiate(NamePrefab);
+        nameobj.transform.GetComponent<UILabel>().text = VisitObj.name;
+        nameobj.GetComponent<UIFollowTarget>().target = VisitObj.transform.GetChild(0);
+        nameobj.GetComponent<UIFollowTarget>().gameCamera = GameObject.Find("Player").transform.GetChild(0).GetComponent<Camera>();
+        nameobj.GetComponent<UIFollowTarget>().uiCamera = GameObject.Find("UI Root").transform.GetChild(0).GetComponent<Camera>();
+        nameobj.GetComponent<UIFollowTarget>().disableIfInvisible = false;
+    }
     //更新其他网络用户的位置
     public void RecvUpdateUnitInfo(ProtocolBase protocol)
     {

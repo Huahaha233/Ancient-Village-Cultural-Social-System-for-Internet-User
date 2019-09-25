@@ -87,6 +87,8 @@
     <Compile Include="Assets\Exhibition_C#\GameMgr.cs" />
     <Compile Include="Assets\Exhibition_C#\MultiBattle.cs" />
     <Compile Include="Assets\Exhibition_C#\Visiter.cs" />
+    <Compile Include="Assets\HUD Text\HUDText.cs" />
+    <Compile Include="Assets\HUD Text\UIFollowTarget.cs" />
     <Compile Include="Assets\Login_C#\GetUIButton.cs" />
     <Compile Include="Assets\Login_C#\NGUIMove.cs" />
     <Compile Include="Assets\Login_C#\UIMove.cs" />
@@ -234,11 +236,9 @@
     <Compile Include="Assets\NGUI\Scripts\UI\UIViewport.cs" />
     <Compile Include="Assets\RoomList_C#\RoomListPanel.cs" />
     <None Include="Assets\NGUI\Examples\Shaders\Unlit - Depth Cutout.shader" />
-    <None Include="Assets\NGUI\ReadMe - 3.11.4.txt" />
     <None Include="Assets\NGUI\Resources\Shaders\Unlit - Transparent Masked 1.shader" />
     <None Include="Assets\NGUI\Resources\Shaders\Unlit - Text 2.shader" />
     <None Include="Assets\NGUI\Resources\Shaders\Unlit - Transparent Masked 2.shader" />
-    <None Include="Assets\NGUI\Examples\Models\Orc\Orc Skin.shader" />
     <None Include="Assets\NGUI\Examples\Atlases\Wooden\Arimo20.txt" />
     <None Include="Assets\NGUI\Examples\Atlases\Wooden\Arimo14.txt" />
     <None Include="Assets\NGUI\Resources\Shaders\Unlit - Text 1.shader" />
@@ -277,8 +277,6 @@
     <None Include="Assets\NGUI\Resources\Shaders\Unlit - Text (TextureClip).shader" />
     <None Include="Assets\NGUI\Examples\Shaders\Unlit - Depth.shader" />
     <None Include="Assets\NGUI\Examples\Atlases\SciFi\SciFi Font - Normal.txt" />
-    <None Include="Assets\NGUI\Examples\Models\Orc Armor\Orc Armor.shader" />
-    <None Include="Assets\NGUI\Examples\Resources\Localization.txt" />
     <Reference Include="UnityEditor.StandardEvents">
       <HintPath>F:/Unity_Graduation Project/Ancient-Village-Cultural-Social-System-for-Internet-User/Library/ScriptAssemblies/UnityEditor.StandardEvents.dll</HintPath>
     </Reference>
