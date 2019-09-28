@@ -13,7 +13,7 @@ public class RoomListPanel : MonoBehaviour
     public GameObject roomPrefab;//房间单元UI的预制体
     public GameObject Ins;//简介框
     public GameObject WriteInsPlane;//点击新建房间按钮后，弹出填写房间基本信息UI
-    private int Roomindex;//点击选择的房间序号
+    private string RoomName;//点击选择的房间名称
     void Start()
     {
         GetAchieve();
@@ -108,10 +108,10 @@ public class RoomListPanel : MonoBehaviour
     public void OnGetRoomInfoClick()
     {
         GameObject buttonself = UICamera.currentTouch.current;//当前点击的按钮的属性//当前点击的按钮的属性
-        Roomindex = int.Parse(buttonself.transform.parent.GetComponent<UILabel>().text);
+        RoomName = buttonself.transform.parent.GetChild(0).GetComponent<UILabel>().text;
         ProtocolBytes protocol = new ProtocolBytes();
         protocol.AddString("GetRoomInfo");
-        protocol.AddInt(Roomindex);//当前房间的序号
+        protocol.AddString(RoomName);//当前房间的名称
         NetMgr.srvConn.Send(protocol, OnGetRoomInfoBack);
     }
     public void OnGetRoomInfoBack(ProtocolBase protocol)
@@ -144,9 +144,9 @@ public class RoomListPanel : MonoBehaviour
     {
         ProtocolBytes protocol = new ProtocolBytes();
         protocol.AddString("EnterRoom");
-        protocol.AddInt(Roomindex);
+        protocol.AddString(RoomName);
         NetMgr.srvConn.Send(protocol, OnJoinBtnBack);
-        Debug.Log("请求进入房间 " + Roomindex);
+        Debug.Log("请求进入房间 " + RoomName);
     }
 
     //加入按钮返回

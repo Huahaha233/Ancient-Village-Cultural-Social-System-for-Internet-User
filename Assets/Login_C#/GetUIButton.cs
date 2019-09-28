@@ -76,10 +76,8 @@ public class GetUIButton : MonoBehaviour {
         }
         if (NetMgr.srvConn.status != Connection.Status.Connected)
         {
-            string host = "127.0.0.1";
-            int port = 1234;
             NetMgr.srvConn.proto = new ProtocolBytes();
-            NetMgr.srvConn.Connect(host, port);
+            NetMgr.srvConn.Connect();
         }
         
         //发送
@@ -143,10 +141,8 @@ public class GetUIButton : MonoBehaviour {
         }
         if (NetMgr.srvConn.status != Connection.Status.Connected)
         {
-            string host = "127.0.0.1";
-            int port = 1234;
             NetMgr.srvConn.proto = new ProtocolBytes();
-            NetMgr.srvConn.Connect(host, port);
+            NetMgr.srvConn.Connect();
         }
         //发送
         ProtocolBytes protocol = new ProtocolBytes();
@@ -210,10 +206,8 @@ public class GetUIButton : MonoBehaviour {
 
         if (NetMgr.srvConn.status != Connection.Status.Connected)
         {
-            string host = "127.0.0.1";
-            int port = 1234;
             NetMgr.srvConn.proto = new ProtocolBytes();
-            NetMgr.srvConn.Connect(host, port);
+            NetMgr.srvConn.Connect();
         }
         //发送
         ProtocolBytes protocol = new ProtocolBytes();
@@ -275,10 +269,8 @@ public class GetUIButton : MonoBehaviour {
         }
         if (NetMgr.srvConn.status != Connection.Status.Connected)
         {
-            string host = "127.0.0.1";
-            int port = 1234;
             NetMgr.srvConn.proto = new ProtocolBytes();
-            NetMgr.srvConn.Connect(host, port);
+            NetMgr.srvConn.Connect();
         }
         //发送
         ProtocolBytes protocol = new ProtocolBytes();

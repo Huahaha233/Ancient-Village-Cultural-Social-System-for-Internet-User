@@ -93,6 +93,7 @@
     <Compile Include="Assets\Login_C#\NGUIMove.cs" />
     <Compile Include="Assets\Login_C#\UIMove.cs" />
     <Compile Include="Assets\Login_C#\VerificationCode.cs" />
+    <Compile Include="Assets\ManageRoom_C#\HandlePicture.cs" />
     <Compile Include="Assets\ManageRoom_C#\RoomManage.cs" />
     <Compile Include="Assets\NGUI\Examples\Scripts\InventorySystem\Game\EquipItems.cs" />
     <Compile Include="Assets\NGUI\Examples\Scripts\InventorySystem\Game\EquipRandomItem.cs" />

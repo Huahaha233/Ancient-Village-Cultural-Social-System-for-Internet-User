@@ -7,43 +7,69 @@ public class RoomManage : MonoBehaviour {
     public GameObject content;//挂载资源列表的Grid
     public GameObject RosourePrefab;//资源单元UI的预制体
     public GameObject RoomName;//显示当前房间名称的UI
+    public GameObject UpdateBackground;//添加资源面板
+    private string path="";//文件地址
     // Use this for initialization
     void Start () {
-        OnGetResoureList();
+        OnGetRoomNameList();
     }
-    #region 获取房间资源列表；也可用于刷新列表
-    private void OnGetResoureList()
+    #region 获取房间名称列表；也可用于刷新列表
+    public void OnGetRoomNameList()
     {
         ProtocolBytes protocol = new ProtocolBytes();
-        protocol.AddString("GetResoureList");
-        NetMgr.srvConn.Send(protocol, OnResoureListBack);
+        protocol.AddString("GetRoomNameList");
+        NetMgr.srvConn.Send(protocol, OnGetRoomNameListBack);
     }
 
     //房间列表信息返回
-    public void OnResoureListBack(ProtocolBase protocol)
+    public void OnGetRoomNameListBack(ProtocolBase protocol)
+    {
+        GameMgr.instance.RoomNameList.Clear();//清空
+        //解析参数
+        ProtocolBytes proto = (ProtocolBytes)protocol;
+        int start = 0;
+        string protoName = proto.GetString(start, ref start);
+        int RoomCount = proto.GetInt(start, ref start);
+        if (RoomCount == -1) return;
+        for (int i = 0; i < RoomCount; i++)
+        {
+            string RoomName = proto.GetString(start, ref start);
+            GameMgr.instance.RoomNameList.Add(RoomName);
+        }
+        WriteRoomName(GameMgr.instance.RoomNameList);
+        GenerateRoomUnit(GameMgr.instance.RoomNameList[0]);
+    }
+    #endregion
+
+    #region 获取房间资源列表；也可用于刷新列表
+    public void OnGetResoureList()
+    {
+        ProtocolBytes protocol = new ProtocolBytes();
+        protocol.AddString("GetResoureList");
+        protocol.AddString(RoomName.transform.GetChild(0).GetComponent<UILabel>().text);
+        NetMgr.srvConn.Send(protocol, OnGetResoureListBack);
+    }
+
+    //房间列表信息返回
+    public void OnGetResoureListBack(ProtocolBase protocol)
     {
         GameMgr.instance.resourelist.Clear();//清空字典
         //解析参数
         ProtocolBytes proto = (ProtocolBytes)protocol;
         int start = 0;
         string protoName = proto.GetString(start, ref start);
-        int RoomCount = proto.GetInt(start, ref start);
-        for (int i = 0; i < RoomCount; i++)
+        string RoomName = proto.GetString(start, ref start);
+        int ResoureCount = proto.GetInt(start, ref start);
+        if (ResoureCount == -1) return;
+        Dictionary<string, string> dic = new Dictionary<string, string>();
+        for (int i = 0; i < ResoureCount; i++)
         {
-            string RoomName = proto.GetString(start, ref start);
-            int ResoureCount = proto.GetInt(start, ref start);
-            Dictionary<string, string> dic = new Dictionary<string, string>();
-            for (int j = 0; j < ResoureCount; j++)
-            {
-                string ResoureName = proto.GetString(start, ref start);
-                string ResoureSort = proto.GetString(start, ref start);
-                dic.Add(ResoureName, ResoureSort);
-            }
-            GameMgr.instance.RoomNameList.Add(RoomName);
-            GameMgr.instance.resourelist.Add(RoomName, dic);
+            string ResoureName = proto.GetString(start, ref start);
+            string ResoureSort = proto.GetString(start, ref start);
+            dic.Add(ResoureName, ResoureSort);
         }
-        WriteRoomName(GameMgr.instance.RoomNameList);
-        GenerateRoomUnit(GameMgr.instance.RoomNameList[0]);
+        GameMgr.instance.resourelist.Add(RoomName, dic);
+        GenerateRoomUnit(RoomName);
     }
 
 
@@ -53,14 +79,8 @@ public class RoomManage : MonoBehaviour {
         RoomName.transform.GetComponent<UIPopupList>().items = list;
     }
     #endregion
-
-    //改变用户房间的按钮
-    public void ChangeRoom()
-    {
-        GenerateRoomUnit(RoomName.transform.GetChild(0).GetComponent<UILabel>().text);
-    }
-
-    #region 创建房间单元
+    
+    #region 创建房间资源单元
     //清理房间列表
     private void ClearRoomUnit()
     {
@@ -101,6 +121,7 @@ public class RoomManage : MonoBehaviour {
     //删除房间返回
     public void OnDeleteRoomBack(ProtocolBase protocol)
     {
+        string roomname = RoomName.transform.GetChild(0).GetComponent<UILabel>().text;
         //解析参数
         ProtocolBytes proto = (ProtocolBytes)protocol;
         int start = 0;
@@ -108,9 +129,9 @@ public class RoomManage : MonoBehaviour {
         int Ret = proto.GetInt(start, ref start);
         if (Ret == 0)
         {
-            GameMgr.instance.RoomNameList.Remove(RoomName.transform.GetChild(0).GetComponent<UILabel>().text);
-            GameMgr.instance.resourelist.Remove(RoomName.transform.GetChild(0).GetComponent<UILabel>().text);
-            OnGetResoureList();
+            GameMgr.instance.RoomNameList.Remove(roomname);
+            GameMgr.instance.resourelist.Remove(roomname);
+            OnGetRoomNameList();
             Debug.Log("删除房间成功!");
         } 
         else Debug.Log("删除房间失败!");
@@ -126,7 +147,7 @@ public class RoomManage : MonoBehaviour {
         //传入房间名、资源、类型的名称
         protocol.AddString(RoomName.transform.GetChild(0).GetComponent<UILabel>().text);
         protocol.AddString(buttonself.transform.parent.GetComponent<UILabel>().text);//资源名称
-        protocol.AddString(buttonself.transform.parent.GetChild(1).GetComponent<UILabel>().text);
+        protocol.AddString(buttonself.transform.parent.GetChild(1).GetComponent<UILabel>().text);//属性
         NetMgr.srvConn.Send(protocol, OnDeleteResoureBack);
     }
 
@@ -149,12 +170,25 @@ public class RoomManage : MonoBehaviour {
     }
     #endregion
 
+    //选择文件按钮
+    public void ChooseFileClick()
+    {
+       path= HandlePicture.instance.OpenFlie();
+    }
+
     #region 上传资源
     public void OnAddResoure()
-    { // 类型有：图片、视频、3D模型
-
+    {   // 类型有：图片、视频、3D模型
+        if (path == null) return;
+        ProtocolBytes protocol = new ProtocolBytes();
+        protocol.AddString("AddResoure");
+        protocol.AddString(UpdateBackground.transform.GetChild(2).GetChild(1).GetComponent<UILabel>().text);//资源名称
+        protocol.AddString(UpdateBackground.transform.GetChild(3).GetChild(1).GetComponent<UILabel>().text);//资源介绍
+        protocol.AddString(HandlePicture.instance.JudgeSort(path));//类别
+        protocol.AddByte(HandlePicture.instance.ChangeByte(path));//数据
+        NetMgr.srvConn.Send(protocol, OnAddResoureBack);
     }
-    public void OnAddResoureBack()
+    public void OnAddResoureBack(ProtocolBase protocol)
     {
        
     }

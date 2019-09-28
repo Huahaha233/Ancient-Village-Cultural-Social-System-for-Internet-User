@@ -10,6 +10,9 @@ using System.IO;
 //网络链接
 public class Connection
 {
+    //IP和端口
+    string host = "121.199.29.232";
+    int port = 7788;
     //常量
     const int BUFFER_SIZE = 1024;//缓冲区大小
     //Socket
@@ -36,7 +39,7 @@ public class Connection
     public Status status = Status.None;
     
     //连接服务端
-    public bool Connect(string host, int port)
+    public bool Connect()
     {
         try
         {

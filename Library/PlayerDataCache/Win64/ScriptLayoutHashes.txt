@@ -250,6 +250,7 @@ c8a41ce4eea7677f6dd2aa0e422a2f04 Vuforia.UnityExtensions.dll:Vuforia.VuMarkBehav
 c31ff9acb65f7a15b5c6fd77c3314d83 Vuforia.UnityExtensions.dll:Vuforia.WireframeBehaviour
 486cd95c82d8305219c352c06b776e1f Vuforia.UnityExtensions.dll:Vuforia.WireframeTrackableEventHandler
 6138d208dd80fb894f4f3bdba5e43e32 Assembly-CSharp.dll:.DownloadTexture
+35bc8835c89f1a3861edbd1d03cfcf59 Assembly-CSharp.dll:.HUDText
 81d6a421cbac2031cd5e35b10c8ac717 Assembly-CSharp-firstpass.dll:UnityStandardAssets.Utility.ActivateTrigger
 b8f92854c1da995acd58f8ce0b1d8d9d Assembly-CSharp.dll:.TextureSwapper
 2352786f5c558efe5c36ba49f20d278c Assembly-CSharp.dll:.UICenterOnChild
@@ -273,6 +274,7 @@ a455c7a94d636e997cf13415fea7bbb1 Assembly-CSharp-firstpass.dll:UnityStandardAsse
 486cd95c82d8305219c352c06b776e1f Assembly-CSharp-firstpass.dll:.ForcedReset
 202ddcdf9392f5f9809cc33a273f8b5e Assembly-CSharp-firstpass.dll:UnityStandardAssets.Utility.SmoothFollow
 44b19367caa2de65b23048ffbe3a9eca Assembly-CSharp.dll:.UITexture
+6d8001b10d8a7e3342c904487b792e4e Assembly-CSharp.dll:.UIFollowTarget
 49760bc50b2d7a915d9521daca889b70 Assembly-CSharp.dll:.UIStorageSlot
 555b9f3d31dcd2981ecfd577235526a3 Assembly-CSharp.dll:.UIEventTrigger
 486cd95c82d8305219c352c06b776e1f Unity.TextMeshPro.dll:TMPro.TMP_SpriteAnimator
@@ -476,5 +478,3 @@ c31ff9acb65f7a15b5c6fd77c3314d83 Vuforia.UnityExtensions.dll:Vuforia.WireframeBe
 486cd95c82d8305219c352c06b776e1f Vuforia.UnityExtensions.dll:Vuforia.WireframeTrackableEventHandler
 486cd95c82d8305219c352c06b776e1f Assembly-CSharp.dll:.RealTime
 695c9335429d4798b6f74ca73c042ff4 Assembly-CSharp-firstpass.dll:UnityStandardAssets.Utility.AutoMobileShaderSwitch
-35bc8835c89f1a3861edbd1d03cfcf59 Assembly-CSharp.dll:.HUDText
-6d8001b10d8a7e3342c904487b792e4e Assembly-CSharp.dll:.UIFollowTarget
