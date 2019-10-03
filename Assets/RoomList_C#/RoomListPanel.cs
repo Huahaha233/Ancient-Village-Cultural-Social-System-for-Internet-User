@@ -79,7 +79,7 @@ public class RoomListPanel : MonoBehaviour
     {
         for (int i = 0; i < content.transform.childCount; i++)
         {
-            if (content.transform.GetChild(i).name.Contains("Clone"))
+            if (content.transform.GetChild(i).name.Contains("RoomList"))
                 Destroy(content.transform.GetChild(i).gameObject);
         }
     }

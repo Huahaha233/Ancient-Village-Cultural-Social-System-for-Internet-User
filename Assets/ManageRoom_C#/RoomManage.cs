@@ -9,6 +9,8 @@ public class RoomManage : MonoBehaviour {
     public GameObject RoomName;//显示当前房间名称的UI
     public GameObject UpdateBackground;//添加资源面板
     private string path="";//文件地址
+    //初始化
+    HandlePicture HandlePicture = new HandlePicture();
     // Use this for initialization
     void Start () {
         OnGetRoomNameList();
@@ -30,14 +32,12 @@ public class RoomManage : MonoBehaviour {
         int start = 0;
         string protoName = proto.GetString(start, ref start);
         int RoomCount = proto.GetInt(start, ref start);
-        if (RoomCount == -1) return;
         for (int i = 0; i < RoomCount; i++)
         {
             string RoomName = proto.GetString(start, ref start);
             GameMgr.instance.RoomNameList.Add(RoomName);
         }
         WriteRoomName(GameMgr.instance.RoomNameList);
-        GenerateRoomUnit(GameMgr.instance.RoomNameList[0]);
     }
     #endregion
 
@@ -71,8 +71,7 @@ public class RoomManage : MonoBehaviour {
         GameMgr.instance.resourelist.Add(RoomName, dic);
         GenerateRoomUnit(RoomName);
     }
-
-
+    
     //将所有房间名称写入房间选择下拉列表中
     private void WriteRoomName(List<string> list)
     {
@@ -86,7 +85,7 @@ public class RoomManage : MonoBehaviour {
     {
         for (int i = 0; i < content.transform.childCount; i++)
         {
-            if (content.transform.GetChild(i).name.Contains("Clone"))
+            if (content.transform.GetChild(i).name.Contains("ResoureManage"))
                 Destroy(content.transform.GetChild(i).gameObject);
         }
     }
@@ -182,6 +181,8 @@ public class RoomManage : MonoBehaviour {
         if (path == null) return;
         ProtocolBytes protocol = new ProtocolBytes();
         protocol.AddString("AddResoure");
+        if (RoomName.transform.GetChild(0).GetComponent<UILabel>().text == null) return;
+        protocol.AddString(RoomName.transform.GetChild(0).GetComponent<UILabel>().text);//房间名称
         protocol.AddString(UpdateBackground.transform.GetChild(2).GetChild(1).GetComponent<UILabel>().text);//资源名称
         protocol.AddString(UpdateBackground.transform.GetChild(3).GetChild(1).GetComponent<UILabel>().text);//资源介绍
         protocol.AddString(HandlePicture.instance.JudgeSort(path));//类别
@@ -190,10 +191,28 @@ public class RoomManage : MonoBehaviour {
     }
     public void OnAddResoureBack(ProtocolBase protocol)
     {
-       
+        ProtocolBytes proto = (ProtocolBytes)protocol;
+        int start = 0;
+        string protoName = proto.GetString(start, ref start);
+        int ret = proto.GetInt(start, ref start);
+        if (ret == 0)
+        {
+            //添加成功
+            OnGetResoureList();//刷新列表
+            UpdatePlaneClose();
+        }
     }
     #endregion
-
+    //点击上传按钮，弹出上传信息框
+    public void UpdatePlaneClick()
+    {
+        UpdateBackground.transform.GetComponent<TweenScale>().PlayForward();
+    }
+    //点击上传按钮，弹出上传信息框
+    public void UpdatePlaneClose()
+    {
+        UpdateBackground.transform.GetComponent<TweenScale>().PlayReverse();
+    }
     // 返回房间列表界面
     public void Back()
     {

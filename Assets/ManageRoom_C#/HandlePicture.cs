@@ -53,10 +53,11 @@ public class HandlePicture{
         return null;
     }
     //还原图片
-    public void RecoveryImage(GameObject picture,byte[] imagedata)
+    public void RecoveryImage(GameObject picture,string name,string ins,byte[] imagedata,int index)
     {
         Texture2D tex = new Texture2D(80, 80);
         tex.LoadImage(imagedata);
-        picture.GetComponent<MeshRenderer>().material.mainTexture = tex;
+        picture.transform.GetChild(index).GetChild(0).GetComponent<MeshRenderer>().material.mainTexture = tex;
+        picture.transform.GetChild(index).GetChild(1).GetComponent<TextMesh>().text = name+"\n"+ins;
     }
 }

@@ -1,6 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 using System.Collections.Generic;
+using UnityEngine.SceneManagement;
 
 public class MultiBattle : MonoBehaviour
 {
@@ -10,9 +11,14 @@ public class MultiBattle : MonoBehaviour
     public GameObject Prefabs;
     //姓名条预设体
     public GameObject NamePrefab;
+    //图片
+    public GameObject AllPicture;
+    //视频
+    public GameObject AllVideo;
+    //模型
+    public GameObject AllModel;
     //战场中的所有用户
     public Dictionary<string, Visiter> list = new Dictionary<string, Visiter>();
-
     // Use this for initialization
     void Start()
     {
@@ -21,10 +27,11 @@ public class MultiBattle : MonoBehaviour
         StartVisit();
         //开启监听
         NetMgr.srvConn.msgDist.AddListener("AddPlayer", RecvAddPlayer);//场景增加人员
-        NetMgr.srvConn.msgDist.AddListener("DelPlayer", RecvDelPlayer);//场景删除人员
+        NetMgr.srvConn.msgDist.AddListener("DelPlayer", RecvDelPlayer);//场景删除人员 
+        GetResoureClick();
     }
-
-    //在开始时向服务器发送请求获取房间内其他用户的位置信息
+   
+    #region 在开始时向服务器发送请求获取房间内其他用户的位置信息
     public void StartVisit()
     {
         ProtocolBytes protocol = new ProtocolBytes();
@@ -54,7 +61,9 @@ public class MultiBattle : MonoBehaviour
             }
         NetMgr.srvConn.msgDist.AddListener ("UpdateUnitInfo", RecvUpdateUnitInfo);
     }
-    //接受到新加入房价的人的协议
+    #endregion
+
+    #region 接受到新加入房价的人的协议
     public void RecvAddPlayer(ProtocolBase protocol)
     {
         ProtocolBytes proto = (ProtocolBytes)protocol;
@@ -80,6 +89,65 @@ public class MultiBattle : MonoBehaviour
         GameObject gameObject = GameObject.Find(id);
         Destroy(gameObject);
     }
+    #endregion
+
+    #region 获取房间中的数据
+    public void GetResoureClick()
+    {
+        ProtocolBytes protocol = new ProtocolBytes();
+        protocol.AddString("GetResoure");
+        NetMgr.srvConn.Send(protocol, GetResoureBack);
+    }
+    public void GetResoureBack(ProtocolBase protocol)
+    {
+        ProtocolBytes proto = (ProtocolBytes)protocol;
+        int start = 0;
+        string protoName = proto.GetString(start, ref start);
+        int resourecount = proto.GetInt(start, ref start);
+        for(int i = 0; i < resourecount; i++)
+        {
+            string name = proto.GetString(start, ref start);
+            string ins = proto.GetString(start, ref start);
+            string sort = proto.GetString(start, ref start);
+            byte[] data = proto.GetByte(start, ref start);
+            Recovery(name,ins,sort,data,i);
+        }
+    }
+    //还原
+    private void Recovery(string name,string ins,string sort,byte[] data,int index)
+    {
+        switch (sort)
+        {
+            case "picture":
+                HandlePicture.instance.RecoveryImage(AllPicture, name, ins, data, index);
+                break;
+            case "video":
+                break;
+            case "model":
+                break;
+        }
+    }
+    #endregion
+
+    #region 退出当前房间
+    public void OnLeaveRoomClick()
+    {
+        ProtocolBytes protocol = new ProtocolBytes();
+        protocol.AddString("LeaveRoom");
+        NetMgr.srvConn.Send(protocol, OnLeaveRoomBack);
+    }
+    public void OnLeaveRoomBack(ProtocolBase protocol)
+    {
+        ProtocolBytes proto = (ProtocolBytes)protocol;
+        int start = 0;
+        string protoName = proto.GetString(start, ref start);
+        int ret = proto.GetInt(start, ref start);
+        if (ret == 0)
+        {
+            SceneManager.LoadScene("RoomList");
+        }
+    }
+    #endregion
 
     //产生浏览者
     public void GenerateVisit(string id,Vector3 pos,Vector3 rot)

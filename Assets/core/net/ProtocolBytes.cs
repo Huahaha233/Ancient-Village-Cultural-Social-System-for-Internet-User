@@ -96,12 +96,11 @@ public class ProtocolBytes : ProtocolBase
             return null;
         if (bytes.Length < start + sizeof(Int32))
             return null;
-        Int32 strLen = BitConverter.ToInt32(bytes, start);
-        if (bytes.Length < start + sizeof(Int32) + strLen)
+        Int32 byteLen = BitConverter.ToInt32(bytes, start);
+        if (bytes.Length < start + sizeof(Int32) + byteLen)
             return null;
-        byte[] Bt = null;
-        Buffer.BlockCopy(bytes, start + sizeof(Int32), Bt, 0, strLen);//复制
-        end = start + sizeof(Int32) + strLen;
+        byte[] Bt = bytes.Skip(start + sizeof(Int32)).Take(byteLen).ToArray();//读取
+        end = start + sizeof(Int32) + byteLen;
         return Bt;
     }
 

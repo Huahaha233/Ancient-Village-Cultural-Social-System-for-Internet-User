@@ -28,10 +28,7 @@ public class Visiter : MonoBehaviour
         run,
     }
     public static Sports sports = Sports.idle;
-    //生命指示条素材
-    //public Texture2D hpBarBg;
-    //public Texture2D hpBar;
-
+    
     //last 上次的位置信息
     Vector3 lPos;
     Vector3 lRot;
@@ -182,29 +179,11 @@ public class Visiter : MonoBehaviour
     //    }
     //}
     
-    //绘制ID条
-    //public void DrawHp()
-    //{
-    //    //底框
-    //    Rect bgRect = new Rect(30, Screen.height - hpBarBg.height - 15,
-    //                             hpBarBg.width, hpBarBg.height);
-    //    GUI.DrawTexture(bgRect, hpBarBg);
-    //    //指示条
-    //    float width = hp * 102 / maxHp;
-    //    Rect hpRect = new Rect(bgRect.x + 29, bgRect.y + 9, width, hpBar.height);
-    //    GUI.DrawTexture(hpRect, hpBar);
-    //    //文字
-    //    string text = Mathf.Ceil(hp).ToString() + "/" + Mathf.Ceil(maxHp).ToString();
-    //    Rect textRect = new Rect(bgRect.x + 80, bgRect.y -10, 50, 50);
-    //    GUI.Label(textRect, text);
-    //}
-    
     //绘图
     void OnGUI()
     {
         if (ctrlType != CtrlType.player)
             return;
-        //DrawHp();
     }
     
     public void SendUnitInfo()

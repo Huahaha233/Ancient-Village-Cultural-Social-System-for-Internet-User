@@ -361,7 +361,7 @@ MonoBehaviour:
   rawValue: 1
   direction: 2
   mInverted: 0
-  mSize: 0.9875
+  mSize: 0.99
   mScroll: 0
   mDir: 2
 --- !u!65 &140005255
@@ -2709,8 +2709,8 @@ BoxCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 50, y: 879.17505, z: 0}
-  m_Center: {x: 1, y: 4.412491, z: 0}
+  m_Size: {x: 50, y: 881.33997, z: 0}
+  m_Center: {x: 1, y: 3.3300018, z: 0}
 --- !u!1 &1038724176
 GameObject:
   m_ObjectHideFlags: 0
