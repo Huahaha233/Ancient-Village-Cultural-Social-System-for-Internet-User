@@ -25,7 +25,7 @@ c7dd12c15208b0447e101f80038706df UnityEngine.Timeline.dll:UnityEngine.Timeline.A
 0ddb2c46096a1e59e0dce07886ce4769 UnityEngine.Timeline.dll:UnityEngine.Timeline.PlayableTrack
 64f3a13c1277a7f1324321d93d0ec13b UnityEngine.Timeline.dll:UnityEngine.Timeline.TimelineAsset
 a099e8b86934c095383dca6e886eb82e Assembly-CSharp.dll:.UIPanel
-c9425e99a1f73586389cd1c5f3cf04a7 Assembly-CSharp.dll:.MultiBattle
+05ae639f305013ed725e55e2cb3e1980 Assembly-CSharp.dll:.MultiBattle
 a95e9a91c101f89e22069723e49a3204 Assembly-CSharp.dll:.AvatarLODSystem
 e233d1c5f4779b563724f49ce957b012 Assembly-CSharp-firstpass.dll:UnityStandardAssets.Characters.ThirdPerson.AICharacterControl
 5f9ff1002f1ae42f8574a1fa3432548d Assembly-CSharp-firstpass.dll:UnityStandardAssets.Characters.FirstPerson.FirstPersonController
@@ -254,7 +254,7 @@ c31ff9acb65f7a15b5c6fd77c3314d83 Vuforia.UnityExtensions.dll:Vuforia.WireframeBe
 81d6a421cbac2031cd5e35b10c8ac717 Assembly-CSharp-firstpass.dll:UnityStandardAssets.Utility.ActivateTrigger
 b8f92854c1da995acd58f8ce0b1d8d9d Assembly-CSharp.dll:.TextureSwapper
 2352786f5c558efe5c36ba49f20d278c Assembly-CSharp.dll:.UICenterOnChild
-ebb4347c5090a58f1396d1cf58bc3814 Assembly-CSharp.dll:.RoomManage
+488ab528f48044cbcd553ce45b625f09 Assembly-CSharp.dll:.RoomManage
 60e3a31993bab65e1efb2350a900d178 Assembly-CSharp-firstpass.dll:UnityStandardAssets.CrossPlatformInput.InputAxisScrollbar
 8e69177564a330aab983f4cb1342c1a6 Assembly-CSharp.dll:.UIRoot
 f504a0c829408621a7374bff75953297 Assembly-CSharp.dll:.UISavedOption
@@ -393,7 +393,7 @@ e04611b8715e6833d2bd7010fc6be10b Unity.TextMeshPro.dll:TMPro.TMP_StyleSheet
 b521a0ab1386bfdccf6c661a36f25a35 Assembly-CSharp.dll:.UIKeyBinding
 04724386bbb919bb6e624a7f2e5c9fb8 Assembly-CSharp.dll:.SkinColors
 486cd95c82d8305219c352c06b776e1f Assembly-CSharp.dll:.LanguageSelection
-25fdcf4544359909cbcce4828847feba Assembly-CSharp.dll:.ControlVisiter
+7c7f0a3149a10426467450f921944aa3 Assembly-CSharp.dll:.ControlVisiter
 0f3062ad8a24023c5eaba6fc9d304f15 Assembly-CSharp.dll:.UIDragCamera
 56c89c11e46226dc4f0e337aa933d2ba Assembly-CSharp.dll:.UISlider
 2f9af06a78208a67db480e9bfed4a076 Unity.TextMeshPro.dll:TMPro.TextMeshPro

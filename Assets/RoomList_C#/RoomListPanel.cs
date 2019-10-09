@@ -4,6 +4,7 @@ using UnityEngine.UI;
 using UnityEditor;
 using NGUI;
 using UnityEngine.SceneManagement;
+using UnityEngine.Networking;
 
 public class RoomListPanel : MonoBehaviour
 {
@@ -269,4 +270,6 @@ public class RoomListPanel : MonoBehaviour
         }
     }
     #endregion
+   
+    
 }

@@ -93,7 +93,7 @@
     <Compile Include="Assets\Login_C#\NGUIMove.cs" />
     <Compile Include="Assets\Login_C#\UIMove.cs" />
     <Compile Include="Assets\Login_C#\VerificationCode.cs" />
-    <Compile Include="Assets\ManageRoom_C#\HandlePicture.cs" />
+    <Compile Include="Assets\ManageRoom_C#\HandleData.cs" />
     <Compile Include="Assets\ManageRoom_C#\RoomManage.cs" />
     <Compile Include="Assets\NGUI\Examples\Scripts\InventorySystem\Game\EquipItems.cs" />
     <Compile Include="Assets\NGUI\Examples\Scripts\InventorySystem\Game\EquipRandomItem.cs" />
@@ -496,6 +496,9 @@
     </Reference>
     <Reference Include="System.Drawing">
       <HintPath>F:/Unity_Graduation Project/Ancient-Village-Cultural-Social-System-for-Internet-User/Assets/System.Drawing.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Windows.Forms">
+      <HintPath>F:/Unity_Graduation Project/Ancient-Village-Cultural-Social-System-for-Internet-User/Assets/Plugins/System.Windows.Forms.dll</HintPath>
     </Reference>
     <Reference Include="UnityEngine.Analytics">
       <HintPath>C:/Users/相较于/AppData/Local/Unity/cache/packages/packages.unity.com/com.unity.analytics@2.0.16/UnityEngine.Analytics.dll</HintPath>

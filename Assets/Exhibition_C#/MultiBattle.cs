@@ -19,6 +19,7 @@ public class MultiBattle : MonoBehaviour
     public GameObject AllModel;
     //战场中的所有用户
     public Dictionary<string, Visiter> list = new Dictionary<string, Visiter>();
+    HandleData handledata = new HandleData();
     // Use this for initialization
     void Start()
     {
@@ -109,8 +110,8 @@ public class MultiBattle : MonoBehaviour
             string name = proto.GetString(start, ref start);
             string ins = proto.GetString(start, ref start);
             string sort = proto.GetString(start, ref start);
-            byte[] data = proto.GetByte(start, ref start);
-            Recovery(name,ins,sort,data,i);
+            string adress = proto.GetString(start, ref start);
+            handledata.DownLoad(Application.persistentDataPath,adress);
         }
     }
     //还原
@@ -119,7 +120,6 @@ public class MultiBattle : MonoBehaviour
         switch (sort)
         {
             case "picture":
-                HandlePicture.instance.RecoveryImage(AllPicture, name, ins, data, index);
                 break;
             case "video":
                 break;
