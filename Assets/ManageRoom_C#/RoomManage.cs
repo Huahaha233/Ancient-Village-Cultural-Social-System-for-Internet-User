@@ -1,5 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using System.IO;
+using System.Windows.Forms;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
@@ -144,7 +146,7 @@ public class RoomManage : MonoBehaviour {
         protocol.AddString("DeleteResoure");
         //传入房间名、资源、类型的名称
         protocol.AddString(RoomName.transform.GetChild(0).GetComponent<UILabel>().text);//房间名称
-        protocol.AddString(buttonself.transform.parent.GetComponent<UILabel>().text);//资源名称
+        protocol.AddString(buttonself.transform.parent.GetChild(0).GetComponent<UILabel>().text);//资源名称
         protocol.AddString(buttonself.transform.parent.GetChild(1).GetComponent<UILabel>().text);//属性
         NetMgr.srvConn.Send(protocol, OnDeleteResoureBack);
     }
@@ -158,10 +160,12 @@ public class RoomManage : MonoBehaviour {
         string protoName = proto.GetString(start, ref start);
         string roomname= proto.GetString(start, ref start);
         string resourename= proto.GetString(start, ref start);
+        string adress= proto.GetString(start, ref start);
         int Ret = proto.GetInt(start, ref start);
         if (Ret == 0)
         {
             GameMgr.instance.resourelist.Remove(GameMgr.instance.resourelist[roomname][resourename]);
+            File.Delete(UnityEngine.Application.persistentDataPath + adress);//删除存储在本地的文件
             OnGetResoureList();
             Debug.Log("删除成功!");
         } 
@@ -169,10 +173,18 @@ public class RoomManage : MonoBehaviour {
     }
     #endregion
 
-    //选择文件按钮
+    ////打开文件夹，选择发送的文件
     public void ChooseFileClick()
     {
-        path= handledata.OpenFlie();
+        path = "";
+        OpenFileDialog dlg = new OpenFileDialog();
+        dlg.InitialDirectory = "C:\\";
+        dlg.Filter = "图片(*.png;*.jpg;*.bmp;*.jpeg)|*.png;*.jpg;*.bmp;*.jpeg|视频(*.mp3;*.mp4)|*.mp3;*.mp4|模型(*.obj)|*.obj";
+        if (dlg.ShowDialog() == DialogResult.OK)
+        {
+            path = dlg.FileName;
+            Debug.Log("获取文件路径成功：" + path);
+        }
         UpdateBackground.transform.GetChild(1).GetChild(1).GetChild(0).GetComponent<UILabel>().text = path;
     }
 
@@ -190,7 +202,6 @@ public class RoomManage : MonoBehaviour {
         protocol.AddString(UpdateBackground.transform.GetChild(3).GetChild(1).GetComponent<UILabel>().text);//资源介绍
         protocol.AddString(handledata.JudgeSort(path));//类别
         protocol.AddString(handledata.Upload(path,roomname+"-"+resourename));//资源路径
-        //protocol.AddByte(HandlePicture.ChangeByte(path));//数据
         NetMgr.srvConn.Send(protocol, OnAddResoureBack);
     }
     public void OnAddResoureBack(ProtocolBase protocol)

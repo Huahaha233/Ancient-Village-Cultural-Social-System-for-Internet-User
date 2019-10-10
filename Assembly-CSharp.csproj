@@ -86,6 +86,7 @@
     <Compile Include="Assets\Exhibition_C#\ControlVisiter.cs" />
     <Compile Include="Assets\Exhibition_C#\GameMgr.cs" />
     <Compile Include="Assets\Exhibition_C#\MultiBattle.cs" />
+    <Compile Include="Assets\Exhibition_C#\RecoveryData.cs" />
     <Compile Include="Assets\Exhibition_C#\Visiter.cs" />
     <Compile Include="Assets\HUD Text\HUDText.cs" />
     <Compile Include="Assets\HUD Text\UIFollowTarget.cs" />
@@ -94,6 +95,7 @@
     <Compile Include="Assets\Login_C#\UIMove.cs" />
     <Compile Include="Assets\Login_C#\VerificationCode.cs" />
     <Compile Include="Assets\ManageRoom_C#\HandleData.cs" />
+    <Compile Include="Assets\ManageRoom_C#\Resoure.cs" />
     <Compile Include="Assets\ManageRoom_C#\RoomManage.cs" />
     <Compile Include="Assets\NGUI\Examples\Scripts\InventorySystem\Game\EquipItems.cs" />
     <Compile Include="Assets\NGUI\Examples\Scripts\InventorySystem\Game\EquipRandomItem.cs" />

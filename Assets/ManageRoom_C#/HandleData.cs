@@ -1,40 +1,36 @@
 ﻿using System;
-using System.Collections;
-using System.Collections.Generic;
 using System.IO;
 using System.Net;
 using System.Windows.Forms;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
-public class HandleData{
-
+public class HandleData:MonoBehaviour{
+    private int downcount;//下载数量
     #region 下载
     //sort为类型、resourename为资源名称、filename为资源下载路径
-    public void DownLoad(string filename, string resoureadress)
+    public void DownLoad()
     {
-        //定义_webClient对象
-        WebClient _webClient = new WebClient();
-        //使用默认的凭据——读取的时候，只需默认凭据就可以
-        _webClient.Credentials = CredentialCache.DefaultCredentials;
-        //下载的链接地址（文件服务器）
-        Uri _uri = new Uri(@"http://121.199.29.232:7789/data/"+resoureadress);
-        //注册下载进度事件通知
-        _webClient.DownloadProgressChanged += _webClient_DownloadProgressChanged;
-        //注册下载完成事件通知             _webClient.DownloadFileCompleted += _webClient_DownloadFileCompleted;
-        //异步下载到D盘
-        _webClient.DownloadFile(_uri, filename+ "/data/" + resoureadress);
-        //_webClient.Dispose();
+        downcount = GameMgr.instance.resoures.Count;
+        foreach (Resoure resoure in GameMgr.instance.resoures)
+        {
+            //定义_webClient对象
+            WebClient _webClient = new WebClient();
+            //使用默认的凭据——读取的时候，只需默认凭据就可以
+            _webClient.Credentials = CredentialCache.DefaultCredentials;
+            //下载的链接地址（文件服务器）
+            Uri _uri = new Uri(@"http://121.199.29.232:7789"+resoure.adress);
+            _webClient.DownloadFileCompleted += _webClient_DownloadFileCompleted;
+            //异步下载到D盘
+            _webClient.DownloadFileAsync(_uri, UnityEngine.Application.persistentDataPath + resoure.adress);
+            //_webClient.Dispose();
+        }
     }
- 
     //下载完成事件处理程序
     private void _webClient_DownloadFileCompleted(object sender, System.ComponentModel.AsyncCompletedEventArgs e)
     {
-        Debug.Log("Download Completed...");
-    }
-    //下载进度事件处理程序
-    private void _webClient_DownloadProgressChanged(object sender, DownloadProgressChangedEventArgs e)
-    {
-        Debug.Log(e.BytesReceived/e.TotalBytesToReceive);
+        downcount--;//有一资源下载结束
+        if(downcount==0) SceneManager.LoadScene("Exhibition");//进入到展厅
     }
     #endregion
     #region 上传
@@ -56,22 +52,10 @@ public class HandleData{
         postStream.Close();
         fs.Close();
         myWebClient.Dispose();
-        return sort + "/" + resourename+suffix;//返回存储位置与名称
+        return "/data/"+sort + "/" + resourename+suffix;//返回存储位置与名称
     }
     #endregion
-    //打开文件夹，选择发送的文件
-    public string OpenFlie()
-    {
-        string path = "";
-        OpenFileDialog dlg = new OpenFileDialog();
-        dlg.Filter = "文件(*.png;*.jpg;*.bmp;*.jpeg;*.mp3;*.mp4;*.obj)|*.png;*.jpg;*.bmp;*.jpeg;*.mp3;*.mp4;*.obj";
-        if (dlg.ShowDialog() == DialogResult.OK)
-        {
-            path = dlg.FileName;
-            Debug.Log("获取文件路径成功：" + path);
-        }
-        return path;
-    }
+    
     //判断文件类型
     public string JudgeSort(string path)
     {

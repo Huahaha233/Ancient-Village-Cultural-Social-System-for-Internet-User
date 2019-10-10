@@ -5,6 +5,7 @@ using UnityEditor;
 using NGUI;
 using UnityEngine.SceneManagement;
 using UnityEngine.Networking;
+using System.IO;
 
 public class RoomListPanel : MonoBehaviour
 {
@@ -15,6 +16,7 @@ public class RoomListPanel : MonoBehaviour
     public GameObject Ins;//简介框
     public GameObject WriteInsPlane;//点击新建房间按钮后，弹出填写房间基本信息UI
     private string RoomName;//点击选择的房间名称
+    HandleData handledata = new HandleData();
     void Start()
     {
         GetAchieve();
@@ -161,7 +163,7 @@ public class RoomListPanel : MonoBehaviour
         //处理
         if (ret == 0)
         {
-            SceneManager.LoadScene("Exhibition");//进入到展厅
+            GetResoureClick();//下载资源
         }
         else
         {
@@ -270,6 +272,62 @@ public class RoomListPanel : MonoBehaviour
         }
     }
     #endregion
-   
-    
+
+    #region 下载房间中的资源
+    public void GetResoureClick()
+    {
+        DelectAll();//删除临时文件
+        ProtocolBytes protocol = new ProtocolBytes();
+        protocol.AddString("GetResoure");
+        NetMgr.srvConn.Send(protocol, GetResoureBack);
+    }
+    public void GetResoureBack(ProtocolBase protocol)
+    {
+        GameMgr.instance.resoures.Clear();//清空
+        ProtocolBytes proto = (ProtocolBytes)protocol;
+        int start = 0;
+        string protoName = proto.GetString(start, ref start);
+        int resourecount = proto.GetInt(start, ref start);
+        for (int i = 0; i < resourecount; i++)
+        {
+            Resoure resoure = new Resoure();
+            resoure.name= proto.GetString(start, ref start);
+            resoure.ins = proto.GetString(start, ref start);
+            resoure.sort = proto.GetString(start, ref start);
+            resoure.adress = proto.GetString(start, ref start);
+            GameMgr.instance.resoures.Add(resoure);
+        }
+        handledata.DownLoad();
+    }
+    #endregion
+
+    #region 删除某文件夹下的所有文件
+public void DelectAll()
+    {
+        DelectFile(Application.persistentDataPath + "/data/picture");
+        DelectFile(Application.persistentDataPath + "/data/video");
+        DelectFile(Application.persistentDataPath + "/data/model");
+    }
+    private void DelectFile(string srcPath)
+    {
+        try
+        {
+            DirectoryInfo dir = new DirectoryInfo(srcPath);
+            FileSystemInfo[] fileinfo = dir.GetFileSystemInfos();  //返回目录中所有文件和子目录
+            foreach (FileSystemInfo i in fileinfo)
+            {
+                if (i is DirectoryInfo)//判断是否文件夹
+                {
+                    DirectoryInfo subdir = new DirectoryInfo(i.FullName);
+                    subdir.Delete(true);//删除子目录和文件
+                }
+                else
+                {
+                    File.Delete(i.FullName);//删除指定文件
+                }
+            }
+        }
+        catch { }
+    }
+    #endregion
 }

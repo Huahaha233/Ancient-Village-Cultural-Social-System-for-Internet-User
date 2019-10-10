@@ -19,8 +19,7 @@ public class MultiBattle : MonoBehaviour
     public GameObject AllModel;
     //战场中的所有用户
     public Dictionary<string, Visiter> list = new Dictionary<string, Visiter>();
-    HandleData handledata = new HandleData();
-    // Use this for initialization
+    RecoveryData recoverydata = new RecoveryData();
     void Start()
     {
         //单例模式
@@ -29,7 +28,7 @@ public class MultiBattle : MonoBehaviour
         //开启监听
         NetMgr.srvConn.msgDist.AddListener("AddPlayer", RecvAddPlayer);//场景增加人员
         NetMgr.srvConn.msgDist.AddListener("DelPlayer", RecvDelPlayer);//场景删除人员 
-        GetResoureClick();
+        Recovery();
     }
    
     #region 在开始时向服务器发送请求获取房间内其他用户的位置信息
@@ -64,7 +63,7 @@ public class MultiBattle : MonoBehaviour
     }
     #endregion
 
-    #region 接受到新加入房价的人的协议
+    #region 接受到新加入房间的人的协议
     public void RecvAddPlayer(ProtocolBase protocol)
     {
         ProtocolBytes proto = (ProtocolBytes)protocol;
@@ -92,40 +91,26 @@ public class MultiBattle : MonoBehaviour
     }
     #endregion
 
-    #region 获取房间中的数据
-    public void GetResoureClick()
-    {
-        ProtocolBytes protocol = new ProtocolBytes();
-        protocol.AddString("GetResoure");
-        NetMgr.srvConn.Send(protocol, GetResoureBack);
-    }
-    public void GetResoureBack(ProtocolBase protocol)
-    {
-        ProtocolBytes proto = (ProtocolBytes)protocol;
-        int start = 0;
-        string protoName = proto.GetString(start, ref start);
-        int resourecount = proto.GetInt(start, ref start);
-        for(int i = 0; i < resourecount; i++)
-        {
-            string name = proto.GetString(start, ref start);
-            string ins = proto.GetString(start, ref start);
-            string sort = proto.GetString(start, ref start);
-            string adress = proto.GetString(start, ref start);
-            handledata.DownLoad(Application.persistentDataPath,adress);
-        }
-    }
+    #region 还原房间中的数据
     //还原
-    private void Recovery(string name,string ins,string sort,byte[] data,int index)
+    private void Recovery()
     {
-        switch (sort)
+        foreach(Resoure resoure in GameMgr.instance.resoures)
         {
-            case "picture":
-                break;
-            case "video":
-                break;
-            case "model":
-                break;
+            int index = 0;
+            switch (resoure.sort)
+            {
+                case "picture":
+                    recoverydata.RecoveryPicture(AllPicture,resoure,index);
+                    break;
+                case "video":
+                    break;
+                case "model":
+                    break;
+            }
+            index++;
         }
+        
     }
     #endregion
 
@@ -144,6 +129,7 @@ public class MultiBattle : MonoBehaviour
         int ret = proto.GetInt(start, ref start);
         if (ret == 0)
         {
+            //删除存储在本地的所有临时文件
             SceneManager.LoadScene("RoomList");
         }
     }

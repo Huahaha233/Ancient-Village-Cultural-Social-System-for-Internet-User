@@ -4,6 +4,7 @@ using UnityEngine;
 using NGUI;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
+using System.IO;
 
 public class GetUIButton : MonoBehaviour {
     #region 获取UI的值
@@ -37,9 +38,22 @@ public class GetUIButton : MonoBehaviour {
     VerificationCode verificationCode = new VerificationCode();
     void Start()
     {
+        CreatFolder();
         //在开始界面，当用户点击“登录”“游客登录”按钮时，控制NGUI按钮组件移动，并激活登录UI
         PlayContent("Start", 0);//开始界面时的NGUI的移动
         SetCode();
+    }
+    //检验Application.persistentDataPath下是否存在data文件夹
+    //如果不存在则创建文件夹
+    private void CreatFolder()
+    {
+        if (!Directory.Exists(Application.persistentDataPath+"/data"))//判断data文件夹是否存在 
+        {
+            Directory.CreateDirectory(Application.persistentDataPath + "/data");//不存在data则创建文件夹 
+            Directory.CreateDirectory(Application.persistentDataPath + "/data/picture");
+            Directory.CreateDirectory(Application.persistentDataPath + "/data/video");
+            Directory.CreateDirectory(Application.persistentDataPath + "/data/model");
+        }
     }
     #region 验证码
     public void SetCode()
