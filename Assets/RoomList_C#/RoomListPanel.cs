@@ -16,13 +16,22 @@ public class RoomListPanel : MonoBehaviour
     public GameObject Ins;//简介框
     public GameObject WriteInsPlane;//点击新建房间按钮后，弹出填写房间基本信息UI
     private string RoomName;//点击选择的房间名称
-    HandleData handledata = new HandleData();
+    private HandleData handledata = new HandleData();
     void Start()
     {
         GetAchieve();
         GetRoomList();
     }
-    
+    void Update()
+    {
+        //判断资源是否下载完成
+        if (handledata.DownCount == 0)
+        {
+            SceneManager.LoadSceneAsync("Exhibition");//进入到展厅
+            handledata.DownCount--;
+        }
+        
+    }
     #region 收到用户的个人信息
     //发送GetAchieve协议
     public void GetAchieve()
@@ -295,7 +304,7 @@ public class RoomListPanel : MonoBehaviour
             resoure.ins = proto.GetString(start, ref start);
             resoure.sort = proto.GetString(start, ref start);
             resoure.adress = proto.GetString(start, ref start);
-            GameMgr.instance.resoures.Add(resoure);
+            GameMgr.instance.resoures.Add(resoure.name,resoure);
         }
         handledata.DownLoad();
     }

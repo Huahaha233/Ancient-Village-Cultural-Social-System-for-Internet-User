@@ -7,7 +7,7 @@ public class RecoveryData{
     public void RecoveryPicture(GameObject AllPicture,Resoure resoure,int index)
     {
         WWW w= new WWW(Application.persistentDataPath+resoure.adress);
-        AllPicture.transform.GetChild(index).GetChild(0).GetComponent<Material>().mainTexture=w.texture;
+        AllPicture.transform.GetChild(index).GetChild(0).GetComponent<Renderer>().material.mainTexture = w.texture;
         AllPicture.transform.GetChild(index).GetChild(1).GetComponent<UILabel>().text=resoure.name+"\n"+resoure.ins;
     }
     public void RecoveryVideo(GameMgr AllVideo, Resoure resoure, int index)

@@ -1,7 +1,6 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using System.IO;
-using System.Windows.Forms;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
@@ -165,7 +164,6 @@ public class RoomManage : MonoBehaviour {
         if (Ret == 0)
         {
             GameMgr.instance.resourelist.Remove(GameMgr.instance.resourelist[roomname][resourename]);
-            File.Delete(UnityEngine.Application.persistentDataPath + adress);//删除存储在本地的文件
             OnGetResoureList();
             Debug.Log("删除成功!");
         } 
@@ -176,13 +174,22 @@ public class RoomManage : MonoBehaviour {
     ////打开文件夹，选择发送的文件
     public void ChooseFileClick()
     {
-        path = "";
-        OpenFileDialog dlg = new OpenFileDialog();
-        dlg.InitialDirectory = "C:\\";
-        dlg.Filter = "图片(*.png;*.jpg;*.bmp;*.jpeg)|*.png;*.jpg;*.bmp;*.jpeg|视频(*.mp3;*.mp4)|*.mp3;*.mp4|模型(*.obj)|*.obj";
-        if (dlg.ShowDialog() == DialogResult.OK)
+        OpenFileDlg pth = new OpenFileDlg();
+        pth.structSize = System.Runtime.InteropServices.Marshal.SizeOf(pth);
+        pth.filter = "图片(*.png;*.jpg;*.bmp;*.jpeg)|*.png;*.jpg;*.bmp;*.jpeg|视频(*.mp3;*.mp4)|*.mp3;*.mp4|模型(*.obj)|*.obj";
+        pth.file = new string(new char[256]);
+        pth.maxFile = pth.file.Length;
+        pth.fileTitle = new string(new char[64]);
+        pth.maxFileTitle = pth.fileTitle.Length;
+        pth.initialDir = Application.dataPath;  // default path  
+        pth.title = "选择文件";
+        pth.defExt = "图片(*.png;*.jpg;*.bmp;*.jpeg)|*.png;*.jpg;*.bmp;*.jpeg|视频(*.mp3;*.mp4)|*.mp3;*.mp4|模型(*.obj)|*.obj";
+        pth.flags = 0x00080000 | 0x00001000 | 0x00000800 | 0x00000200 | 0x00000008;
+        //0x00080000   是否使用新版文件选择窗口
+        //0x00000200   是否可以多选文件
+        if (OpenFileDialog.GetOpenFileName(pth))
         {
-            path = dlg.FileName;
+            path = pth.file;//选择的文件路径;  
             Debug.Log("获取文件路径成功：" + path);
         }
         UpdateBackground.transform.GetChild(1).GetChild(1).GetChild(0).GetComponent<UILabel>().text = path;

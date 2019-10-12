@@ -85,6 +85,7 @@
     <Compile Include="Assets\Exhibition_C#\ControlOther.cs" />
     <Compile Include="Assets\Exhibition_C#\ControlVisiter.cs" />
     <Compile Include="Assets\Exhibition_C#\GameMgr.cs" />
+    <Compile Include="Assets\Exhibition_C#\HandleVideo.cs" />
     <Compile Include="Assets\Exhibition_C#\MultiBattle.cs" />
     <Compile Include="Assets\Exhibition_C#\RecoveryData.cs" />
     <Compile Include="Assets\Exhibition_C#\Visiter.cs" />
@@ -94,6 +95,7 @@
     <Compile Include="Assets\Login_C#\NGUIMove.cs" />
     <Compile Include="Assets\Login_C#\UIMove.cs" />
     <Compile Include="Assets\Login_C#\VerificationCode.cs" />
+    <Compile Include="Assets\ManageRoom_C#\FileDlg.cs" />
     <Compile Include="Assets\ManageRoom_C#\HandleData.cs" />
     <Compile Include="Assets\ManageRoom_C#\Resoure.cs" />
     <Compile Include="Assets\ManageRoom_C#\RoomManage.cs" />
@@ -497,7 +499,7 @@
       <HintPath>F:/Unity2018/Editor/Data/UnityExtensions/Unity/UnitySpatialTracking/RuntimeEditor/UnityEngine.SpatialTracking.dll</HintPath>
     </Reference>
     <Reference Include="System.Drawing">
-      <HintPath>F:/Unity_Graduation Project/Ancient-Village-Cultural-Social-System-for-Internet-User/Assets/System.Drawing.dll</HintPath>
+      <HintPath>F:/Unity_Graduation Project/Ancient-Village-Cultural-Social-System-for-Internet-User/Assets/Plugins/System.Drawing.dll</HintPath>
     </Reference>
     <Reference Include="System.Windows.Forms">
       <HintPath>F:/Unity_Graduation Project/Ancient-Village-Cultural-Social-System-for-Internet-User/Assets/Plugins/System.Windows.Forms.dll</HintPath>

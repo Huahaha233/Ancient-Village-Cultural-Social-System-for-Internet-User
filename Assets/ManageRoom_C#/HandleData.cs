@@ -1,18 +1,21 @@
 ﻿using System;
 using System.IO;
 using System.Net;
-using System.Windows.Forms;
 using UnityEngine;
 using UnityEngine.SceneManagement;
-
-public class HandleData:MonoBehaviour{
-    private int downcount;//下载数量
+public class HandleData{
+    private int downcount=-1;//下载资源数量
+    public int DownCount
+    {
+        get {return downcount; }
+        set { downcount = value;}
+    }
     #region 下载
     //sort为类型、resourename为资源名称、filename为资源下载路径
     public void DownLoad()
     {
         downcount = GameMgr.instance.resoures.Count;
-        foreach (Resoure resoure in GameMgr.instance.resoures)
+        foreach (Resoure resoure in GameMgr.instance.resoures.Values)
         {
             //定义_webClient对象
             WebClient _webClient = new WebClient();
@@ -22,7 +25,7 @@ public class HandleData:MonoBehaviour{
             Uri _uri = new Uri(@"http://121.199.29.232:7789"+resoure.adress);
             _webClient.DownloadFileCompleted += _webClient_DownloadFileCompleted;
             //异步下载到D盘
-            _webClient.DownloadFileAsync(_uri, UnityEngine.Application.persistentDataPath + resoure.adress);
+            _webClient.DownloadFileAsync(_uri, Application.persistentDataPath + resoure.adress);
             //_webClient.Dispose();
         }
     }
@@ -30,7 +33,6 @@ public class HandleData:MonoBehaviour{
     private void _webClient_DownloadFileCompleted(object sender, System.ComponentModel.AsyncCompletedEventArgs e)
     {
         downcount--;//有一资源下载结束
-        if(downcount==0) SceneManager.LoadScene("Exhibition");//进入到展厅
     }
     #endregion
     #region 上传
@@ -55,7 +57,6 @@ public class HandleData:MonoBehaviour{
         return "/data/"+sort + "/" + resourename+suffix;//返回存储位置与名称
     }
     #endregion
-    
     //判断文件类型
     public string JudgeSort(string path)
     {

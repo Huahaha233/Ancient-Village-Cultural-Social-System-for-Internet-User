@@ -53,9 +53,230 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   material: {fileID: 2100000, guid: 8582d80af484cd849a062b94a424e8f8, type: 2}
   mSprites:
+  - name: Alert-Icon-Small
+    x: 4048
+    y: 2198
+    width: 43
+    height: 43
+    borderLeft: 0
+    borderRight: 0
+    borderTop: 0
+    borderBottom: 0
+    paddingLeft: 1
+    paddingRight: 1
+    paddingTop: 1
+    paddingBottom: 1
+  - name: Chat-Icon-Small
+    x: 4048
+    y: 2156
+    width: 44
+    height: 41
+    borderLeft: 0
+    borderRight: 0
+    borderTop: 0
+    borderBottom: 0
+    paddingLeft: 3
+    paddingRight: 3
+    paddingTop: 3
+    paddingBottom: 4
+  - name: Close-Icon-Small
+    x: 2835
+    y: 2008
+    width: 27
+    height: 25
+    borderLeft: 0
+    borderRight: 0
+    borderTop: 0
+    borderBottom: 0
+    paddingLeft: 4
+    paddingRight: 4
+    paddingTop: 5
+    paddingBottom: 5
+  - name: Green-Button
+    x: 3702
+    y: 2601
+    width: 348
+    height: 100
+    borderLeft: 0
+    borderRight: 0
+    borderTop: 0
+    borderBottom: 0
+    paddingLeft: 0
+    paddingRight: 0
+    paddingTop: 0
+    paddingBottom: 0
+  - name: LightBlue-Popup-Top
+    x: 2804
+    y: 1895
+    width: 800
+    height: 106
+    borderLeft: 0
+    borderRight: 0
+    borderTop: 0
+    borderBottom: 0
+    paddingLeft: 0
+    paddingRight: 0
+    paddingTop: 0
+    paddingBottom: 0
+  - name: Light-Skin-Background
+    x: 1876
+    y: 2803
+    width: 2048
+    height: 1293
+    borderLeft: 0
+    borderRight: 0
+    borderTop: 0
+    borderBottom: 0
+    paddingLeft: 0
+    paddingRight: 0
+    paddingTop: 0
+    paddingBottom: 0
+  - name: LightSkinTextfield-Border
+    x: 1903
+    y: 1897
+    width: 900
+    height: 136
+    borderLeft: 0
+    borderRight: 0
+    borderTop: 0
+    borderBottom: 0
+    paddingLeft: 0
+    paddingRight: 0
+    paddingTop: 0
+    paddingBottom: 1
+  - name: Lock-Icon-Small
+    x: 4061
+    y: 2379
+    width: 32
+    height: 38
+    borderLeft: 0
+    borderRight: 0
+    borderTop: 0
+    borderBottom: 0
+    paddingLeft: 2
+    paddingRight: 2
+    paddingTop: 1
+    paddingBottom: 1
+  - name: Mail-Icon-Small
+    x: 2804
+    y: 2007
+    width: 30
+    height: 26
+    borderLeft: 0
+    borderRight: 0
+    borderTop: 0
+    borderBottom: 0
+    paddingLeft: 3
+    paddingRight: 3
+    paddingTop: 1
+    paddingBottom: 1
+  - name: Multiuser-Icon-Small
+    x: 3702
+    y: 2064
+    width: 54
+    height: 40
+    borderLeft: 0
+    borderRight: 0
+    borderTop: 0
+    borderBottom: 0
+    paddingLeft: 3
+    paddingRight: 3
+    paddingTop: 5
+    paddingBottom: 5
+  - name: Rectangle-Rounded
+    x: 0
+    y: 1639
+    width: 600
+    height: 600
+    borderLeft: 0
+    borderRight: 0
+    borderTop: 0
+    borderBottom: 0
+    paddingLeft: 0
+    paddingRight: 0
+    paddingTop: 0
+    paddingBottom: 0
+  - name: Trash-Icon-Small
+    x: 1824
+    y: 2197
+    width: 38
+    height: 42
+    borderLeft: 0
+    borderRight: 0
+    borderTop: 0
+    borderBottom: 0
+    paddingLeft: 2
+    paddingRight: 2
+    paddingTop: 2
+    paddingBottom: 2
+  - name: User-Icon-Small
+    x: 4048
+    y: 2115
+    width: 40
+    height: 40
+    borderLeft: 0
+    borderRight: 0
+    borderTop: 0
+    borderBottom: 0
+    paddingLeft: 5
+    paddingRight: 5
+    paddingTop: 5
+    paddingBottom: 5
+  - name: User-Plus-Icon-Small
+    x: 1824
+    y: 2164
+    width: 38
+    height: 32
+    borderLeft: 0
+    borderRight: 0
+    borderTop: 0
+    borderBottom: 0
+    paddingLeft: 3
+    paddingRight: 3
+    paddingTop: 1
+    paddingBottom: 1
+  - name: White-Button
+    x: 3702
+    y: 2702
+    width: 348
+    height: 100
+    borderLeft: 0
+    borderRight: 0
+    borderTop: 0
+    borderBottom: 0
+    paddingLeft: 0
+    paddingRight: 0
+    paddingTop: 0
+    paddingBottom: 0
+  - name: White-Button-Outline
+    x: 3605
+    y: 1901
+    width: 348
+    height: 100
+    borderLeft: 0
+    borderRight: 0
+    borderTop: 0
+    borderBottom: 0
+    paddingLeft: 0
+    paddingRight: 0
+    paddingTop: 0
+    paddingBottom: 0
+  - name: White-Popup-Background
+    x: 2901
+    y: 2002
+    width: 800
+    height: 800
+    borderLeft: 0
+    borderRight: 0
+    borderTop: 0
+    borderBottom: 0
+    paddingLeft: 0
+    paddingRight: 0
+    paddingTop: 0
+    paddingBottom: 0
   - name: "\u4E0B\u62C9\u6846"
-    x: 329
-    y: 112
+    x: 3896
+    y: 2035
     width: 164
     height: 79
     borderLeft: 20
@@ -68,7 +289,7 @@ MonoBehaviour:
     paddingBottom: 63
   - name: "\u4E0B\u62C9\u6846\u80CC\u666F"
     x: 0
-    y: 192
+    y: 2240
     width: 1875
     height: 1856
     borderLeft: 0
@@ -80,8 +301,8 @@ MonoBehaviour:
     paddingTop: 0
     paddingBottom: 0
   - name: "\u5237\u65B0"
-    x: 0
-    y: 16
+    x: 3884
+    y: 2242
     width: 176
     height: 175
     borderLeft: 0
@@ -94,7 +315,7 @@ MonoBehaviour:
     paddingBottom: 12
   - name: "\u63D0\u793A"
     x: 1876
-    y: 1280
+    y: 2034
     width: 1024
     height: 768
     borderLeft: 0
@@ -105,9 +326,35 @@ MonoBehaviour:
     paddingRight: 0
     paddingTop: 0
     paddingBottom: 0
+  - name: "\u64AD\u653E"
+    x: 1429
+    y: 2039
+    width: 200
+    height: 200
+    borderLeft: 0
+    borderRight: 0
+    borderTop: 0
+    borderBottom: 0
+    paddingLeft: 0
+    paddingRight: 0
+    paddingTop: 0
+    paddingBottom: 0
+  - name: "\u6682\u505C"
+    x: 3702
+    y: 2249
+    width: 181
+    height: 182
+    borderLeft: 0
+    borderRight: 0
+    borderTop: 0
+    borderBottom: 0
+    paddingLeft: 11
+    paddingRight: 8
+    paddingTop: 7
+    paddingBottom: 11
   - name: "\u80CC\u666F"
-    x: 1876
-    y: 939
+    x: 601
+    y: 1438
     width: 550
     height: 340
     borderLeft: 0
@@ -119,8 +366,8 @@ MonoBehaviour:
     paddingTop: 0
     paddingBottom: 0
   - name: "\u80CC\u666F1"
-    x: 2901
-    y: 1588
+    x: 601
+    y: 1779
     width: 650
     height: 460
     borderLeft: 0
@@ -132,8 +379,8 @@ MonoBehaviour:
     paddingTop: 0
     paddingBottom: 0
   - name: "\u80CC\u666F2"
-    x: 2901
-    y: 1197
+    x: 1252
+    y: 1643
     width: 650
     height: 390
     borderLeft: 0
@@ -145,8 +392,8 @@ MonoBehaviour:
     paddingTop: 0
     paddingBottom: 0
   - name: "\u80CC\u666F3"
-    x: 3552
-    y: 1748
+    x: 0
+    y: 1338
     width: 533
     height: 300
     borderLeft: 0
@@ -157,9 +404,48 @@ MonoBehaviour:
     paddingRight: 0
     paddingTop: 0
     paddingBottom: 0
+  - name: "\u83DC\u5355"
+    x: 3702
+    y: 2432
+    width: 200
+    height: 168
+    borderLeft: 0
+    borderRight: 0
+    borderTop: 0
+    borderBottom: 0
+    paddingLeft: 0
+    paddingRight: 0
+    paddingTop: 16
+    paddingBottom: 16
+  - name: "\u89C6\u9891"
+    x: 3702
+    y: 2105
+    width: 193
+    height: 136
+    borderLeft: 0
+    borderRight: 0
+    borderTop: 0
+    borderBottom: 0
+    paddingLeft: 3
+    paddingRight: 4
+    paddingTop: 32
+    paddingBottom: 32
+  - name: "\u89C6\u98912"
+    x: 1252
+    y: 2081
+    width: 176
+    height: 158
+    borderLeft: 0
+    borderRight: 0
+    borderTop: 0
+    borderBottom: 0
+    paddingLeft: 12
+    paddingRight: 12
+    paddingTop: 21
+    paddingBottom: 21
   - name: "\u8F93\u5165\u6846"
-    x: 177
-    y: 41
+    x: 1252
+    y: 2057
     width: 163
     height: 23
     borderLeft: 0
@@ -171,8 +457,8 @@ MonoBehaviour:
     paddingTop: 0
     paddingBottom: 0
   - name: "\u8FD4\u56DE"
-    x: 177
-    y: 65
+    x: 3896
+    y: 2115
     width: 151
     height: 126
     borderLeft: 0
@@ -184,8 +470,8 @@ MonoBehaviour:
     paddingTop: 37
     paddingBottom: 37
   - name: "\u8FDB\u5165"
-    x: 2427
-    y: 1095
+    x: 1630
+    y: 2055
     width: 193
     height: 184
     borderLeft: 0
@@ -197,8 +483,8 @@ MonoBehaviour:
     paddingTop: 7
     paddingBottom: 9
   - name: "\u9009\u62E9\u6846"
-    x: 2621
-    y: 1097
+    x: 3903
+    y: 2418
     width: 182
     height: 182
     borderLeft: 40
