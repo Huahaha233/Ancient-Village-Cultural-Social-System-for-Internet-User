@@ -23,8 +23,6 @@ public class MultiBattle : MonoBehaviour
     RecoveryData recoverydata = new RecoveryData();
     void Start()
     {
-        //测试
-        test();
         //单例模式
         instance = this;
         StartVisit();
@@ -33,11 +31,7 @@ public class MultiBattle : MonoBehaviour
         NetMgr.srvConn.msgDist.AddListener("DelPlayer", RecvDelPlayer);//场景删除人员 
         Recovery();
     }
-   private void test()
-    {
-        transform.Find("Video").GetComponent<VideoPlayer>().url =@"C:\Users\相较于\Desktop\test\video.mp4";
-
-    }
+   
     #region 在开始时向服务器发送请求获取房间内其他用户的位置信息
     public void StartVisit()
     {
