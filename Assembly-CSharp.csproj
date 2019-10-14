@@ -240,6 +240,54 @@
     <Compile Include="Assets\NGUI\Scripts\UI\UITooltip.cs" />
     <Compile Include="Assets\NGUI\Scripts\UI\UIViewport.cs" />
     <Compile Include="Assets\RoomList_C#\RoomListPanel.cs" />
+    <Compile Include="Assets\TriLib\TriLib\Samples\Scripts\AnimationText.cs" />
+    <Compile Include="Assets\TriLib\TriLib\Samples\Scripts\AssetDownloaderZIP.cs" />
+    <Compile Include="Assets\TriLib\TriLib\Samples\Scripts\AssetLoaderWindow.cs" />
+    <Compile Include="Assets\TriLib\TriLib\Samples\Scripts\CustomIOLoadSample.cs" />
+    <Compile Include="Assets\TriLib\TriLib\Samples\Scripts\DownloadSample.cs" />
+    <Compile Include="Assets\TriLib\TriLib\Samples\Scripts\ErrorDialog.cs" />
+    <Compile Include="Assets\TriLib\TriLib\Samples\Scripts\FileOpenDialog.cs" />
+    <Compile Include="Assets\TriLib\TriLib\Samples\Scripts\FileText.cs" />
+    <Compile Include="Assets\TriLib\TriLib\Samples\Scripts\LoadSample.cs" />
+    <Compile Include="Assets\TriLib\TriLib\Samples\Scripts\LoadSampleAsync.cs" />
+    <Compile Include="Assets\TriLib\TriLib\Samples\Scripts\PersistentDataPathLoadSample.cs" />
+    <Compile Include="Assets\TriLib\TriLib\Samples\Scripts\SimpleRotator.cs" />
+    <Compile Include="Assets\TriLib\TriLib\Samples\Scripts\URIDialog.cs" />
+    <Compile Include="Assets\TriLib\TriLib\Scripts\AssetLoader\AssetAdvancedConfigs.cs" />
+    <Compile Include="Assets\TriLib\TriLib\Scripts\AssetLoader\AssetDownloader.cs" />
+    <Compile Include="Assets\TriLib\TriLib\Scripts\AssetLoader\AssetLoader.cs" />
+    <Compile Include="Assets\TriLib\TriLib\Scripts\AssetLoader\AssetLoaderAsync.cs" />
+    <Compile Include="Assets\TriLib\TriLib\Scripts\AssetLoader\AssetLoaderBase.cs" />
+    <Compile Include="Assets\TriLib\TriLib\Scripts\AssetLoader\AssetLoaderOptions.cs" />
+    <Compile Include="Assets\TriLib\TriLib\Scripts\AssetLoader\AssetLoaderZip.cs" />
+    <Compile Include="Assets\TriLib\TriLib\Scripts\AssetLoader\AssetUnloader.cs" />
+    <Compile Include="Assets\TriLib\TriLib\Scripts\AssetLoader\AssimpConfigs.cs" />
+    <Compile Include="Assets\TriLib\TriLib\Scripts\AssetLoader\AssimpInterop.cs" />
+    <Compile Include="Assets\TriLib\TriLib\Scripts\AssetLoader\InternalData\AnimationChannelData.cs" />
+    <Compile Include="Assets\TriLib\TriLib\Scripts\AssetLoader\InternalData\AnimationCurveData.cs" />
+    <Compile Include="Assets\TriLib\TriLib\Scripts\AssetLoader\InternalData\AnimationData.cs" />
+    <Compile Include="Assets\TriLib\TriLib\Scripts\AssetLoader\InternalData\AssimpMetadata.cs" />
+    <Compile Include="Assets\TriLib\TriLib\Scripts\AssetLoader\InternalData\CameraData.cs" />
+    <Compile Include="Assets\TriLib\TriLib\Scripts\AssetLoader\InternalData\ConcurrentList.cs" />
+    <Compile Include="Assets\TriLib\TriLib\Scripts\AssetLoader\InternalData\EmbeddedTextureData.cs" />
+    <Compile Include="Assets\TriLib\TriLib\Scripts\AssetLoader\InternalData\FileLoadData.cs" />
+    <Compile Include="Assets\TriLib\TriLib\Scripts\AssetLoader\InternalData\MaterialData.cs" />
+    <Compile Include="Assets\TriLib\TriLib\Scripts\AssetLoader\InternalData\MeshData.cs" />
+    <Compile Include="Assets\TriLib\TriLib\Scripts\AssetLoader\InternalData\NodeData.cs" />
+    <Compile Include="Assets\TriLib\TriLib\Scripts\AssetLoader\STBImageInterop.cs" />
+    <Compile Include="Assets\TriLib\TriLib\Scripts\AssetLoader\STBImageLoader.cs" />
+    <Compile Include="Assets\TriLib\TriLib\Scripts\Extensions\CameraExtensions.cs" />
+    <Compile Include="Assets\TriLib\TriLib\Scripts\Extensions\Dispatcher.cs" />
+    <Compile Include="Assets\TriLib\TriLib\Scripts\Extensions\FileUtils.cs" />
+    <Compile Include="Assets\TriLib\TriLib\Scripts\Extensions\MatrixExtensions.cs" />
+    <Compile Include="Assets\TriLib\TriLib\Scripts\Extensions\StreamUtils.cs" />
+    <Compile Include="Assets\TriLib\TriLib\Scripts\Extensions\StringUtils.cs" />
+    <Compile Include="Assets\TriLib\TriLib\Scripts\Extensions\Texture2DUtils.cs" />
+    <Compile Include="Assets\TriLib\TriLib\Scripts\Extensions\ThreadUtils.cs" />
+    <Compile Include="Assets\TriLib\TriLib\Scripts\Extensions\TransformExtensions.cs" />
+    <Compile Include="Assets\TriLib\TriLib\Scripts\Extensions\UWPUtils.cs" />
+    <Compile Include="Assets\TriLib\TriLibExtras\Samples\Scripts\AvatarLoaderSample.cs" />
+    <Compile Include="Assets\TriLib\TriLibExtras\Scripts\AvatarLoader.cs" />
     <None Include="Assets\NGUI\Examples\Shaders\Unlit - Depth Cutout.shader" />
     <None Include="Assets\NGUI\Resources\Shaders\Unlit - Transparent Masked 1.shader" />
     <None Include="Assets\NGUI\Resources\Shaders\Unlit - Text 2.shader" />
@@ -250,6 +298,7 @@
     <None Include="Assets\NGUI\Resources\Shaders\Unlit - Premultiplied Colored (TextureClip).shader" />
     <None Include="Assets\NGUI\Resources\Shaders\Unlit - Transparent Colored (Packed) (TextureClip).shader" />
     <None Include="Assets\NGUI\Resources\Shaders\Unlit - Transparent Colored 2.shader" />
+    <None Include="Assets\TriLib\TriLibExtras\Samples\Models\PutYourCustomModelsHere.txt" />
     <None Include="Assets\NGUI\Examples\Shaders\Unlit - Masked Colored.shader" />
     <None Include="Assets\NGUI\Resources\Shaders\Unlit - Premultiplied Colored 3.shader" />
     <None Include="Assets\NGUI\Examples\Atlases\Wooden\Arimo18.txt" />
@@ -503,6 +552,9 @@
     </Reference>
     <Reference Include="System.Windows.Forms">
       <HintPath>F:/Unity_Graduation Project/Ancient-Village-Cultural-Social-System-for-Internet-User/Assets/Plugins/System.Windows.Forms.dll</HintPath>
+    </Reference>
+    <Reference Include="ICSharpCode.SharpZipLib">
+      <HintPath>F:/Unity_Graduation Project/Ancient-Village-Cultural-Social-System-for-Internet-User/Assets/TriLib/TriLib/Plugins/ICSharpCode.SharpZipLib.dll</HintPath>
     </Reference>
     <Reference Include="UnityEngine.Analytics">
       <HintPath>C:/Users/相较于/AppData/Local/Unity/cache/packages/packages.unity.com/com.unity.analytics@2.0.16/UnityEngine.Analytics.dll</HintPath>

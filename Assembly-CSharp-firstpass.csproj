@@ -331,6 +331,9 @@
     <Reference Include="System.Windows.Forms">
       <HintPath>F:/Unity_Graduation Project/Ancient-Village-Cultural-Social-System-for-Internet-User/Assets/Plugins/System.Windows.Forms.dll</HintPath>
     </Reference>
+    <Reference Include="ICSharpCode.SharpZipLib">
+      <HintPath>F:/Unity_Graduation Project/Ancient-Village-Cultural-Social-System-for-Internet-User/Assets/TriLib/TriLib/Plugins/ICSharpCode.SharpZipLib.dll</HintPath>
+    </Reference>
     <Reference Include="UnityEngine.Analytics">
       <HintPath>C:/Users/相较于/AppData/Local/Unity/cache/packages/packages.unity.com/com.unity.analytics@2.0.16/UnityEngine.Analytics.dll</HintPath>
     </Reference>

@@ -14,8 +14,6 @@ public class MultiBattle : MonoBehaviour
     public GameObject NamePrefab;
     //图片
     public GameObject AllPicture;
-    //视频
-    public GameObject AllVideo;
     //模型
     public GameObject AllModel;
     //战场中的所有用户
@@ -23,6 +21,7 @@ public class MultiBattle : MonoBehaviour
     RecoveryData recoverydata = new RecoveryData();
     void Start()
     {
+        recoverydata.RecoveryModel(AllModel, null, 0);
         //单例模式
         instance = this;
         StartVisit();
@@ -107,6 +106,7 @@ public class MultiBattle : MonoBehaviour
                 case "video":
                     break;
                 case "model":
+                    recoverydata.RecoveryModel(AllModel, resoure, index);
                     break;
             }
             index++;

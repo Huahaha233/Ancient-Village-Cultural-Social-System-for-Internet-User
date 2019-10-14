@@ -16,13 +16,12 @@ public class HandleVideo : MonoBehaviour {
     List<string> videos = new List<string>();//存放视频的名称
     bool ismenu = false;
     bool isplay = false;
-    GameMgr GameMgr = new GameMgr();//测试待会删除
 	// Use this for initialization
 	void Start () {
         content = Menu.transform.GetChild(1).gameObject;
         //test();
         CreatList();
-	}
+    }
 	//private void test()
  //   {
  //       Resoure resoure = new Resoure();
