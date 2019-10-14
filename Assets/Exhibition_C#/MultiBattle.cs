@@ -21,7 +21,6 @@ public class MultiBattle : MonoBehaviour
     RecoveryData recoverydata = new RecoveryData();
     void Start()
     {
-        recoverydata.RecoveryModel(AllModel, null, 0);
         //单例模式
         instance = this;
         StartVisit();

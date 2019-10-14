@@ -6,7 +6,7 @@ namespace TriLib
     {
         interface IAssetLoaderWindow
         {
-            GameObject RootGameObject { get; set; }
+            GameObject RootGameObjectParent { get; set; }
             void LoadInternal(string filename, byte[] fileBytes = null);
         }
         /// <summary>
@@ -60,11 +60,11 @@ namespace TriLib
             /// <summary>
             /// Loaded Game Object reference.
             /// </summary>
-            private GameObject rootGameObject;
-            public GameObject RootGameObject
+            private GameObject rootGameObjectParent;
+            public GameObject RootGameObjectParent
             {
-                get { return rootGameObject; }
-                set { rootGameObject = value; }
+                get { return rootGameObjectParent; }
+                set { rootGameObjectParent = value; }
             }
 
             /// <summary>
@@ -123,7 +123,7 @@ namespace TriLib
                             if (!string.IsNullOrEmpty(filename))
                             {
                                 _rootGameObject = assetLoader.LoadFromFileWithTextures(filename, assetLoaderOptions);
-                                _rootGameObject.transform.parent = rootGameObject.transform;
+                                _rootGameObject.transform.parent = rootGameObjectParent.transform;
                                 Vector3 MyPosition = GetCenter(_rootGameObject.transform.parent.gameObject);//获取父物体包围盒的中心点
                                 Bounds bound = GetBounds(_rootGameObject.transform.parent.gameObject, true);//获取父物体的包围盒
                                 Vector3 Obj_size = bound.size;

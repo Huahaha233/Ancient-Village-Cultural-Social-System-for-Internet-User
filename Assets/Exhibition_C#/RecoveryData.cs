@@ -14,7 +14,8 @@ public class RecoveryData{
     public void RecoveryModel(GameObject AllModel, Resoure resoure, int index)
     {
         IAssetLoaderWindow assetLoaderWindow = new AssetLoaderWindow();
-        assetLoaderWindow.RootGameObject = AllModel.transform.GetChild(index).gameObject;
-        assetLoaderWindow.LoadInternal(@"C:\Users\相较于\Desktop\text\OBJ文件\The Palace Museum.obj", null);
+        assetLoaderWindow.RootGameObjectParent = AllModel.transform.GetChild(index).gameObject;
+        assetLoaderWindow.LoadInternal(Application.persistentDataPath+resoure.adress, null);
+        //assetLoaderWindow.LoadInternal(@"C:\Users\相较于\Desktop\text\OBJ文件\The Palace Museum.obj", null);
     }
 }
