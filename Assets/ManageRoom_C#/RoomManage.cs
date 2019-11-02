@@ -9,12 +9,22 @@ public class RoomManage : MonoBehaviour {
     public GameObject RosourePrefab;//资源单元UI的预制体
     public GameObject RoomName;//显示当前房间名称的UI
     public GameObject UpdateBackground;//添加资源面板
-    private string path="";//文件地址
+    public GameObject Loding;//资源上传等待UI
+    private string path;//文件地址
     //初始化
     HandleData handledata = new HandleData();
     // Use this for initialization
     void Start () {
         OnGetRoomNameList();
+    }
+    void Update()
+    {
+        //判断资源是否上传完成
+        if (handledata.IsUpLoad == true)
+        {
+            Loding.gameObject.SetActive(false);//关闭上传加载资源中UI
+            handledata.IsUpLoad = false;
+        }
     }
     #region 获取房间名称列表；也可用于刷新列表
     public void OnGetRoomNameList()
@@ -174,23 +184,20 @@ public class RoomManage : MonoBehaviour {
     ////打开文件夹，选择发送的文件
     public void ChooseFileClick()
     {
+        path = "";
         OpenFileDlg pth = new OpenFileDlg();
         pth.structSize = System.Runtime.InteropServices.Marshal.SizeOf(pth);
-        pth.filter = "图片(*.png;*.jpg;*.bmp;*.jpeg)|*.png;*.jpg;*.bmp;*.jpeg|视频(*.mp3;*.mp4)|*.mp3;*.mp4|模型(*.obj)|*.obj";
+        pth.filter = "图片(*.png;*.jpg;*.bmp;*.jpeg)\0*.png;*.jpg;*.bmp;*.jpeg\0视频(*.mp3;*.mp4)\0*.mp3;*.mp4\0模型(*.obj)\0*.obj";
         pth.file = new string(new char[256]);
         pth.maxFile = pth.file.Length;
         pth.fileTitle = new string(new char[64]);
         pth.maxFileTitle = pth.fileTitle.Length;
         pth.initialDir = Application.dataPath;  // default path  
         pth.title = "选择文件";
-        pth.defExt = "图片(*.png;*.jpg;*.bmp;*.jpeg)|*.png;*.jpg;*.bmp;*.jpeg|视频(*.mp3;*.mp4)|*.mp3;*.mp4|模型(*.obj)|*.obj";
         pth.flags = 0x00080000 | 0x00001000 | 0x00000800 | 0x00000200 | 0x00000008;
-        //0x00080000   是否使用新版文件选择窗口
-        //0x00000200   是否可以多选文件
         if (OpenFileDialog.GetOpenFileName(pth))
         {
             path = pth.file;//选择的文件路径;  
-            Debug.Log("获取文件路径成功：" + path);
         }
         UpdateBackground.transform.GetChild(1).GetChild(1).GetChild(0).GetComponent<UILabel>().text = path;
     }
@@ -220,6 +227,7 @@ public class RoomManage : MonoBehaviour {
         if (ret == 0)
         {
             //添加成功
+            //Loding.gameObject.SetActive(true);//关闭上传加载资源中UI
             OnGetResoureList();//刷新列表
             UpdatePlaneClose();
         }

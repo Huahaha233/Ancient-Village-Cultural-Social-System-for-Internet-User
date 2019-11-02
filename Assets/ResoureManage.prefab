@@ -172,7 +172,7 @@ MonoBehaviour:
     relative: 1
     absolute: 0
   updateAnchors: 1
-  mColor: {r: 0, g: 0, b: 0, a: 1}
+  mColor: {r: 1, g: 1, b: 1, a: 1}
   mPivot: 3
   mWidth: 829
   mHeight: 40
@@ -183,7 +183,7 @@ MonoBehaviour:
   keepAspectRatio: 0
   aspectRatio: 20.725
   keepCrispWhenShrunk: 1
-  mTrueTypeFont: {fileID: 12800000, guid: 51f49b97a03e48c429d8a221531be18c, type: 3}
+  mTrueTypeFont: {fileID: 12800000, guid: 585e3f2cc1109ac419bad9c2e352f312, type: 3}
   mFont: {fileID: 0}
   mText: 
   mFontSize: 60
@@ -240,7 +240,7 @@ MonoBehaviour:
     relative: 1
     absolute: 0
   updateAnchors: 1
-  mColor: {r: 0, g: 0, b: 0, a: 1}
+  mColor: {r: 1, g: 1, b: 1, a: 1}
   mPivot: 3
   mWidth: 250
   mHeight: 40
@@ -251,7 +251,7 @@ MonoBehaviour:
   keepAspectRatio: 0
   aspectRatio: 6.25
   keepCrispWhenShrunk: 1
-  mTrueTypeFont: {fileID: 12800000, guid: 51f49b97a03e48c429d8a221531be18c, type: 3}
+  mTrueTypeFont: {fileID: 12800000, guid: 585e3f2cc1109ac419bad9c2e352f312, type: 3}
   mFont: {fileID: 0}
   mText: 
   mFontSize: 60
@@ -386,7 +386,7 @@ MonoBehaviour:
   bottomType: 1
   topType: 1
   mAtlas: {fileID: 114964704097594188, guid: f3480ac8b06f9c94c98640a1a16f9da8, type: 2}
-  mSpriteName: "\u9009\u62E9\u6846"
+  mSpriteName: White-Button-Outline
   mFillCenter: 1
 --- !u!114 &114944634139383478
 MonoBehaviour:
@@ -412,8 +412,4 @@ MonoBehaviour:
   pressedSprite2D: {fileID: 0}
   disabledSprite2D: {fileID: 0}
   pixelSnap: 0
-  onClick:
-  - mTarget: {fileID: 0}
-    mMethodName: OnDeletResoureClick
-    mParameters: []
-    oneShot: 0
+  onClick: []

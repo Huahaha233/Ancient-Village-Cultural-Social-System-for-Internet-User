@@ -12,6 +12,8 @@ public class MultiBattle : MonoBehaviour
     public GameObject Prefabs;
     //姓名条预设体
     public GameObject NamePrefab;
+    //留言框
+    public GameObject Chat;
     //图片
     public GameObject AllPicture;
     //模型
@@ -24,9 +26,11 @@ public class MultiBattle : MonoBehaviour
         //单例模式
         instance = this;
         StartVisit();
+        GetRoomChat();
         //开启监听
         NetMgr.srvConn.msgDist.AddListener("AddPlayer", RecvAddPlayer);//场景增加人员
         NetMgr.srvConn.msgDist.AddListener("DelPlayer", RecvDelPlayer);//场景删除人员 
+        NetMgr.srvConn.msgDist.AddListener("AddRoomChat", RecvAddRoomChat);//场景删除人员 
         Recovery();
     }
    
@@ -111,6 +115,59 @@ public class MultiBattle : MonoBehaviour
             index++;
         }
         
+    }
+    #endregion
+
+    #region 获取所有房间留言
+    public void GetRoomChat()
+    {
+        ProtocolBytes protocol = new ProtocolBytes();
+        protocol.AddString("GetRoomChat");
+        NetMgr.srvConn.Send(protocol, GetRoomChatBack);
+    }
+    //开始浏览
+    public void GetRoomChatBack(ProtocolBase protocol)
+    {
+        ProtocolBytes proto = (ProtocolBytes)protocol;
+        //解析协议
+        int start = 0;
+        string protoName = proto.GetString(start, ref start);
+        //留言总数
+        int count = proto.GetInt(start, ref start);
+        if (count == 0) return;
+        //每一句留言
+        for (int i = 0; i < count; i++)
+        {
+            string id = proto.GetString(start, ref start);
+            string message = proto.GetString(start, ref start);
+            Chat.transform.GetChild(0).GetComponent<UITextList>().Add("[8bddfc]" + id + ":[-] " + message);
+        }
+    }
+    #endregion
+    
+    #region 发送新的留言
+    public void AddRoomChat()
+    {
+        string input = Chat.transform.GetChild(1).GetComponent<UIInput>().value;
+        if (input!= "")
+        {
+            ProtocolBytes protocol = new ProtocolBytes();
+            protocol.AddString("AddRoomChat");
+            protocol.AddString(input);
+            NetMgr.srvConn.Send(protocol, GetRoomChatBack);
+            Chat.transform.GetChild(1).GetComponent<UIInput>().value="";//清空聊天框
+        }
+    }
+    //接收新的留言
+    public void RecvAddRoomChat(ProtocolBase protocol)
+    {
+        ProtocolBytes proto = (ProtocolBytes)protocol;
+        //解析协议
+        int start = 0;
+        string protoName = proto.GetString(start, ref start);
+        string id = proto.GetString(start, ref start);
+        string message = proto.GetString(start, ref start);
+        Chat.transform.GetChild(0).GetComponent<UITextList>().Add("[8bddfc]"+id+":[-] "+ message);
     }
     #endregion
 

@@ -19,25 +19,8 @@ public class HandleVideo : MonoBehaviour {
 	// Use this for initialization
 	void Start () {
         content = Menu.transform.GetChild(1).gameObject;
-        //test();
         CreatList();
     }
-	//private void test()
- //   {
- //       Resoure resoure = new Resoure();
- //       resoure.name = "test1";
- //       resoure.ins = "test1";
- //       resoure.sort = "video";
- //       resoure.adress = "file://C:/Users/相较于/Desktop/text/video.mp4";
- //       GameMgr.instance.resoures.Add("test1", resoure);
- //       resoure = new Resoure();
- //       resoure.name = "test2";
- //       resoure.ins = "test2";
- //       resoure.sort = "video";
- //       resoure.adress = "file://C:/Users/相较于/Desktop/text/video.mp4";
- //       GameMgr.instance.resoures.Add("test2",resoure);
- //   }
-	// Update is called once per frame
 	void Update () {
         if (Input.GetKeyDown(KeyCode.Q))
         {
@@ -122,7 +105,7 @@ public class HandleVideo : MonoBehaviour {
         }
         content.transform.GetChild(0).GetComponent<UISprite>().enabled = true;//将视频列表第一个视频设为默认状态
         Name.transform.GetComponent<UILabel>().text = videos[0];
-        VideoShow.transform.GetComponent<VideoPlayer>().url = GameMgr.instance.resoures[videos[index]].adress;
+        VideoShow.transform.GetComponent<VideoPlayer>().url =Application.persistentDataPath + GameMgr.instance.resoures[videos[index]].adress;
     }
     //清理视频列表
     private void ClearRoomUnit()
@@ -167,6 +150,6 @@ public class HandleVideo : MonoBehaviour {
     private void PlayChooseVideo()
     {
         Name.transform.GetComponent<UILabel>().text = videos[index];
-        VideoShow.transform.GetComponent<VideoPlayer>().url = GameMgr.instance.resoures[videos[index]].adress;
+        VideoShow.transform.GetComponent<VideoPlayer>().url =Application.persistentDataPath + GameMgr.instance.resoures[videos[index]].adress;
     }
 }

@@ -15,6 +15,7 @@ public class RoomListPanel : MonoBehaviour
     public GameObject roomPrefab;//房间单元UI的预制体
     public GameObject Ins;//简介框
     public GameObject WriteInsPlane;//点击新建房间按钮后，弹出填写房间基本信息UI
+    public GameObject Loding;//加载UI
     private string RoomName;//点击选择的房间名称
     private HandleData handledata = new HandleData();
     void Start()
@@ -27,6 +28,7 @@ public class RoomListPanel : MonoBehaviour
         //判断资源是否下载完成
         if (handledata.DownCount == 0)
         {
+            Loding.gameObject.SetActive(false);//关闭加载UI
             SceneManager.LoadSceneAsync("Exhibition");//进入到展厅
             handledata.DownCount--;
         }
@@ -172,6 +174,7 @@ public class RoomListPanel : MonoBehaviour
         //处理
         if (ret == 0)
         {
+            Loding.gameObject.SetActive(true);//激活加载UI
             GetResoureClick();//下载资源
         }
         else

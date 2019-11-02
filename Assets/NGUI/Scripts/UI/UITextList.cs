@@ -345,8 +345,8 @@ public class UITextList : MonoBehaviour
 					else
 					{
 						if (final.Length > 0) final.Append("\n");
-						final.Append(s);
-						--maxLines;
+                        final.Append(s);
+                        --maxLines;
 					}
 				}
 			}
