@@ -9,6 +9,7 @@ namespace NGUI
     interface INGUIMove
     {
         void Name(string name,int p);//传入需要移动的动画的tag，常量p表示UI的移动顺序，0表示正向播放，1表示反向播放
+        void BackGround();
     }
 
     public class NGUIMove : INGUIMove
@@ -36,6 +37,13 @@ namespace NGUI
                 }
             }
         }
-        
+
+        public void BackGround()
+        {
+            GameObject bg1 = GameObject.Find("BackGround1").gameObject;
+            GameObject bg2 = GameObject.Find("BackGround2").gameObject;
+            bg1.GetComponent<TweenAlpha>().PlayForward();
+            bg1.GetComponent<TweenScale>().PlayForward();
+        }
     }
 }

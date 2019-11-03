@@ -34,13 +34,13 @@ public class GetUIButton : MonoBehaviour {
     #endregion
     private string Code_Str;//验证码字符串
     private string Answer = null;//密保问题的答案
+    private int bgcount = 3;//背景墙的序号
     GameMgr mgr = new GameMgr();//初始化
     VerificationCode verificationCode = new VerificationCode();
     void Start()
     {
         CreatFolder();
         //在开始界面，当用户点击“登录”“游客登录”按钮时，控制NGUI按钮组件移动，并激活登录UI
-        PlayContent("Start", 0);//开始界面时的NGUI的移动
         SetCode();
     }
     //检验Application.persistentDataPath下是否存在data文件夹
@@ -320,17 +320,9 @@ public class GetUIButton : MonoBehaviour {
     //用户在开始界面点击登录按钮
     public void Start_Login()
     {
-        PlayContent("Start", 1);//在开始界面内，点击按钮后，开始界面的按钮和标题就必须回到显示方框之外
-        PlayContent("Login", 0);//登录界面按钮动画播放
+        PlayContent("Start", "Login");//在开始界面内，点击按钮后，开始界面的按钮和标题就必须回到显示方框之外\登录界面按钮动画播放
     }
-
-    //用户在开始界面选择游客登陆模式
-    public void Start_NoLogin()
-    {
-        PlayContent("Start", 1);//在开始界面内，点击按钮后，开始界面的按钮和标题就必须回到显示方框之外
-        SceneManager.LoadScene("");
-    }
-
+    
     //用户在开始界面选择退出按钮
     public void Start_Out()
     {
@@ -340,39 +332,34 @@ public class GetUIButton : MonoBehaviour {
     //用户在登录界面选择登录按钮
     private void Login_Login()
     {
-        PlayContent("Login", 1);
         Tips.GetComponent<UILabel>().text = "";
     }
 
     //用户在登录界面选择返回按钮
     public void Login_Back()
     {
-        PlayContent("Login", 1);
-        PlayContent("Start", 0);
+        PlayContent("Login", "Start");
         SetCode();
     }
 
     //用户在登录界面选择注册按钮
     public void Login_Register()
     {
-        PlayContent("Login", 1);
-        PlayContent("Register", 0);
+        PlayContent("Login", "Register");
         SetCode();
     }
 
     //用户在登录界面选择忘记密码按钮
     public void Login_Forget()
     {
-        PlayContent("Login", 1);
-        PlayContent("SendForget", 0);
-        SetCode();
+        PlayContent("Login", "SendForget");
+        SetCode(); 
     }
 
     //用户在注册界面选择注册按钮
     private void Register_Register()
     {
-        PlayContent("Register", 1);
-        PlayContent("Login",0);
+        PlayContent("Register", "Login");
         Tips.GetComponent<UILabel>().text = "";
         SetCode();
     }
@@ -380,16 +367,14 @@ public class GetUIButton : MonoBehaviour {
     //用户在注册界面选择返回按钮
     public void Register_Back()
     {
-        PlayContent("Register", 1);
-        PlayContent("Login", 0);
+        PlayContent("Register", "Login");
         SetCode();
     }
 
     //用户在忘记密码输入ID界面输入ID后选择下一步按钮
     private void SendForget_Next()
     {
-        PlayContent("SendForget", 1);
-        PlayContent("Forget", 0);
+        PlayContent("SendForget", "Forget");
         Tips.GetComponent<UILabel>().text = "";
         SetCode();
     }
@@ -397,8 +382,7 @@ public class GetUIButton : MonoBehaviour {
     //用户在忘记密码输入ID界面选择返回按钮
     public void SendForget_Back()
     {
-        PlayContent("SendForget", 1);
-        PlayContent("Login", 0);
+        PlayContent("SendForget","Login");
         SetCode();
     }
 
@@ -408,8 +392,7 @@ public class GetUIButton : MonoBehaviour {
         if(Answer== Forget_Answer.transform.GetChild(0).GetComponent<UILabel>().text)
         {
             Tips.GetComponent<UILabel>().text = "答案正确!";
-            PlayContent("Forget", 1);
-            PlayContent("Reset", 0);
+            PlayContent("Forget", "Reset");
         }
         else Tips.GetComponent<UILabel>().text = "答案错误!";
     }
@@ -417,15 +400,13 @@ public class GetUIButton : MonoBehaviour {
     //用户在忘记密码界面选择返回按钮
     public void Forget_Back()
     {
-        PlayContent("Forget", 1);
-        PlayContent("SendForget", 0);
+        PlayContent("Forget", "SendForget");
     }
 
     //用户在重置密码界面选择完成按钮
     private void Reset_OK()
     {
-        PlayContent("Reset", 1);
-        PlayContent("Login", 0);
+        PlayContent("Reset", "Login");
         Tips.GetComponent<UILabel>().text = "";
         SetCode();
     }
@@ -433,15 +414,35 @@ public class GetUIButton : MonoBehaviour {
     //用户在重置密码界面选择返回按钮
     public void Reset_Back()
     {
-        PlayContent("Reset", 1);
-        PlayContent("Forget", 0);
+        PlayContent("Reset", "Forget");
         SetCode();
     }
     #endregion
     //调用接口
-    private void PlayContent(string str, int p)//传入需要移动的UI动画的tag，常量p表示UI的移动顺序，0表示正向播放，1表示反向播放
+    private void PlayContent(string str1,string str2)//传入需要移动的UI动画的tag，常量p表示UI的移动顺序，0表示正向播放，1表示反向播放
     {
         INGUIMove ngui = new NGUIMove();
-        ngui.Name(str, p);
+        ngui.Name(str1, 1);
+        ngui.Name(str2, 0);
+        ngui.BackGround();
+        Invoke("ReBackGround",1);
+    }
+
+    public void ReBackGround()
+    {
+        GameObject bg1 = GameObject.Find("BackGround1").gameObject;
+        GameObject bg2 = GameObject.Find("BackGround2").gameObject;
+
+        bg1.GetComponent<UITexture>().depth = -1;
+        bg2.GetComponent<UITexture>().depth = 0;
+
+        bg1.GetComponent<TweenAlpha>().PlayReverse();
+        bg1.GetComponent<TweenScale>().PlayReverse();
+        //给下面的背景图附图片
+        Texture texture= Resources.Load("背景"+bgcount%6) as Texture;
+        bg1.GetComponent<UITexture>().mainTexture = texture;
+        bgcount++;
+        bg1.name = "BackGround2";
+        bg2.name = "BackGround1";
     }
 }
