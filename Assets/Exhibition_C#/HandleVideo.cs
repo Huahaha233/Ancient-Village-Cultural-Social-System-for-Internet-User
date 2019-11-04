@@ -127,6 +127,7 @@ public class HandleVideo : MonoBehaviour {
         //房间信息
         Transform trans = instance.transform;
         trans.GetChild(0).GetComponent<UILabel>().text = name;//房间名称
+        trans.parent.GetComponent<UIGrid>().enabled = true;//激活Grid，使其按顺序排列
     }
     #endregion
 

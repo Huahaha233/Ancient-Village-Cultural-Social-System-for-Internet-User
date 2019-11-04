@@ -115,6 +115,7 @@ public class RoomListPanel : MonoBehaviour
         trans.GetChild(2).GetComponent<UILabel>().text = author;//房间作者
         //在房间列表单元中添加脚本
         trans.GetChild(3).GetComponent<UIButton>().onClick.Add(new EventDelegate(OnGetRoomInfoClick));
+        trans.parent.GetComponent<UIGrid>().enabled = true;//激活Grid，使其按顺序排列
     }
     #endregion
 

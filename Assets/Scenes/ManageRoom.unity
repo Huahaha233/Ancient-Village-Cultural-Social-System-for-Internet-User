@@ -174,7 +174,7 @@ MonoBehaviour:
   mPivot: 3
   mWidth: 641
   mHeight: 60
-  mDepth: 13
+  mDepth: 19
   mMat: {fileID: 0}
   autoResizeBoxCollider: 0
   hideIfOffScreen: 0
@@ -271,7 +271,7 @@ MonoBehaviour:
   mPivot: 4
   mWidth: 656
   mHeight: 60
-  mDepth: 12
+  mDepth: 18
   mMat: {fileID: 0}
   autoResizeBoxCollider: 0
   hideIfOffScreen: 0
@@ -350,7 +350,7 @@ MonoBehaviour:
     relative: 1
     absolute: 0
   updateAnchors: 1
-  mColor: {r: 0, g: 0, b: 0, a: 1}
+  mColor: {r: 1, g: 1, b: 1, a: 1}
   mPivot: 4
   mWidth: 512
   mHeight: 68
@@ -420,7 +420,7 @@ Transform:
   m_Children:
   - {fileID: 1727653109}
   m_Father: {fileID: 973578435}
-  m_RootOrder: 11
+  m_RootOrder: 12
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &181335080
 MonoBehaviour:
@@ -579,7 +579,7 @@ MonoBehaviour:
   mPivot: 4
   mWidth: 900
   mHeight: 600
-  mDepth: 8
+  mDepth: 14
   mMat: {fileID: 0}
   autoResizeBoxCollider: 0
   hideIfOffScreen: 0
@@ -735,7 +735,7 @@ Transform:
   m_Children:
   - {fileID: 333288774}
   m_Father: {fileID: 973578435}
-  m_RootOrder: 15
+  m_RootOrder: 16
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &250185707
 MonoBehaviour:
@@ -861,7 +861,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 973578435}
-  m_RootOrder: 4
+  m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &304875856
 MonoBehaviour:
@@ -1118,7 +1118,7 @@ MonoBehaviour:
   mPivot: 4
   mWidth: 898
   mHeight: 118
-  mDepth: 16
+  mDepth: 22
   mMat: {fileID: 0}
   autoResizeBoxCollider: 0
   hideIfOffScreen: 0
@@ -1203,7 +1203,7 @@ MonoBehaviour:
   mPivot: 4
   mWidth: 662
   mHeight: 244
-  mDepth: 14
+  mDepth: 20
   mMat: {fileID: 0}
   autoResizeBoxCollider: 0
   hideIfOffScreen: 0
@@ -1255,7 +1255,7 @@ Transform:
   m_Children:
   - {fileID: 1941302113}
   m_Father: {fileID: 973578435}
-  m_RootOrder: 12
+  m_RootOrder: 13
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &657694562
 MonoBehaviour:
@@ -1358,7 +1358,7 @@ GameObject:
   - component: {fileID: 730555799}
   - component: {fileID: 730555800}
   m_Layer: 8
-  m_Name: BackGround
+  m_Name: ListBackGround
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1370,11 +1370,11 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 730555798}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -3, y: -248, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 38, y: 24, z: 0}
+  m_LocalScale: {x: 0.999, y: 0.999, z: 0.999}
   m_Children: []
-  m_Father: {fileID: 803756984}
+  m_Father: {fileID: 973578435}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &730555800
@@ -1407,14 +1407,14 @@ MonoBehaviour:
   updateAnchors: 1
   mColor: {r: 1, g: 1, b: 1, a: 1}
   mPivot: 4
-  mWidth: 1194
-  mHeight: 596
-  mDepth: 0
+  mWidth: 1222
+  mHeight: 628
+  mDepth: 8
   mMat: {fileID: 0}
   autoResizeBoxCollider: 0
   hideIfOffScreen: 0
   keepAspectRatio: 0
-  aspectRatio: 2.0033557
+  aspectRatio: 1.9458599
   mType: 0
   mFillDirection: 4
   mFillAmount: 1
@@ -1492,7 +1492,7 @@ MonoBehaviour:
   mPivot: 4
   mWidth: 260
   mHeight: 60
-  mDepth: 17
+  mDepth: 23
   mMat: {fileID: 0}
   autoResizeBoxCollider: 0
   hideIfOffScreen: 0
@@ -1555,7 +1555,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 973578435}
-  m_RootOrder: 1
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &791471997
 MonoBehaviour:
@@ -1655,7 +1655,7 @@ Transform:
   m_Children:
   - {fileID: 175958650}
   m_Father: {fileID: 973578435}
-  m_RootOrder: 7
+  m_RootOrder: 8
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &793610161
 MonoBehaviour:
@@ -1804,9 +1804,8 @@ RectTransform:
   m_LocalScale: {x: 0.999, y: 0.999, z: 0.999}
   m_Children:
   - {fileID: 841317695}
-  - {fileID: 730555799}
   m_Father: {fileID: 973578435}
-  m_RootOrder: 9
+  m_RootOrder: 10
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -1880,7 +1879,7 @@ MonoBehaviour:
   anchorOffset: 0
   softBorderPadding: 1
   renderQueue: 0
-  startingRenderQueue: 3005
+  startingRenderQueue: 3006
   mClipTexture: {fileID: 0}
   mAlpha: 1
   mClipping: 3
@@ -1920,7 +1919,7 @@ Transform:
   - {fileID: 1939004477}
   - {fileID: 920074492}
   m_Father: {fileID: 973578435}
-  m_RootOrder: 17
+  m_RootOrder: 18
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &803965489
 MonoBehaviour:
@@ -1950,7 +1949,7 @@ MonoBehaviour:
     relative: 1
     absolute: 0
   updateAnchors: 1
-  mColor: {r: 0.27058825, g: 0.3647059, b: 0.4509804, a: 1}
+  mColor: {r: 1, g: 1, b: 1, a: 1}
   mPivot: 4
   mWidth: 260
   mHeight: 60
@@ -2348,6 +2347,7 @@ Transform:
   m_LocalScale: {x: 0.0018518518, y: 0.0018518518, z: 0.0018518518}
   m_Children:
   - {fileID: 1088353024}
+  - {fileID: 730555799}
   - {fileID: 791471996}
   - {fileID: 1293316765}
   - {fileID: 1891118769}
@@ -2567,7 +2567,7 @@ MonoBehaviour:
   mPivot: 4
   mWidth: 200
   mHeight: 60
-  mDepth: 9
+  mDepth: 15
   mMat: {fileID: 0}
   autoResizeBoxCollider: 1
   hideIfOffScreen: 0
@@ -2691,7 +2691,7 @@ MonoBehaviour:
   mPivot: 0
   mWidth: 645
   mHeight: 226
-  mDepth: 15
+  mDepth: 21
   mMat: {fileID: 0}
   autoResizeBoxCollider: 1
   hideIfOffScreen: 0
@@ -2900,7 +2900,7 @@ MonoBehaviour:
   mPivot: 4
   mWidth: 150
   mHeight: 50
-  mDepth: 10
+  mDepth: 16
   mMat: {fileID: 0}
   autoResizeBoxCollider: 0
   hideIfOffScreen: 0
@@ -3017,8 +3017,8 @@ BoxCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 58, y: 50.657722, z: 0}
-  m_Center: {x: -1, y: 1.6711378, z: 0}
+  m_Size: {x: 58, y: 50.489998, z: 0}
+  m_Center: {x: -1, y: 1.7550001, z: 0}
 --- !u!4 &1168250845
 Transform:
   m_ObjectHideFlags: 0
@@ -3093,7 +3093,7 @@ MonoBehaviour:
   mPivot: 4
   mWidth: 80
   mHeight: 80
-  mDepth: 18
+  mDepth: 24
   mMat: {fileID: 0}
   autoResizeBoxCollider: 0
   hideIfOffScreen: 0
@@ -3178,7 +3178,7 @@ MonoBehaviour:
   mPivot: 4
   mWidth: 60
   mHeight: 60
-  mDepth: 17
+  mDepth: 23
   mMat: {fileID: 0}
   autoResizeBoxCollider: 1
   hideIfOffScreen: 0
@@ -3271,7 +3271,7 @@ Transform:
   m_Children:
   - {fileID: 1745712696}
   m_Father: {fileID: 973578435}
-  m_RootOrder: 10
+  m_RootOrder: 11
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &1282043570
 MonoBehaviour:
@@ -3395,7 +3395,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 973578435}
-  m_RootOrder: 2
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &1293316766
 MonoBehaviour:
@@ -3495,7 +3495,7 @@ Transform:
   m_Children:
   - {fileID: 210438498}
   m_Father: {fileID: 973578435}
-  m_RootOrder: 13
+  m_RootOrder: 14
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &1330440017
 MonoBehaviour:
@@ -3622,7 +3622,7 @@ Transform:
   - {fileID: 1026406878}
   - {fileID: 192471780}
   m_Father: {fileID: 973578435}
-  m_RootOrder: 16
+  m_RootOrder: 17
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &1439209919
 MonoBehaviour:
@@ -3785,7 +3785,7 @@ MonoBehaviour:
   mPivot: 3
   mWidth: 648
   mHeight: 60
-  mDepth: 13
+  mDepth: 19
   mMat: {fileID: 0}
   autoResizeBoxCollider: 1
   hideIfOffScreen: 0
@@ -3900,7 +3900,7 @@ MonoBehaviour:
   rawValue: 1
   direction: 2
   mInverted: 0
-  mSize: 0.9932887
+  mSize: 0.99
   mScroll: 0
   mDir: 2
 --- !u!114 &1618032225
@@ -3981,7 +3981,7 @@ Transform:
   m_Children:
   - {fileID: 1168250845}
   m_Father: {fileID: 973578435}
-  m_RootOrder: 8
+  m_RootOrder: 9
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1714562848
 GameObject:
@@ -4010,7 +4010,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 973578435}
-  m_RootOrder: 5
+  m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &1714562850
 MonoBehaviour:
@@ -4336,7 +4336,7 @@ MonoBehaviour:
   mPivot: 4
   mWidth: 646
   mHeight: 62
-  mDepth: 12
+  mDepth: 18
   mMat: {fileID: 0}
   autoResizeBoxCollider: 0
   hideIfOffScreen: 0
@@ -4463,7 +4463,7 @@ MonoBehaviour:
   mPivot: 4
   mWidth: 60
   mHeight: 60
-  mDepth: 9
+  mDepth: 15
   mMat: {fileID: 0}
   autoResizeBoxCollider: 1
   hideIfOffScreen: 0
@@ -4512,7 +4512,7 @@ Transform:
   m_LocalScale: {x: 0.999, y: 0.999, z: 0.999}
   m_Children: []
   m_Father: {fileID: 973578435}
-  m_RootOrder: 3
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &1891118770
 MonoBehaviour:
@@ -4643,7 +4643,7 @@ MonoBehaviour:
   mPivot: 0
   mWidth: 125
   mHeight: 40
-  mDepth: 11
+  mDepth: 17
   mMat: {fileID: 0}
   autoResizeBoxCollider: 1
   hideIfOffScreen: 0
@@ -4939,7 +4939,7 @@ Transform:
   m_Children:
   - {fileID: 859955351}
   m_Father: {fileID: 973578435}
-  m_RootOrder: 14
+  m_RootOrder: 15
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &1981044960
 MonoBehaviour:
@@ -5095,7 +5095,7 @@ MonoBehaviour:
   mPivot: 4
   mWidth: 120
   mHeight: 50
-  mDepth: 15
+  mDepth: 21
   mMat: {fileID: 0}
   autoResizeBoxCollider: 0
   hideIfOffScreen: 0
@@ -5158,7 +5158,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 973578435}
-  m_RootOrder: 6
+  m_RootOrder: 7
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &2112667166
 MonoBehaviour:

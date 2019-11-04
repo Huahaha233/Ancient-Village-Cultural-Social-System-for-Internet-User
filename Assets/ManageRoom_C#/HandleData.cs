@@ -11,11 +11,6 @@ public class HandleData{
         set { downcount = value;}
     }
     private bool isupload=false;//是否上传完成
-    public bool IsUpLoad
-    {
-        get {return isupload; }
-        set { isupload = value;}
-    }
     #region 下载
     //sort为类型、resourename为资源名称、filename为资源下载路径
     public void DownLoad()
@@ -42,19 +37,15 @@ public class HandleData{
     }
     #endregion
     #region 上传
-    //sort为类型、resourename为资源名称、filename为资源下载路径
-    public string Upload(string filename,string resourename)
+    //resourename为资源服务器地址、filename为本地资源上传地址
+    public void Upload(string filename,string resourename)
     {
-        string sort = JudgeSort(filename);
-        string suffix = JudgeSuffix(filename);//后缀
         WebClient myWebClient = new WebClient();
         myWebClient.Credentials = new NetworkCredential("AncientVillageUser", "Avu123456");
-        //注册上传完成事件通知
-        myWebClient.OpenWriteCompleted += myWebClient_OpenWriteCompleted;
         FileStream fs = new FileStream(filename, FileMode.Open, FileAccess.Read);
         BinaryReader br = new BinaryReader(fs);
         Byte[] postArray = br.ReadBytes(Convert.ToInt32(fs.Length));
-        Stream postStream = myWebClient.OpenWrite("http://121.199.29.232:7789/data/" + sort + "/" + resourename + suffix, "PUT");
+        Stream postStream = myWebClient.OpenWrite("http://121.199.29.232:7789" + resourename, "PUT");
         if (postStream.CanWrite)
         {
             postStream.Write(postArray, 0, postArray.Length);
@@ -62,15 +53,15 @@ public class HandleData{
         postStream.Close();
         fs.Close();
         myWebClient.Dispose();
-        return "/data/" +sort + "/" + resourename+suffix;//返回存储位置与名称
-    }
-    //下载完成事件处理程序
-    private void myWebClient_OpenWriteCompleted(object sender, OpenWriteCompletedEventArgs e)
-    {
-        isupload = true;
-        Debug.Log("readyupload");
     }
     #endregion
+    //返回文件保存地址
+    public string UploadName(string filename, string resourename)
+    {
+        string sort = JudgeSort(filename);
+        string suffix = JudgeSuffix(filename);//后缀
+        return "/data/" + sort + "/" + resourename + suffix;//返回存储位置与名称
+    }
     //判断文件类型
     public string JudgeSort(string path)
     {

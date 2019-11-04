@@ -16,15 +16,7 @@ public class RoomManage : MonoBehaviour {
     // Use this for initialization
     void Start () {
         OnGetRoomNameList();
-    }
-    void Update()
-    {
-        //判断资源是否上传完成
-        if (handledata.IsUpLoad == true)
-        {
-            Loding.gameObject.SetActive(false);//关闭上传加载资源中UI
-            handledata.IsUpLoad = false;
-        }
+        NetMgr.srvConn.msgDist.AddListener("UpLoadCompleted", RecvUpLoadCompleted);//场景删除人员 
     }
     #region 获取房间名称列表；也可用于刷新列表
     public void OnGetRoomNameList()
@@ -115,6 +107,7 @@ public class RoomManage : MonoBehaviour {
             trans.GetChild(1).GetComponent<UILabel>().text = GameMgr.instance.resourelist[name][key];//房间类别
             //在管理列表房间单元中添加删除脚本
             trans.GetChild(2).GetComponent<UIButton>().onClick.Add(new EventDelegate(OnDeleteResoureClick));
+            trans.parent.GetComponent<UIGrid>().enabled = true;//激活Grid，使其按顺序排列
         }
     }
     #endregion
@@ -199,7 +192,7 @@ public class RoomManage : MonoBehaviour {
         {
             path = pth.file;//选择的文件路径;  
         }
-        UpdateBackground.transform.GetChild(1).GetChild(1).GetChild(0).GetComponent<UILabel>().text = path;
+        UpdateBackground.transform.GetChild(1).GetChild(0).GetChild(0).GetComponent<UILabel>().text = path;
     }
 
     #region 上传资源
@@ -215,7 +208,7 @@ public class RoomManage : MonoBehaviour {
         protocol.AddString(resourename);//资源名称
         protocol.AddString(UpdateBackground.transform.GetChild(3).GetChild(1).GetComponent<UILabel>().text);//资源介绍
         protocol.AddString(handledata.JudgeSort(path));//类别
-        protocol.AddString(handledata.Upload(path,roomname+"-"+resourename));//资源路径
+        protocol.AddString(handledata.UploadName(path,roomname+"-"+resourename));//资源路径
         NetMgr.srvConn.Send(protocol, OnAddResoureBack);
     }
     public void OnAddResoureBack(ProtocolBase protocol)
@@ -226,11 +219,19 @@ public class RoomManage : MonoBehaviour {
         int ret = proto.GetInt(start, ref start);
         if (ret == 0)
         {
+            string adress= proto.GetString(start, ref start);
             //添加成功
-            //Loding.gameObject.SetActive(true);//关闭上传加载资源中UI
+            Loding.gameObject.SetActive(true);//关闭上传加载资源中UI
+            Debug.Log(adress);
+            handledata.Upload(path, adress);//上传资源
             OnGetResoureList();//刷新列表
             UpdatePlaneClose();
         }
+    }
+    //上传完成
+    public void RecvUpLoadCompleted(ProtocolBase protocol)
+    {
+         Loding.gameObject.SetActive(false);//关闭上传加载资源中UI
     }
     #endregion
     //点击上传按钮，弹出上传信息框
