@@ -427,7 +427,7 @@ Transform:
   m_GameObject: {fileID: 16118127}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 0.004672897, y: 0.004672897, z: 0.004672897}
+  m_LocalScale: {x: 0.0018518518, y: 0.0018518518, z: 0.0018518518}
   m_Children:
   - {fileID: 1779764171}
   - {fileID: 482392822}
@@ -9786,7 +9786,7 @@ MonoBehaviour:
     relative: 1
     absolute: 0
   updateAnchors: 1
-  mColor: {r: 0, g: 0, b: 0, a: 0.3137255}
+  mColor: {r: 0, g: 0, b: 0, a: 0.78431374}
   mPivot: 4
   mWidth: 400
   mHeight: 684
@@ -12570,7 +12570,7 @@ Transform:
   m_GameObject: {fileID: 525143371}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 0.004672897, y: 0.004672897, z: 0.004672897}
+  m_LocalScale: {x: 0.0018518518, y: 0.0018518518, z: 0.0018518518}
   m_Children:
   - {fileID: 1158221478}
   - {fileID: 369133964}
@@ -17027,7 +17027,7 @@ MonoBehaviour:
   anchorOffset: 0
   softBorderPadding: 1
   renderQueue: 0
-  startingRenderQueue: 3010
+  startingRenderQueue: 3008
   mClipTexture: {fileID: 0}
   mAlpha: 1
   mClipping: 4
@@ -25838,7 +25838,7 @@ MonoBehaviour:
   anchorOffset: 0
   softBorderPadding: 1
   renderQueue: 0
-  startingRenderQueue: 3011
+  startingRenderQueue: 3009
   mClipTexture: {fileID: 0}
   mAlpha: 1
   mClipping: 0
@@ -44561,7 +44561,7 @@ MonoBehaviour:
   anchorOffset: 0
   softBorderPadding: 1
   renderQueue: 0
-  startingRenderQueue: 3014
+  startingRenderQueue: 3012
   mClipTexture: {fileID: 0}
   mAlpha: 1
   mClipping: 0
@@ -48138,16 +48138,16 @@ MonoBehaviour:
     relative: 1
     absolute: 0
   updateAnchors: 1
-  mColor: {r: 0.03557548, g: 0, b: 0.03773582, a: 1}
+  mColor: {r: 1, g: 1, b: 1, a: 1}
   mPivot: 4
-  mWidth: 44
-  mHeight: 74
+  mWidth: 50
+  mHeight: 50
   mDepth: 15
   mMat: {fileID: 0}
   autoResizeBoxCollider: 1
   hideIfOffScreen: 0
   keepAspectRatio: 0
-  aspectRatio: 0.5945946
+  aspectRatio: 1
   mType: 1
   mFillDirection: 4
   mFillAmount: 1
@@ -48174,8 +48174,8 @@ BoxCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 42, y: 64.90497, z: 0}
-  m_Center: {x: -1, y: 1.547514, z: 0}
+  m_Size: {x: 50, y: 49.926903, z: 0}
+  m_Center: {x: 0, y: 0.03654957, z: 0}
 --- !u!4 &2002902240
 Transform:
   m_ObjectHideFlags: 0

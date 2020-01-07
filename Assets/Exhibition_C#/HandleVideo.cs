@@ -80,13 +80,13 @@ public class HandleVideo : MonoBehaviour {
     private void PlayVideo()
     {
         VideoShow.transform.GetComponent<VideoPlayer>().Play();
-        PlayPause.transform.GetChild(0).GetComponent<UISprite>().spriteName = "暂停";
+        PlayPause.transform.GetChild(0).GetComponent<UIButton>().normalSprite = "暂停";
     }
     //暂停视频
     private void PauseVideo()
     {
         VideoShow.transform.GetComponent<VideoPlayer>().Pause();
-        PlayPause.transform.GetChild(0).GetComponent<UISprite>().spriteName = "播放";
+        PlayPause.transform.GetChild(0).GetComponent<UIButton>().normalSprite = "播放";
     }
 
     #region 创建视频列表
@@ -151,6 +151,6 @@ public class HandleVideo : MonoBehaviour {
     private void PlayChooseVideo()
     {
         Name.transform.GetComponent<UILabel>().text = videos[index];
-        VideoShow.transform.GetComponent<VideoPlayer>().url =Application.persistentDataPath + GameMgr.instance.resoures[videos[index]].adress;
+        VideoShow.transform.GetComponent<VideoPlayer>().url ="http://121.199.29.232:7789" + GameMgr.instance.resoures[videos[index]].adress;
     }
 }

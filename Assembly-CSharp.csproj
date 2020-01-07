@@ -588,7 +588,7 @@
     <Compile Include="Assets\NGUI\Scripts\UI\UITexture.cs" />
     <Compile Include="Assets\NGUI\Scripts\UI\UITooltip.cs" />
     <Compile Include="Assets\NGUI\Scripts\UI\UIViewport.cs" />
-    <Compile Include="Assets\RoomList_C#\ClickRay.cs" />
+    <Compile Include="Assets\RoomList_C#\RoomListFold.cs" />
     <Compile Include="Assets\RoomList_C#\RoomListPanel.cs" />
     <Compile Include="Assets\TriLib\TriLib\Samples\Scripts\AnimationText.cs" />
     <Compile Include="Assets\TriLib\TriLib\Samples\Scripts\AssetDownloaderZIP.cs" />

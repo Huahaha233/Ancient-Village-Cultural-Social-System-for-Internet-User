@@ -18,16 +18,19 @@ public class HandleData{
         downcount = GameMgr.instance.resoures.Count;
         foreach (Resoure resoure in GameMgr.instance.resoures.Values)
         {
-            //定义_webClient对象
-            WebClient _webClient = new WebClient();
-            //使用默认的凭据——读取的时候，只需默认凭据就可以
-            _webClient.Credentials = CredentialCache.DefaultCredentials;
-            //下载的链接地址（文件服务器）
-            Uri _uri = new Uri(@"http://121.199.29.232:7789"+resoure.adress);
-            _webClient.DownloadFileCompleted += _webClient_DownloadFileCompleted;
-            //异步下载到D盘
-            _webClient.DownloadFileAsync(_uri, Application.persistentDataPath + resoure.adress);
-            //_webClient.Dispose();
+            if (resoure.sort != "video")
+            {
+                //定义_webClient对象
+                WebClient _webClient = new WebClient();
+                //使用默认的凭据——读取的时候，只需默认凭据就可以
+                _webClient.Credentials = CredentialCache.DefaultCredentials;
+                //下载的链接地址（文件服务器）
+                Uri _uri = new Uri(@"http://121.199.29.232:7789" + resoure.adress);
+                _webClient.DownloadFileCompleted += _webClient_DownloadFileCompleted;
+                //异步下载到D盘
+                _webClient.DownloadFileAsync(_uri, Application.persistentDataPath + resoure.adress);
+                //_webClient.Dispose();
+            }
         }
     }
     //下载完成事件处理程序

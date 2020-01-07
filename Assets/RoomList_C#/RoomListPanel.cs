@@ -17,11 +17,10 @@ public class RoomListPanel : MonoBehaviour
     public GameObject WriteInsPlane;//点击新建房间按钮后，弹出填写房间基本信息UI
     public GameObject Loding;//加载UI
     private string RoomName;//点击选择的房间名称
+    private string RoomAdress;//选中的展厅地址
     private HandleData handledata = new HandleData();
     void Start()
     {
-        GetAchieve();
-        GetRoomList();
     }
     void Update()
     {
@@ -32,7 +31,7 @@ public class RoomListPanel : MonoBehaviour
             SceneManager.LoadSceneAsync("Exhibition");//进入到展厅
             handledata.DownCount--;
         }
-        
+        if (Input.GetMouseButtonDown(0)) Ray();//射线，鼠标点击地图图标，返回该地点的名称
     }
     #region 收到用户的个人信息
     //发送GetAchieve协议
@@ -62,10 +61,19 @@ public class RoomListPanel : MonoBehaviour
 
     #region 接收房间列表与生成房间列表
     //发送GetRoomList协议
-    public void GetRoomList()
+    //public void GetRoomList()
+    //{
+    //    ProtocolBytes protocol = new ProtocolBytes();
+    //    protocol.AddString("GetRoomList");
+    //    protocol.AddString("ALL");
+    //    NetMgr.srvConn.Send(protocol, GetRoomListBack);
+    //}
+    //选中坐标，刷新展厅列表
+    public void OnChooseClick(string adress)
     {
         ProtocolBytes protocol = new ProtocolBytes();
         protocol.AddString("GetRoomList");
+        protocol.AddString(adress);
         NetMgr.srvConn.Send(protocol, GetRoomListBack);
     }
     //房间列表及信息
@@ -97,8 +105,7 @@ public class RoomListPanel : MonoBehaviour
                 Destroy(content.transform.GetChild(i).gameObject);
         }
     }
-
-
+    
     //创建一个房间单元
     //参数 i，房间序号（从0开始）
     //参数num，房间里的玩家数
@@ -151,9 +158,10 @@ public class RoomListPanel : MonoBehaviour
     {
         ProtocolBytes protocol = new ProtocolBytes();
         protocol.AddString("GetRoomList");
+        protocol.AddString(RoomAdress);
         NetMgr.srvConn.Send(protocol,GetRoomListBack);
     }
-
+    
     #region 加入按钮
     public void OnJoinBtnClick()
     {
@@ -196,12 +204,14 @@ public class RoomListPanel : MonoBehaviour
     {
         WriteInsPlane.transform.GetChild(4).GetComponent<UILabel>().text = "";
         if (WriteInsPlane.transform.GetChild(1).transform.GetChild(1).GetComponent<UILabel>().text != null
-            || WriteInsPlane.transform.GetChild(2).transform.GetChild(1).GetComponent<UILabel>().text != null)
+            || WriteInsPlane.transform.GetChild(2).transform.GetChild(1).GetComponent<UILabel>().text != null
+            || WriteInsPlane.transform.GetChild(3).transform.GetChild(1).GetComponent<UILabel>().text != null)
         {
             ProtocolBytes protocol = new ProtocolBytes();
             protocol.AddString("CreateRoom");
             protocol.AddString(WriteInsPlane.transform.GetChild(1).transform.GetChild(1).GetComponent<UILabel>().text);
             protocol.AddString(WriteInsPlane.transform.GetChild(2).transform.GetChild(1).GetComponent<UILabel>().text);
+            protocol.AddString(WriteInsPlane.transform.GetChild(3).transform.GetChild(1).GetComponent<UILabel>().text);
             NetMgr.srvConn.Send(protocol, OnNewBack);
         }
         else WriteInsPlane.transform.GetChild(4).GetComponent<UILabel>().text = "填写信息不能为空！！！";
@@ -343,4 +353,16 @@ public void DelectAll()
         catch { }
     }
     #endregion
+
+    private void Ray()
+    {
+        Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
+        RaycastHit hit;
+        if (Physics.Raycast(ray, out hit))
+        {
+            RoomAdress = hit.transform.parent.GetChild(0).GetComponent<TextMesh>().text;
+            Debug.Log(RoomAdress);
+            OnChooseClick(RoomAdress);
+        }
+    }
 }
