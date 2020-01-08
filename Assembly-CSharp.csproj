@@ -83,15 +83,12 @@
     <Compile Include="Assets\core\net\ProtocolStr.cs" />
     <Compile Include="Assets\core\Root.cs" />
     <Compile Include="Assets\Exhibition_C#\ControlOther.cs" />
+    <Compile Include="Assets\Exhibition_C#\ControlPre.cs" />
     <Compile Include="Assets\Exhibition_C#\ControlVisiter.cs" />
     <Compile Include="Assets\Exhibition_C#\GameMgr.cs" />
     <Compile Include="Assets\Exhibition_C#\HandleVideo.cs" />
     <Compile Include="Assets\Exhibition_C#\MultiBattle.cs" />
-    <Compile Include="Assets\Exhibition_C#\openclose.cs" />
-    <Compile Include="Assets\Exhibition_C#\OutExhibition.cs" />
-    <Compile Include="Assets\Exhibition_C#\PictureClick.cs" />
     <Compile Include="Assets\Exhibition_C#\RecoveryData.cs" />
-    <Compile Include="Assets\Exhibition_C#\UIFlash.cs" />
     <Compile Include="Assets\Exhibition_C#\Visiter.cs" />
     <Compile Include="Assets\HUD Text\HUDText.cs" />
     <Compile Include="Assets\HUD Text\UIFollowTarget.cs" />

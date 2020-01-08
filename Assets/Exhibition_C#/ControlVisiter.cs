@@ -12,6 +12,11 @@ public class ControlVisiter : MonoBehaviour {
     {
         Active,
         Stop,
+        Chat,//聊天模式
+        ShowModel,//观看模型
+        Video,//观看视频
+        Out,//退出菜单
+        None,//正常模式
     }
     public static Motion motion = Motion.Active;//初始化
     // Use this for initialization
@@ -74,7 +79,7 @@ public class ControlVisiter : MonoBehaviour {
         if (motion == Motion.Active)
         {
             Player.GetComponent<FirstPersonController>().enabled = true;
-            LeaveRoomPlane.GetComponent<TweenScale>().PlayReverse();
+            LeaveRoomPlane.GetComponent<TweenScale>().PlayReverse();            
         }
         else
         {
