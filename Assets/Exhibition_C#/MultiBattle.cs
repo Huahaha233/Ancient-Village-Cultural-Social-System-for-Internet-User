@@ -30,7 +30,7 @@ public class MultiBattle : MonoBehaviour
         //开启监听
         NetMgr.srvConn.msgDist.AddListener("AddPlayer", RecvAddPlayer);//场景增加人员
         NetMgr.srvConn.msgDist.AddListener("DelPlayer", RecvDelPlayer);//场景删除人员 
-        NetMgr.srvConn.msgDist.AddListener("AddRoomChat", RecvAddRoomChat);//场景删除人员 
+        NetMgr.srvConn.msgDist.AddListener("AddRoomChat", RecvAddRoomChat);//接收留言
         Recovery();
     }
    
@@ -140,7 +140,8 @@ public class MultiBattle : MonoBehaviour
         {
             string id = proto.GetString(start, ref start);
             string message = proto.GetString(start, ref start);
-            Chat.transform.GetChild(0).GetComponent<UITextList>().Add("[8bddfc]" + id + ":[-] " + message);
+            //Chat.transform.GetChild(0).GetComponent<UITextList>().Add("[8bddfc]" + id + ":[-] " + message);
+            Chat.transform.GetChild(4).GetComponent<UITextList>().Add("[8bddfc]" + id + ":[-] " + message);
         }
     }
     #endregion
@@ -167,7 +168,8 @@ public class MultiBattle : MonoBehaviour
         string protoName = proto.GetString(start, ref start);
         string id = proto.GetString(start, ref start);
         string message = proto.GetString(start, ref start);
-        Chat.transform.GetChild(0).GetComponent<UITextList>().Add("[8bddfc]"+id+":[-] "+ message);
+        //Chat.transform.GetChild(0).GetComponent<UITextList>().Add("[8bddfc]"+id+":[-] "+ message);
+        Chat.transform.GetChild(4).GetComponent<UITextList>().Add("[8bddfc]"+id+":[-] "+ message);
     }
     #endregion
 
@@ -191,7 +193,7 @@ public class MultiBattle : MonoBehaviour
         }
     }
     #endregion
-
+    
     //产生浏览者
     public void GenerateVisit(string id,Vector3 pos,Vector3 rot)
     {

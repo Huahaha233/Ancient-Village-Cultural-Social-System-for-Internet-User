@@ -132,8 +132,8 @@ MonoBehaviour:
     paddingTop: 0
     paddingBottom: 1
   - name: Lock-Icon-Small
-    x: 1702
-    y: 64
+    x: 3202
+    y: 69
     width: 32
     height: 38
     borderLeft: 0
@@ -262,7 +262,7 @@ MonoBehaviour:
     paddingTop: 0
     paddingBottom: 0
   - name: "\u4E0A\u4F20\u8D44\u6E90"
-    x: 2650
+    x: 2636
     y: 651
     width: 186
     height: 194
@@ -275,8 +275,8 @@ MonoBehaviour:
     paddingTop: 6
     paddingBottom: 0
   - name: "\u4E0B\u62C9\u6846"
-    x: 2477
-    y: 710
+    x: 1702
+    y: 55
     width: 172
     height: 136
     borderLeft: 0
@@ -367,7 +367,7 @@ MonoBehaviour:
     paddingBottom: 18
   - name: "\u5C55\u5F00"
     x: 2077
-    y: 44
+    y: 245
     width: 199
     height: 200
     borderLeft: 0
@@ -392,8 +392,8 @@ MonoBehaviour:
     paddingTop: 13
     paddingBottom: 13
   - name: "\u6309\u94AE"
-    x: 1702
-    y: 103
+    x: 3403
+    y: 28
     width: 156
     height: 88
     borderLeft: 0
@@ -419,7 +419,7 @@ MonoBehaviour:
     paddingBottom: 0
   - name: "\u6536\u8D77"
     x: 2077
-    y: 245
+    y: 44
     width: 199
     height: 200
     borderLeft: 0
@@ -443,6 +443,19 @@ MonoBehaviour:
     paddingRight: 8
     paddingTop: 7
     paddingBottom: 11
+  - name: "\u6A21\u578B\u56FE\u6807"
+    x: 2477
+    y: 669
+    width: 158
+    height: 176
+    borderLeft: 0
+    borderRight: 0
+    borderTop: 0
+    borderBottom: 0
+    paddingLeft: 21
+    paddingRight: 21
+    paddingTop: 12
+    paddingBottom: 12
   - name: "\u6ED1\u5757"
     x: 2477
     y: 846
@@ -522,8 +535,8 @@ MonoBehaviour:
     paddingTop: 21
     paddingBottom: 21
   - name: "\u8F93\u5165\u6846"
-    x: 2477
-    y: 685
+    x: 3556
+    y: 285
     width: 163
     height: 23
     borderLeft: 20
