@@ -18,10 +18,26 @@ public class HandleVideo : MonoBehaviour {
     }
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.Q))
+        if (Input.GetKeyDown(KeyCode.Q) && (ControlVisiter.motion == ControlVisiter.Motion.None || ControlVisiter.motion == ControlVisiter.Motion.Video)&&VideoTrigger.istrigger==true)
         {
-            list.GetComponent<UIPopupList>().Show();
+            if(ControlVisiter.motion == ControlVisiter.Motion.None)
+            {
+                ControlVisiter.motion = ControlVisiter.Motion.Video;
+                list.GetComponent<UIPopupList>().Show();
+            }
+            else
+            {
+                ControlVisiter.motion = ControlVisiter.Motion.None;
+                list.GetComponent<UIPopupList>().CloseSelf();
+            }
+            
         }
+        if (ControlVisiter.motion == ControlVisiter.Motion.Video) GetInput();
+        
+    }
+    //监听暂停和选择视频按钮
+    private void GetInput()
+    {
         if (Input.GetKeyDown(KeyCode.Space))
         {
             if (isplay == false)
@@ -39,9 +55,8 @@ public class HandleVideo : MonoBehaviour {
         {
             PlayChooseVideo();
         }
-        
     }
-    
+
     //播放视频
     private void PlayVideo()
     {

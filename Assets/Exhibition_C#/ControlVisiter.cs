@@ -10,15 +10,13 @@ public class ControlVisiter : MonoBehaviour {
     //运动状态，判断第一人称脚本是都激活
     public enum Motion
     {
-        Active,
-        Stop,
         Chat,//聊天模式
         ShowModel,//观看模型
         Video,//观看视频
         Out,//退出菜单
         None,//正常模式
     }
-    public static Motion motion = Motion.Active;//初始化
+    public static Motion motion = Motion.None;//初始化
     // Use this for initialization
     void Start () {
 		
@@ -28,6 +26,7 @@ public class ControlVisiter : MonoBehaviour {
 	void Update () {
         GetInput();
         LeaveRoom();
+        ControlPlayer();
 	}
     //获取按键
     private void GetInput()
@@ -44,12 +43,11 @@ public class ControlVisiter : MonoBehaviour {
         }
         else SetBool("idle");
 
-        if (Input.GetKeyDown(KeyCode.Escape))
+        if (Input.GetKeyDown(KeyCode.Escape)&&(motion == Motion.None|| motion == Motion.Out))
         {
-            if (motion == Motion.Active) motion = Motion.Stop;
-                else motion = Motion.Active;
+            if (motion == Motion.None) motion = Motion.Out;
+                else motion = Motion.None;
         }
-
     }
     private void SetBool(string str)
     {
@@ -76,15 +74,25 @@ public class ControlVisiter : MonoBehaviour {
     //离开当前房间
     private void LeaveRoom()
     {
-        if (motion == Motion.Active)
+        if (motion == Motion.Out)
+        {
+            LeaveRoomPlane.GetComponent<TweenScale>().PlayForward();            
+        }
+        else
+        {
+            LeaveRoomPlane.GetComponent<TweenScale>().PlayReverse();
+        }
+    }
+
+    private void ControlPlayer()
+    {
+        if (motion == Motion.None)
         {
             Player.GetComponent<FirstPersonController>().enabled = true;
-            LeaveRoomPlane.GetComponent<TweenScale>().PlayReverse();            
         }
         else
         {
             Player.GetComponent<FirstPersonController>().enabled = false;
-            LeaveRoomPlane.GetComponent<TweenScale>().PlayForward();
         }
     }
 }

@@ -91,6 +91,7 @@
     <Compile Include="Assets\Exhibition_C#\ModelTrigger.cs" />
     <Compile Include="Assets\Exhibition_C#\MultiBattle.cs" />
     <Compile Include="Assets\Exhibition_C#\RecoveryData.cs" />
+    <Compile Include="Assets\Exhibition_C#\VideoTrigger.cs" />
     <Compile Include="Assets\Exhibition_C#\Visiter.cs" />
     <Compile Include="Assets\HUD Text\HUDText.cs" />
     <Compile Include="Assets\HUD Text\UIFollowTarget.cs" />

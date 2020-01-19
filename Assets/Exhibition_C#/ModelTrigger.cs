@@ -16,6 +16,7 @@ public class ModelTrigger : MonoBehaviour {
     private void OnTriggerExit(Collider other)
     {
         tip.GetComponent<TweenPosition>().PlayReverse();
+        ControlPre.model = null;
     }
 
 }

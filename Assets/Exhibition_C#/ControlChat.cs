@@ -7,17 +7,17 @@ public class ControlChat : MonoBehaviour {
     private bool ischat = false;//弹出聊天框
 	// Update is called once per frame
 	void Update () {
-        if (Input.GetKeyDown(KeyCode.Return))
+        if (Input.GetKeyDown(KeyCode.Return) && (ControlVisiter.motion == ControlVisiter.Motion.None || ControlVisiter.motion == ControlVisiter.Motion.Chat))
         {
-            if (ischat == false)
+            if (ControlVisiter.motion == ControlVisiter.Motion.None)
             {
-                ischat = true;
+                ControlVisiter.motion = ControlVisiter.Motion.Chat;
                 control(true);
                 Chat.transform.GetChild(0).GetComponent<UITextList>().textLabel = Chat.transform.GetChild(4).GetComponent<UITextList>().textLabel;
             }
             else
             {
-                ischat = false;
+                ControlVisiter.motion = ControlVisiter.Motion.None;
                 control(false);
             }
         }

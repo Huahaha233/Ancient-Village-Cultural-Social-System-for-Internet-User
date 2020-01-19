@@ -8,24 +8,23 @@ public class ControlPre : MonoBehaviour {
     private float distance = 0;//鼠标滚轮滚动的距离
     public static GameObject model;
     private Camera camera;//摄像机
-    private bool isshow = false;
     // Use this for initialization
 
 	// Update is called once per frame
 	void Update () {
-        if (Input.GetKeyDown(KeyCode.E))
+        if (Input.GetKeyDown(KeyCode.E) && (ControlVisiter.motion == ControlVisiter.Motion.None || ControlVisiter.motion == ControlVisiter.Motion.ShowModel))
         {
-            if (isshow == false)
+            if (ControlVisiter.motion == ControlVisiter.Motion.None)
             {
-                isshow = true;
+                ControlVisiter.motion = ControlVisiter.Motion.ShowModel;
             }
             else
             {
-                isshow = false;
+                ControlVisiter.motion = ControlVisiter.Motion.None;
             }
         }
-        if (isshow == true) Control();
-        if(isshow==false&&model.transform.localPosition.z != 0)
+        if (ControlVisiter.motion == ControlVisiter.Motion.ShowModel && model!=null) Control();
+        if(ControlVisiter.motion == ControlVisiter.Motion.None && model.transform.localPosition.z != 0)
             model.transform.localPosition = Vector3.MoveTowards(model.transform.localPosition, Vector3.zero, 0.2f * Time.deltaTime);
     }
     private void Control()
@@ -46,7 +45,7 @@ public class ControlPre : MonoBehaviour {
     private void Rotatate()
     {
         //if(MouseMoveDirection.x>0)
-        model.transform.Rotate(MouseMoveDirection.y*Time.deltaTime*200, -MouseMoveDirection.x * Time.deltaTime*200, 0, Space.World);//旋转
+        model.transform.Rotate(-MouseMoveDirection.y*Time.deltaTime*200, -MouseMoveDirection.x * Time.deltaTime*200, 0, Space.World);//旋转
     }
     //控制摄像机的移动
     private void ControlCamera()
